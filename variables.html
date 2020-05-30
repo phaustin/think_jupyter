@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Variables, expressions and statements &#8212; How to think like a computer scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Functions" href="functions.html" />
+    <link rel="prev" title="The way of the program" href="way_of.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">How to think like a computer scientist</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="preface.html">Preface</a>
+  </li>
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="way_of.html">The way of the program</a>
+  </li>
+  <li class="active">
+    <a href="">Variables, expressions and statements</a>
+  </li>
+  <li class="">
+    <a href="functions.html">Functions</a>
+  </li>
+  <li class="">
+    <a href="case_study_interface.html">Case study: interface design</a>
+  </li>
+  <li class="">
+    <a href="conditionals.html">Conditionals and recursion</a>
+  </li>
+  <li class="">
+    <a href="fruitful_functions.html">Fruitful functions</a>
+  </li>
+  <li class="">
+    <a href="iteration.html">Iteration</a>
+  </li>
+  <li class="">
+    <a href="strings.html">Strings</a>
+  </li>
+  <li class="">
+    <a href="case_study_wordplay.html">Case study: word play</a>
+  </li>
+  <li class="">
+    <a href="lists.html">Lists</a>
+  </li>
+  <li class="">
+    <a href="dictionaries.html">Dictionaries</a>
+  </li>
+  <li class="">
+    <a href="tuples.html">Tuples</a>
+  </li>
+  <li class="">
+    <a href="case_study_data_structures.html">Case study: data structure selection</a>
+  </li>
+  <li class="">
+    <a href="files.html">Files</a>
+  </li>
+  <li class="">
+    <a href="classes_I.html">Classes and objects</a>
+  </li>
+  <li class="">
+    <a href="classes_II.html">Classes and functions</a>
+  </li>
+  <li class="">
+    <a href="classes_III.html">Classes and methods</a>
+  </li>
+  <li class="">
+    <a href="classes_IV.html">Inheritance</a>
+  </li>
+  <li class="">
+    <a href="advanced.html">The Goodies</a>
+  </li>
+  <li class="">
+    <a href="debugging.html">Debugging</a>
+  </li>
+  <li class="">
+    <a href="algorithms.html">Analysis of Algorithms</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/variables.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#assignment-statements" class="nav-link">Assignment statements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#variable-names" class="nav-link">Variable names</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#expressions-and-statements" class="nav-link">Expressions and statements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#script-mode" class="nav-link">Script mode</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#order-of-operations" class="nav-link">Order of operations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#string-operations" class="nav-link">String operations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#comments" class="nav-link">Comments</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#debugging" class="nav-link">Debugging</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#glossary" class="nav-link">Glossary</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#exercises" class="nav-link">Exercises</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="variables-expressions-and-statements">
+<h1>Variables, expressions and statements<a class="headerlink" href="#variables-expressions-and-statements" title="Permalink to this headline">¶</a></h1>
+<p>One of the most powerful features of a programming language is the
+ability to manipulate <span><strong>variables</strong></span>. A variable is a name
+that refers to a value.</p>
+<div class="section" id="assignment-statements">
+<h2>Assignment statements<a class="headerlink" href="#assignment-statements" title="Permalink to this headline">¶</a></h2>
+<p>An <span><strong>assignment statement</strong></span> creates a new variable and
+gives it a value:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; message = &#39;And now for something completely different&#39;
+&gt;&gt;&gt; n = 17
+&gt;&gt;&gt; pi = 3.1415926535897932
+</pre></div>
+</div>
+<p>This example makes three assignments. The first assigns a string to a
+new variable named <span><code class="docutils literal notranslate"><span class="pre">message</span></code></span>; the second gives the integer
+<span><code class="docutils literal notranslate"><span class="pre">17</span></code></span> to <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>; the third assigns the
+(approximate) value of (\pi) to <span><code class="docutils literal notranslate"><span class="pre">pi</span></code></span>.</p>
+<p>A common way to represent variables on paper is to write the name with
+an arrow pointing to its value. This kind of figure is called a
+<span><strong>state diagram</strong></span> because it shows what state each of the
+variables is in (think of it as the variable’s state of mind).
+Figure <a class="reference external" href="#fig.state2">3.1</a> shows the result of the previous example.</p>
+<p><img alt="State diagram." src="_images/state2.pdf" /></p>
+</div>
+<div class="section" id="variable-names">
+<h2>Variable names<a class="headerlink" href="#variable-names" title="Permalink to this headline">¶</a></h2>
+<p>Programmers generally choose names for their variables that are
+meaningful—they document what the variable is used for.</p>
+<p>Variable names can be as long as you like. They can contain both letters
+and numbers, but they can’t begin with a number. It is legal to use
+uppercase letters, but it is conventional to use only lower case for
+variables names.</p>
+<p>The underscore character, <code class="docutils literal notranslate"><span class="pre">_</span></code>, can appear in a name. It is often used in
+names with multiple words, such as <code class="docutils literal notranslate"><span class="pre">your_name</span></code> or
+<code class="docutils literal notranslate"><span class="pre">airspeed_of_unladen_swallow</span></code>.</p>
+<p>If you give a variable an illegal name, you get a syntax error:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 76trombones = &#39;big parade&#39;
+SyntaxError: invalid syntax
+&gt;&gt;&gt; more@ = 1000000
+SyntaxError: invalid syntax
+&gt;&gt;&gt; class = &#39;Advanced Theoretical Zymurgy&#39;
+SyntaxError: invalid syntax
+</pre></div>
+</div>
+<p><span><code class="docutils literal notranslate"><span class="pre">76trombones</span></code></span> is illegal because it begins with a number.
+<span><code class="docutils literal notranslate"><span class="pre">more&#64;</span></code></span> is illegal because it contains an illegal
+character, <span><code class="docutils literal notranslate"> <span class="pre">&#64;</span></code></span>. But what’s wrong with
+<span><code class="docutils literal notranslate"><span class="pre">class</span></code></span>?</p>
+<p>It turns out that <span><code class="docutils literal notranslate"><span class="pre">class</span></code></span> is one of Python’s
+<span><strong>keywords</strong></span>. The interpreter uses keywords to recognize
+the structure of the program, and they cannot be used as variable names.</p>
+<p>Python 3 has these keywords:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>False      class      finally    is         return
+None       continue   for        lambda     try
+True       def        from       nonlocal   while
+and        del        global     not        with
+as         elif       if         or         yield
+assert     else       import     pass
+break      except     in         raise
+</pre></div>
+</div>
+<p>You don’t have to memorize this list. In most development environments,
+keywords are displayed in a different color; if you try to use one as a
+variable name, you’ll know.</p>
+</div>
+<div class="section" id="expressions-and-statements">
+<h2>Expressions and statements<a class="headerlink" href="#expressions-and-statements" title="Permalink to this headline">¶</a></h2>
+<p>An <span><strong>expression</strong></span> is a combination of values, variables,
+and operators. A value all by itself is considered an expression, and so
+is a variable, so the following are all legal expressions:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 42
+42
+&gt;&gt;&gt; n
+17
+&gt;&gt;&gt; n + 25
+42
+</pre></div>
+</div>
+<p>When you type an expression at the prompt, the interpreter
+<span><strong>evaluates</strong></span> it, which means that it finds the value of
+the expression. In this example, <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> has the value 17 and
+<span><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">+</span> <span class="pre">25</span></code></span> has the value 42.</p>
+<p>A <span><strong>statement</strong></span> is a unit of code that has an effect, like
+creating a variable or displaying a value.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; n = 17
+&gt;&gt;&gt; print(n)
+</pre></div>
+</div>
+<p>The first line is an assignment statement that gives a value to
+<span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>. The second line is a print statement that displays the
+value of <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>.</p>
+<p>When you type a statement, the interpreter <span><strong>executes</strong></span> it,
+which means that it does whatever the statement says. In general,
+statements don’t have values.</p>
+</div>
+<div class="section" id="script-mode">
+<h2>Script mode<a class="headerlink" href="#script-mode" title="Permalink to this headline">¶</a></h2>
+<p>So far we have run Python in <span><strong>interactive mode</strong></span>, which
+means that you interact directly with the interpreter. Interactive mode
+is a good way to get started, but if you are working with more than a
+few lines of code, it can be clumsy.</p>
+<p>The alternative is to save code in a file called a
+<span><strong>script</strong></span> and then run the interpreter in <span><strong>script
+mode</strong></span> to execute the script. By convention, Python scripts have
+names that end with <span><code class="docutils literal notranslate"><span class="pre">.py</span></code></span>.</p>
+<p>If you know how to create and run a script on your computer, you are
+ready to go. Otherwise I recommend using PythonAnywhere again. I have
+posted instructions for running in script mode at
+<a class="reference external" href="http://tinyurl.com/thinkpython2e">http://tinyurl.com/thinkpython2e</a>.</p>
+<p>Because Python provides both modes, you can test bits of code in
+interactive mode before you put them in a script. But there are
+differences between interactive mode and script mode that can be
+confusing.</p>
+<p>For example, if you are using Python as a calculator, you might type</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; miles = 26.2
+&gt;&gt;&gt; miles * 1.61
+42.182
+</pre></div>
+</div>
+<p>The first line assigns a value to <span><code class="docutils literal notranslate"><span class="pre">miles</span></code></span>, but it has no
+visible effect. The second line is an expression, so the interpreter
+evaluates it and displays the result. It turns out that a marathon is
+about 42 kilometers.</p>
+<p>But if you type the same code into a script and run it, you get no
+output at all. In script mode an expression, all by itself, has no
+visible effect. Python evaluates the expression, but it doesn’t display
+the result. To display the result, you need a <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span>
+statement like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>miles = 26.2
+print(miles * 1.61)
+</pre></div>
+</div>
+<p>This behavior can be confusing at first. To check your understanding,
+type the following statements in the Python interpreter and see what
+they do:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>5
+x = 5
+x + 1
+</pre></div>
+</div>
+<p>Now put the same statements in a script and run it. What is the output?
+Modify the script by transforming each expression into a print statement
+and then run it again.</p>
+</div>
+<div class="section" id="order-of-operations">
+<h2>Order of operations<a class="headerlink" href="#order-of-operations" title="Permalink to this headline">¶</a></h2>
+<p>When an expression contains more than one operator, the order of
+evaluation depends on the <span><strong>order of operations</strong></span>. For
+mathematical operators, Python follows mathematical convention. The
+acronym <span><strong>PEMDAS</strong></span> is a useful way to remember the rules:</p>
+<ul class="simple">
+<li><p><span><strong>P</strong></span>arentheses have the highest precedence and can be
+used to force an expression to evaluate in the order you want. Since
+expressions in parentheses are evaluated first, <span><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">(3-1)</span></code></span> is 4, and <span><code class="docutils literal notranslate"><span class="pre">(1+1)**(5-2)</span></code></span> is 8. You can
+also use parentheses to make an expression easier to read, as in
+<span><code class="docutils literal notranslate"><span class="pre">(minute</span> <span class="pre">*</span> <span class="pre">100)</span> <span class="pre">/</span> <span class="pre">60</span></code></span>, even if it doesn’t change the
+result.</p></li>
+<li><p><span><strong>E</strong></span>xponentiation has the next highest precedence, so
+<span><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2**3</span></code></span> is 9, not 27, and <span><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">3**2</span></code></span> is
+18, not 36.</p></li>
+<li><p><span><strong>M</strong></span>ultiplication and <span><strong>D</strong></span>ivision have
+higher precedence than <span><strong>A</strong></span>ddition and
+<span><strong>S</strong></span>ubtraction. So <span><code class="docutils literal notranslate"><span class="pre">2*3-1</span></code></span> is 5, not 4,
+and <span><code class="docutils literal notranslate"><span class="pre">6+4/2</span></code></span> is 8, not 5.</p></li>
+<li><p>Operators with the same precedence are evaluated from left to right
+(except exponentiation). So in the expression <span><code class="docutils literal notranslate"><span class="pre">degrees</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">pi</span></code></span>, the division happens first and the result is multiplied
+by <span><code class="docutils literal notranslate"><span class="pre">pi</span></code></span>. To divide by (2 \pi), you can use
+parentheses or write <span><code class="docutils literal notranslate"><span class="pre">degrees</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">/</span> <span class="pre">pi</span></code></span>.</p></li>
+</ul>
+<p>I don’t work very hard to remember the precedence of operators. If I
+can’t tell by looking at the expression, I use parentheses to make it
+obvious.</p>
+</div>
+<div class="section" id="string-operations">
+<h2>String operations<a class="headerlink" href="#string-operations" title="Permalink to this headline">¶</a></h2>
+<p>In general, you can’t perform mathematical operations on strings, even
+if the strings look like numbers, so the following are illegal:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;chinese&#39;-&#39;food&#39;    &#39;eggs&#39;/&#39;easy&#39;    &#39;third&#39;*&#39;a charm&#39;
+</pre></div>
+</div>
+<p>But there are two exceptions, <span><code class="docutils literal notranslate"><span class="pre">+</span></code></span> and <span><code class="docutils literal notranslate">&#160; </code></span>.</p>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">+</span></code></span> operator performs <span><strong>string
+concatenation</strong></span>, which means it joins the strings by linking them
+end-to-end. For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; first = &#39;throat&#39;
+&gt;&gt;&gt; second = &#39;warbler&#39;
+&gt;&gt;&gt; first + second
+throatwarbler
+</pre></div>
+</div>
+<p>The <span><code class="docutils literal notranslate">&#160; </code></span> operator also works on strings; it performs
+repetition. For example, <code class="docutils literal notranslate"><span class="pre">'Spam'*3</span></code> is <code class="docutils literal notranslate"><span class="pre">'SpamSpamSpam'</span></code>. If one of the
+values is a string, the other has to be an integer.</p>
+<p>This use of <span><code class="docutils literal notranslate"><span class="pre">+</span></code></span> and <span><code class="docutils literal notranslate">&#160; </code></span> makes sense by
+analogy with addition and multiplication. Just as <span><code class="docutils literal notranslate"><span class="pre">4*3</span></code></span> is
+equivalent to <span><code class="docutils literal notranslate"><span class="pre">4+4+4</span></code></span>, we expect <code class="docutils literal notranslate"><span class="pre">'Spam'*3</span></code> to be the same
+as <code class="docutils literal notranslate"><span class="pre">'Spam'+'Spam'+'Spam'</span></code>, and it is. On the other hand, there is a
+significant way in which string concatenation and repetition are
+different from integer addition and multiplication. Can you think of a
+property that addition has that string concatenation does not?</p>
+</div>
+<div class="section" id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
+<p>As programs get bigger and more complicated, they get more difficult to
+read. Formal languages are dense, and it is often difficult to look at a
+piece of code and figure out what it is doing, or why.</p>
+<p>For this reason, it is a good idea to add notes to your programs to
+explain in natural language what the program is doing. These notes are
+called <span><strong>comments</strong></span>, and they start with the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># compute the percentage of the hour that has elapsed
+percentage = (minute * 100) / 60
+</pre></div>
+</div>
+<p>In this case, the comment appears on a line by itself. You can also put
+comments at the end of a line:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>percentage = (minute * 100) / 60     # percentage of an hour
+</pre></div>
+</div>
+<p>Everything from the <span><code class="docutils literal notranslate"><span class="pre">#</span></code></span> to the end of the line is
+ignored—it has no effect on the execution of the program.</p>
+<p>Comments are most useful when they document non-obvious features of the
+code. It is reasonable to assume that the reader can figure out
+<span><em>what</em></span> the code does; it is more useful to explain
+<span><em>why</em></span>.</p>
+<p>This comment is redundant with the code and useless:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>v = 5     # assign 5 to v
+</pre></div>
+</div>
+<p>This comment contains useful information that is not in the code:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>v = 5     # velocity in meters/second. 
+</pre></div>
+</div>
+<p>Good variable names can reduce the need for comments, but long names can
+make complex expressions hard to read, so there is a tradeoff.</p>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>Three kinds of errors can occur in a program: syntax errors, runtime
+errors, and semantic errors. It is useful to distinguish between them in
+order to track them down more quickly.</p>
+<ul>
+<li><p>Syntax error:<br />
+“Syntax” refers to the structure of a program and the rules about
+that structure. For example, parentheses have to come in matching
+pairs, so <span><code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">+</span> <span class="pre">2)</span></code></span> is legal, but <span><code class="docutils literal notranslate"><span class="pre">8)</span></code></span> is
+a <span><strong>syntax error</strong></span>.</p>
+<p>If there is a syntax error anywhere in your program, Python displays
+an error message and quits, and you will not be able to run the
+program. During the first few weeks of your programming career, you
+might spend a lot of time tracking down syntax errors. As you gain
+experience, you will make fewer errors and find them faster.</p>
+</li>
+<li><p>Runtime error:<br />
+The second type of error is a runtime error, so called because the
+error does not appear until after the program has started running.
+These errors are also called <span><strong>exceptions</strong></span> because
+they usually indicate that something exceptional (and bad) has
+happened.</p>
+<p>Runtime errors are rare in the simple programs you will see in the
+first few chapters, so it might be a while before you encounter one.</p>
+</li>
+<li><p>Semantic error:<br />
+The third type of error is “semantic”, which means related to
+meaning. If there is a semantic error in your program, it will run
+without generating error messages, but it will not do the right
+thing. It will do something else. Specifically, it will do what you
+told it to do.</p>
+<p>Identifying semantic errors can be tricky because it requires you to
+work backward by looking at the output of the program and trying to
+figure out what it is doing.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>variable:<br />
+A name that refers to a value.</p></li>
+<li><p>assignment:<br />
+A statement that assigns a value to a variable.</p></li>
+<li><p>state diagram:<br />
+A graphical representation of a set of variables and the values they
+refer to.</p></li>
+<li><p>keyword:<br />
+A reserved word that is used to parse a program; you cannot use
+keywords like <span><code class="docutils literal notranslate"><span class="pre">if</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">def</span></code></span>, and
+<span><code class="docutils literal notranslate"><span class="pre">while</span></code></span> as variable names.</p></li>
+<li><p>operand:<br />
+One of the values on which an operator operates.</p></li>
+<li><p>expression:<br />
+A combination of variables, operators, and values that represents a
+single result.</p></li>
+<li><p>evaluate:<br />
+To simplify an expression by performing the operations in order to
+yield a single value.</p></li>
+<li><p>statement:<br />
+A section of code that represents a command or action. So far, the
+statements we have seen are assignments and print statements.</p></li>
+<li><p>execute:<br />
+To run a statement and do what it says.</p></li>
+<li><p>interactive mode:<br />
+A way of using the Python interpreter by typing code at the prompt.</p></li>
+<li><p>script mode:<br />
+A way of using the Python interpreter to read code from a script and
+run it.</p></li>
+<li><p>script:<br />
+A program stored in a file.</p></li>
+<li><p>order of operations:<br />
+Rules governing the order in which expressions involving multiple
+operators and operands are evaluated.</p></li>
+<li><p>concatenate:<br />
+To join two operands end-to-end.</p></li>
+<li><p>comment:<br />
+Information in a program that is meant for other programmers (or
+anyone reading the source code) and has no effect on the execution
+of the program.</p></li>
+<li><p>syntax error:<br />
+An error in a program that makes it impossible to parse (and
+therefore impossible to interpret).</p></li>
+<li><p>exception:<br />
+An error that is detected while the program is running.</p></li>
+<li><p>semantics:<br />
+The meaning of a program.</p></li>
+<li><p>semantic error:<br />
+An error in a program that makes it do something other than what the
+programmer intended.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>Repeating my advice from the previous chapter, whenever you learn a new
+feature, you should try it out in interactive mode and make errors on
+purpose to see what goes wrong.</p>
+<ul class="simple">
+<li><p>We’ve seen that <span><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">42</span></code></span> is legal. What about <span><code class="docutils literal notranslate"><span class="pre">42</span> <span class="pre">=</span> <span class="pre">n</span></code></span>?</p></li>
+<li><p>How about <span><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">1</span></code></span>?</p></li>
+<li><p>In some languages every statement ends with a semi-colon,
+<span><code class="docutils literal notranslate"><span class="pre">;</span></code></span>. What happens if you put a semi-colon at the end of
+a Python statement?</p></li>
+<li><p>What if you put a period at the end of a statement?</p></li>
+<li><p>In math notation you can multiply (x) and (y) like this:
+(x y). What happens if you try that in Python?</p></li>
+</ul>
+<p>Practice using the Python interpreter as a calculator:</p>
+<ol class="simple">
+<li><p>The volume of a sphere with radius (r) is (\frac{4}{3} \pi r^3).
+What is the volume of a sphere with radius 5?</p></li>
+<li><p>Suppose the cover price of a book is $24.95, but bookstores get a
+40% discount. Shipping costs $3 for the first copy and 75 cents for
+each additional copy. What is the total wholesale cost for 60
+copies?</p></li>
+<li><p>If I leave my house at 6:52 am and run 1 mile at an easy pace (8:15
+per mile), then 3 miles at tempo (7:12 per mile) and 1 mile at easy
+pace again, what time do I get home for breakfast?</p></li>
+</ol>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="way_of.html" title="previous page">The way of the program</a>
+    <a class='right-next' id="next-link" href="functions.html" title="next page">Functions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allan Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

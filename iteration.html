@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Iteration &#8212; How to think like a computer scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Strings" href="strings.html" />
+    <link rel="prev" title="Fruitful functions" href="fruitful_functions.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">How to think like a computer scientist</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="preface.html">Preface</a>
+  </li>
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="way_of.html">The way of the program</a>
+  </li>
+  <li class="">
+    <a href="variables.html">Variables, expressions and statements</a>
+  </li>
+  <li class="">
+    <a href="functions.html">Functions</a>
+  </li>
+  <li class="">
+    <a href="case_study_interface.html">Case study: interface design</a>
+  </li>
+  <li class="">
+    <a href="conditionals.html">Conditionals and recursion</a>
+  </li>
+  <li class="">
+    <a href="fruitful_functions.html">Fruitful functions</a>
+  </li>
+  <li class="active">
+    <a href="">Iteration</a>
+  </li>
+  <li class="">
+    <a href="strings.html">Strings</a>
+  </li>
+  <li class="">
+    <a href="case_study_wordplay.html">Case study: word play</a>
+  </li>
+  <li class="">
+    <a href="lists.html">Lists</a>
+  </li>
+  <li class="">
+    <a href="dictionaries.html">Dictionaries</a>
+  </li>
+  <li class="">
+    <a href="tuples.html">Tuples</a>
+  </li>
+  <li class="">
+    <a href="case_study_data_structures.html">Case study: data structure selection</a>
+  </li>
+  <li class="">
+    <a href="files.html">Files</a>
+  </li>
+  <li class="">
+    <a href="classes_I.html">Classes and objects</a>
+  </li>
+  <li class="">
+    <a href="classes_II.html">Classes and functions</a>
+  </li>
+  <li class="">
+    <a href="classes_III.html">Classes and methods</a>
+  </li>
+  <li class="">
+    <a href="classes_IV.html">Inheritance</a>
+  </li>
+  <li class="">
+    <a href="advanced.html">The Goodies</a>
+  </li>
+  <li class="">
+    <a href="debugging.html">Debugging</a>
+  </li>
+  <li class="">
+    <a href="algorithms.html">Analysis of Algorithms</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/iteration.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#reassignment" class="nav-link">Reassignment</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#updating-variables" class="nav-link">Updating variables</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#the-span-while-span-statement" class="nav-link">The <span>while</span> statement</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#break" class="nav-link">break</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#square-roots" class="nav-link">Square roots</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#algorithms" class="nav-link">Algorithms</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#debugging" class="nav-link">Debugging</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#glossary" class="nav-link">Glossary</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#exercises" class="nav-link">Exercises</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="iteration">
+<h1>Iteration<a class="headerlink" href="#iteration" title="Permalink to this headline">¶</a></h1>
+<p>This chapter is about iteration, which is the ability to run a block of
+statements repeatedly. We saw a kind of iteration, using recursion, in
+Section <a class="reference external" href="#recursion">6.8</a>. We saw another kind, using a
+<span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop, in Section <a class="reference external" href="#repetition">5.2</a>. In this chapter
+we’ll see yet another kind, using a <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span> statement. But
+first I want to say a little more about variable assignment.</p>
+<div class="section" id="reassignment">
+<h2>Reassignment<a class="headerlink" href="#reassignment" title="Permalink to this headline">¶</a></h2>
+<p>As you may have discovered, it is legal to make more than one assignment
+to the same variable. A new assignment makes an existing variable refer
+to a new value (and stop referring to the old value).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; x = 5
+&gt;&gt;&gt; x
+5
+&gt;&gt;&gt; x = 7
+&gt;&gt;&gt; x
+7
+</pre></div>
+</div>
+<p>The first time we display <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span>, its value is 5; the second
+time, its value is 7.</p>
+<p>Figure <a class="reference external" href="#fig.assign2">8.1</a> shows what <span><strong>reassignment</strong></span>
+looks like in a state diagram.</p>
+<p>At this point I want to address a common source of confusion. Because
+Python uses the equal sign (<span><code class="docutils literal notranslate"><span class="pre">=</span></code></span>) for assignment, it is
+tempting to interpret a statement like <span><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">b</span></code></span> as a
+mathematical proposition of equality; that is, the claim that
+<span><code class="docutils literal notranslate"><span class="pre">a</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">b</span></code></span> are equal. But this interpretation
+is wrong.</p>
+<p>First, equality is a symmetric relationship and assignment is not. For
+example, in mathematics, if (a=7) then (7=a). But in Python, the
+statement <span><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">7</span></code></span> is legal and <span><code class="docutils literal notranslate"><span class="pre">7</span> <span class="pre">=</span> <span class="pre">a</span></code></span> is not.</p>
+<p>Also, in mathematics, a proposition of equality is either true or false
+for all time. If (a=b) now, then (a) will always equal (b). In
+Python, an assignment statement can make two variables equal, but they
+don’t have to stay that way:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; a = 5
+&gt;&gt;&gt; b = a    # a and b are now equal
+&gt;&gt;&gt; a = 3    # a and b are no longer equal
+&gt;&gt;&gt; b
+5
+</pre></div>
+</div>
+<p>The third line changes the value of <span><code class="docutils literal notranslate"><span class="pre">a</span></code></span> but does not change
+the value of <span><code class="docutils literal notranslate"><span class="pre">b</span></code></span>, so they are no longer equal.</p>
+<p>Reassigning variables is often useful, but you should use it with
+caution. If the values of variables change frequently, it can make the
+code difficult to read and debug.</p>
+<p><img alt="State diagram." src="_images/assign2.pdf" /></p>
+</div>
+<div class="section" id="updating-variables">
+<h2>Updating variables<a class="headerlink" href="#updating-variables" title="Permalink to this headline">¶</a></h2>
+<p>A common kind of reassignment is an <span><strong>update</strong></span>, where the
+new value of the variable depends on the old.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; x = x + 1
+</pre></div>
+</div>
+<p>This means “get the current value of <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span>, add one, and then
+update <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> with the new value.”</p>
+<p>If you try to update a variable that doesn’t exist, you get an error,
+because Python evaluates the right side before it assigns a value to
+<span><code class="docutils literal notranslate"><span class="pre">x</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; x = x + 1
+NameError: name &#39;x&#39; is not defined
+</pre></div>
+</div>
+<p>Before you can update a variable, you have to
+<span><strong>initialize</strong></span> it, usually with a simple assignment:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; x = 0
+&gt;&gt;&gt; x = x + 1
+</pre></div>
+</div>
+<p>Updating a variable by adding 1 is called an <span><strong>increment</strong></span>;
+subtracting 1 is called a <span><strong>decrement</strong></span>.</p>
+</div>
+<div class="section" id="the-span-while-span-statement">
+<h2>The <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span> statement<a class="headerlink" href="#the-span-while-span-statement" title="Permalink to this headline">¶</a></h2>
+<p>Computers are often used to automate repetitive tasks. Repeating
+identical or similar tasks without making errors is something that
+computers do well and people do poorly. In a computer program,
+repetition is also called <span><strong>iteration</strong></span>.</p>
+<p>We have already seen two functions, <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> and
+<code class="docutils literal notranslate"><span class="pre">print_n</span></code>, that iterate using recursion. Because iteration is so common,
+Python provides language features to make it easier. One is the
+<span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> statement we saw in Section <a class="reference external" href="#repetition">5.2</a>. We’ll
+get back to that later.</p>
+<p>Another is the <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span> statement. Here is a version of
+<span><code class="docutils literal notranslate"> <span class="pre">countdown</span></code></span> that uses a <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span> statement:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def countdown(n):
+    while n &gt; 0:
+        print(n)
+        n = n - 1
+    print(&#39;Blastoff!&#39;)
+</pre></div>
+</div>
+<p>You can almost read the <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span> statement as if it were
+English. It means, “While <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is greater than 0, display
+the value of <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> and then decrement <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>. When
+you get to 0, display the word <span><code class="docutils literal notranslate"><span class="pre">Blastoff!</span></code></span>”</p>
+<p>More formally, here is the flow of execution for a <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span>
+statement:</p>
+<ol class="simple">
+<li><p>Determine whether the condition is true or false.</p></li>
+<li><p>If false, exit the <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span> statement and continue
+execution at the next statement.</p></li>
+<li><p>If the condition is true, run the body and then go back to step 1.</p></li>
+</ol>
+<p>This type of flow is called a loop because the third step loops back
+around to the top.</p>
+<p>The body of the loop should change the value of one or more variables so
+that the condition becomes false eventually and the loop terminates.
+Otherwise the loop will repeat forever, which is called an
+<span><strong>infinite loop</strong></span>. An endless source of amusement for
+computer scientists is the observation that the directions on shampoo,
+“Lather, rinse, repeat”, are an infinite loop.</p>
+<p>In the case of <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span>, we can prove that the loop
+terminates: if <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is zero or negative, the loop never
+runs. Otherwise, <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> gets smaller each time through the
+loop, so eventually we have to get to 0.</p>
+<p>For some other loops, it is not so easy to tell. For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def sequence(n):
+    while n != 1:
+        print(n)
+        if n % 2 == 0:        # n is even
+            n = n / 2
+        else:                 # n is odd
+            n = n*3 + 1
+</pre></div>
+</div>
+<p>The condition for this loop is <span><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">!=</span> <span class="pre">1</span></code></span>, so the loop will
+continue until <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is <span><code class="docutils literal notranslate"><span class="pre">1</span></code></span>, which makes the
+condition false.</p>
+<p>Each time through the loop, the program outputs the value of
+<span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> and then checks whether it is even or odd. If it is
+even, <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is divided by 2. If it is odd, the value of
+<span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is replaced with <span><code class="docutils literal notranslate"><span class="pre">n*3</span> <span class="pre">+</span> <span class="pre">1</span></code></span>. For example,
+if the argument passed to <span><code class="docutils literal notranslate"><span class="pre">sequence</span></code></span> is 3, the resulting
+values of <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> are 3, 10, 5, 16, 8, 4, 2, 1.</p>
+<p>Since <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> sometimes increases and sometimes decreases,
+there is no obvious proof that <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> will ever reach 1, or
+that the program terminates. For some particular values of
+<span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>, we can prove termination. For example, if the starting
+value is a power of two, <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> will be even every time
+through the loop until it reaches 1. The previous example ends with such
+a sequence, starting with 16.</p>
+<p>The hard question is whether we can prove that this program terminates
+for <span><em>all</em></span> positive values of <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>. So far, no
+one has been able to prove it <span><em>or</em></span> disprove it! (See
+<a class="reference external" href="http://en.wikipedia.org/wiki/Collatz_conjecture">http://en.wikipedia.org/wiki/Collatz_conjecture</a>.)</p>
+<p>As an exercise, rewrite the function <code class="docutils literal notranslate"><span class="pre">print_n</span></code> from
+Section <a class="reference external" href="#recursion">6.8</a> using iteration instead of recursion.</p>
+</div>
+<div class="section" id="break">
+<h2><code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you don’t know it’s time to end a loop until you get half way
+through the body. In that case you can use the <span><code class="docutils literal notranslate"><span class="pre">break</span></code></span>
+statement to jump out of the loop.</p>
+<p>For example, suppose you want to take input from the user until they
+type <span><code class="docutils literal notranslate"><span class="pre">done</span></code></span>. You could write:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>while True:
+    line = input(&#39;&gt; &#39;)
+    if line == &#39;done&#39;:
+        break
+    print(line)
+
+print(&#39;Done!&#39;)
+</pre></div>
+</div>
+<p>The loop condition is <span><code class="docutils literal notranslate"><span class="pre">True</span></code></span>, which is always true, so the
+loop runs until it hits the break statement.</p>
+<p>Each time through, it prompts the user with an angle bracket. If the
+user types <span><code class="docutils literal notranslate"><span class="pre">done</span></code></span>, the <span><code class="docutils literal notranslate"><span class="pre">break</span></code></span> statement exits
+the loop. Otherwise the program echoes whatever the user types and goes
+back to the top of the loop. Here’s a sample run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; not done
+not done
+&gt; done
+Done!
+</pre></div>
+</div>
+<p>This way of writing <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span> loops is common because you can
+check the condition anywhere in the loop (not just at the top) and you
+can express the stop condition affirmatively (“stop when this happens”)
+rather than negatively (“keep going until that happens”).</p>
+</div>
+<div class="section" id="square-roots">
+<h2>Square roots<a class="headerlink" href="#square-roots" title="Permalink to this headline">¶</a></h2>
+<p>Loops are often used in programs that compute numerical results by
+starting with an approximate answer and iteratively improving it.</p>
+<p>For example, one way of computing square roots is Newton’s method.
+Suppose that you want to know the square root of (a). If you start
+with almost any estimate, (x), you can compute a better estimate with
+the following formula:</p>
+<p>[y = \frac{x + a/x}{2}] For example, if (a) is 4 and (x) is 3:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; a = 4
+&gt;&gt;&gt; x = 3
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.16666666667
+</pre></div>
+</div>
+<p>The result is closer to the correct answer ((\sqrt{4} = 2)). If we
+repeat the process with the new estimate, it gets even closer:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.00641025641
+</pre></div>
+</div>
+<p>After a few more updates, the estimate is almost exact:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.00001024003
+&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.00000000003
+</pre></div>
+</div>
+<p>In general we don’t know ahead of time how many steps it takes to get to
+the right answer, but we know when we get there because the estimate
+stops changing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.0
+&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.0
+</pre></div>
+</div>
+<p>When <span><code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">==</span> <span class="pre">x</span></code></span>, we can stop. Here is a loop that starts with
+an initial estimate, <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span>, and improves it until it stops
+changing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>while True:
+    print(x)
+    y = (x + a/x) / 2
+    if y == x:
+        break
+    x = y
+</pre></div>
+</div>
+<p>For most values of <span><code class="docutils literal notranslate"><span class="pre">a</span></code></span> this works fine, but in general it
+is dangerous to test <span><code class="docutils literal notranslate"><span class="pre">float</span></code></span> equality. Floating-point
+values are only approximately right: most rational numbers, like
+(1/3), and irrational numbers, like (\sqrt{2}), can’t be represented
+exactly with a <span><code class="docutils literal notranslate"><span class="pre">float</span></code></span>.</p>
+<p>Rather than checking whether <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">y</span></code></span> are
+exactly equal, it is safer to use the built-in function
+<span><code class="docutils literal notranslate"><span class="pre">abs</span></code></span> to compute the absolute value, or magnitude, of the
+difference between them:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if abs(y-x) &lt; epsilon:
+    break
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> has a value like <span><code class="docutils literal notranslate"><span class="pre">0.0000001</span></code></span> that
+determines how close is close enough.</p>
+</div>
+<div class="section" id="algorithms">
+<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Newton’s method is an example of an <span><strong>algorithm</strong></span>: it is a
+mechanical process for solving a category of problems (in this case,
+computing square roots).</p>
+<p>To understand what an algorithm is, it might help to start with
+something that is not an algorithm. When you learned to multiply
+single-digit numbers, you probably memorized the multiplication table.
+In effect, you memorized 100 specific solutions. That kind of knowledge
+is not algorithmic.</p>
+<p>But if you were “lazy”, you might have learned a few tricks. For
+example, to find the product of (n) and 9, you can write (n-1) as
+the first digit and (10-n) as the second digit. This trick is a
+general solution for multiplying any single-digit number by 9. That’s an
+algorithm!</p>
+<p>Similarly, the techniques you learned for addition with carrying,
+subtraction with borrowing, and long division are all algorithms. One of
+the characteristics of algorithms is that they do not require any
+intelligence to carry out. They are mechanical processes where each step
+follows from the last according to a simple set of rules.</p>
+<p>Executing algorithms is boring, but designing them is interesting,
+intellectually challenging, and a central part of computer science.</p>
+<p>Some of the things that people do naturally, without difficulty or
+conscious thought, are the hardest to express algorithmically.
+Understanding natural language is a good example. We all do it, but so
+far no one has been able to explain <span><em>how</em></span> we do it, at
+least not in the form of an algorithm.</p>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>As you start writing bigger programs, you might find yourself spending
+more time debugging. More code means more chances to make an error and
+more places for bugs to hide.</p>
+<p>One way to cut your debugging time is “debugging by bisection”. For
+example, if there are 100 lines in your program and you check them one
+at a time, it would take 100 steps.</p>
+<p>Instead, try to break the problem in half. Look at the middle of the
+program, or near it, for an intermediate value you can check. Add a
+<span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statement (or something else that has a verifiable
+effect) and run the program.</p>
+<p>If the mid-point check is incorrect, there must be a problem in the
+first half of the program. If it is correct, the problem is in the
+second half.</p>
+<p>Every time you perform a check like this, you halve the number of lines
+you have to search. After six steps (which is fewer than 100), you would
+be down to one or two lines of code, at least in theory.</p>
+<p>In practice it is not always clear what the “middle of the program” is
+and not always possible to check it. It doesn’t make sense to count
+lines and find the exact midpoint. Instead, think about places in the
+program where there might be errors and places where it is easy to put a
+check. Then choose a spot where you think the chances are about the same
+that the bug is before or after the check.</p>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>reassignment:<br />
+Assigning a new value to a variable that already exists.</p></li>
+<li><p>update:<br />
+An assignment where the new value of the variable depends on the
+old.</p></li>
+<li><p>initialization:<br />
+An assignment that gives an initial value to a variable that will be
+updated.</p></li>
+<li><p>increment:<br />
+An update that increases the value of a variable (often by one).</p></li>
+<li><p>decrement:<br />
+An update that decreases the value of a variable.</p></li>
+<li><p>iteration:<br />
+Repeated execution of a set of statements using either a recursive
+function call or a loop.</p></li>
+<li><p>infinite loop:<br />
+A loop in which the terminating condition is never satisfied.</p></li>
+<li><p>algorithm:<br />
+A general process for solving a category of problems.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>Copy the loop from Section <a class="reference external" href="#squareroot">8.5</a> and encapsulate it in a
+function called <code class="docutils literal notranslate"><span class="pre">mysqrt</span></code> that takes <span><code class="docutils literal notranslate"><span class="pre">a</span></code></span> as a parameter,
+chooses a reasonable value of <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span>, and returns an estimate
+of the square root of <span><code class="docutils literal notranslate"><span class="pre">a</span></code></span>.</p>
+<p>To test it, write a function named <code class="docutils literal notranslate"><span class="pre">test_square_root</span></code> that prints a
+table like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a   mysqrt(a)     math.sqrt(a)  diff
+-   ---------     ------------  ----
+1.0 1.0           1.0           0.0
+2.0 1.41421356237 1.41421356237 2.22044604925e-16
+3.0 1.73205080757 1.73205080757 0.0
+4.0 2.0           2.0           0.0
+5.0 2.2360679775  2.2360679775  0.0
+6.0 2.44948974278 2.44948974278 0.0
+7.0 2.64575131106 2.64575131106 0.0
+8.0 2.82842712475 2.82842712475 4.4408920985e-16
+9.0 3.0           3.0           0.0
+</pre></div>
+</div>
+<p>The first column is a number, (a); the second column is the square
+root of (a) computed with <code class="docutils literal notranslate"><span class="pre">mysqrt</span></code>; the third column is the square
+root computed by <span><code class="docutils literal notranslate"><span class="pre">math.sqrt</span></code></span>; the fourth column is the
+absolute value of the difference between the two estimates.</p>
+<p>The built-in function <span><code class="docutils literal notranslate"><span class="pre">eval</span></code></span> takes a string and evaluates
+it using the Python interpreter. For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; eval(&#39;1 + 2 * 3&#39;)
+7
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; eval(&#39;math.sqrt(5)&#39;)
+2.2360679774997898
+&gt;&gt;&gt; eval(&#39;type(math.pi)&#39;)
+&lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">eval_loop</span></code> that iteratively prompts the user,
+takes the resulting input and evaluates it using <span><code class="docutils literal notranslate"><span class="pre">eval</span></code></span>,
+and prints the result.</p>
+<p>It should continue until the user enters <code class="docutils literal notranslate"><span class="pre">'done'</span></code>, and then return the
+value of the last expression it evaluated.</p>
+<p>The mathematician Srinivasa Ramanujan found an infinite series that can
+be used to generate a numerical approximation of (1 / \pi):</p>
+<p>[\frac{1}{\pi} = \frac{2\sqrt{2}}{9801}
+\sum^\infty_{k=0} \frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}]</p>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">estimate_pi</span></code> that uses this formula to compute
+and return an estimate of (\pi). It should use a <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span>
+loop to compute terms of the summation until the last term is smaller
+than <span><code class="docutils literal notranslate"><span class="pre">1e-15</span></code></span> (which is Python notation for (10^{-15})).
+You can check the result by comparing it to <span><code class="docutils literal notranslate"><span class="pre">math.pi</span></code></span>.</p>
+<p>Solution: <a class="reference external" href="http://thinkpython2.com/code/pi.py">http://thinkpython2.com/code/pi.py</a>.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="fruitful_functions.html" title="previous page">Fruitful functions</a>
+    <a class='right-next' id="next-link" href="strings.html" title="next page">Strings</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allan Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

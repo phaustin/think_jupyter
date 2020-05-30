@@ -1,0 +1,822 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Analysis of Algorithms &#8212; How to think like a computer scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Debugging" href="debugging.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">How to think like a computer scientist</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="preface.html">Preface</a>
+  </li>
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="way_of.html">The way of the program</a>
+  </li>
+  <li class="">
+    <a href="variables.html">Variables, expressions and statements</a>
+  </li>
+  <li class="">
+    <a href="functions.html">Functions</a>
+  </li>
+  <li class="">
+    <a href="case_study_interface.html">Case study: interface design</a>
+  </li>
+  <li class="">
+    <a href="conditionals.html">Conditionals and recursion</a>
+  </li>
+  <li class="">
+    <a href="fruitful_functions.html">Fruitful functions</a>
+  </li>
+  <li class="">
+    <a href="iteration.html">Iteration</a>
+  </li>
+  <li class="">
+    <a href="strings.html">Strings</a>
+  </li>
+  <li class="">
+    <a href="case_study_wordplay.html">Case study: word play</a>
+  </li>
+  <li class="">
+    <a href="lists.html">Lists</a>
+  </li>
+  <li class="">
+    <a href="dictionaries.html">Dictionaries</a>
+  </li>
+  <li class="">
+    <a href="tuples.html">Tuples</a>
+  </li>
+  <li class="">
+    <a href="case_study_data_structures.html">Case study: data structure selection</a>
+  </li>
+  <li class="">
+    <a href="files.html">Files</a>
+  </li>
+  <li class="">
+    <a href="classes_I.html">Classes and objects</a>
+  </li>
+  <li class="">
+    <a href="classes_II.html">Classes and functions</a>
+  </li>
+  <li class="">
+    <a href="classes_III.html">Classes and methods</a>
+  </li>
+  <li class="">
+    <a href="classes_IV.html">Inheritance</a>
+  </li>
+  <li class="">
+    <a href="advanced.html">The Goodies</a>
+  </li>
+  <li class="">
+    <a href="debugging.html">Debugging</a>
+  </li>
+  <li class="active">
+    <a href="">Analysis of Algorithms</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/algorithms.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#order-of-growth" class="nav-link">Order of growth</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#analysis-of-basic-python-operations" class="nav-link">Analysis of basic Python operations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#analysis-of-search-algorithms" class="nav-link">Analysis of search algorithms</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#hashtables" class="nav-link">Hashtables</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#glossary" class="nav-link">Glossary</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="analysis-of-algorithms">
+<h1>Analysis of Algorithms<a class="headerlink" href="#analysis-of-algorithms" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>This appendix is an edited excerpt from <span><em>Think
+Complexity</em></span>, by Allen B. Downey, also published by O’Reilly
+Media (2012). When you are done with this book, you might want to move
+on to that one.</p>
+</div></blockquote>
+<p><span><strong>Analysis of algorithms</strong></span> is a branch of computer science
+that studies the performance of algorithms, especially their run time
+and space requirements. See
+<a class="reference external" href="http://en.wikipedia.org/wiki/Analysis_of_algorithms">http://en.wikipedia.org/wiki/Analysis_of_algorithms</a>.</p>
+<p>The practical goal of algorithm analysis is to predict the performance
+of different algorithms in order to guide design decisions.</p>
+<p>During the 2008 United States Presidential Campaign, candidate Barack
+Obama was asked to perform an impromptu analysis when he visited Google.
+Chief executive Eric Schmidt jokingly asked him for “the most efficient
+way to sort a million 32-bit integers.” Obama had apparently been tipped
+off, because he quickly replied, “I think the bubble sort would be the
+wrong way to go.” See <a class="reference external" href="http://www.youtube.com/watch?v=k4RRi_ntQc8">http://www.youtube.com/watch?v=k4RRi_ntQc8</a>.</p>
+<p>This is true: bubble sort is conceptually simple but slow for large
+datasets. The answer Schmidt was probably looking for is “radix sort”
+(<a class="reference external" href="http://en.wikipedia.org/wiki/Radix_sort">http://en.wikipedia.org/wiki/Radix_sort</a>)[2].</p>
+<p>The goal of algorithm analysis is to make meaningful comparisons between
+algorithms, but there are some problems:</p>
+<ul class="simple">
+<li><p>The relative performance of the algorithms might depend on
+characteristics of the hardware, so one algorithm might be faster on
+Machine A, another on Machine B. The general solution to this
+problem is to specify a <span><strong>machine model</strong></span> and analyze
+the number of steps, or operations, an algorithm requires under a
+given model.</p></li>
+<li><p>Relative performance might depend on the details of the dataset. For
+example, some sorting algorithms run faster if the data are already
+partially sorted; other algorithms run slower in this case. A common
+way to avoid this problem is to analyze the <span><strong>worst
+case</strong></span> scenario. It is sometimes useful to analyze average
+case performance, but that’s usually harder, and it might not be
+obvious what set of cases to average over.</p></li>
+<li><p>Relative performance also depends on the size of the problem. A
+sorting algorithm that is fast for small lists might be slow for
+long lists. The usual solution to this problem is to express run
+time (or number of operations) as a function of problem size, and
+group functions into categories depending on how quickly they grow
+as problem size increases.</p></li>
+</ul>
+<p>The good thing about this kind of comparison is that it lends itself to
+simple classification of algorithms. For example, if I know that the run
+time of Algorithm A tends to be proportional to the size of the input,
+(n), and Algorithm B tends to be proportional to (n^2), then I
+expect A to be faster than B, at least for large values of (n).</p>
+<p>This kind of analysis comes with some caveats, but we’ll get to that
+later.</p>
+<div class="section" id="order-of-growth">
+<h2>Order of growth<a class="headerlink" href="#order-of-growth" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you have analyzed two algorithms and expressed their run times
+in terms of the size of the input: Algorithm A takes (100n+1) steps to
+solve a problem with size (n); Algorithm B takes (n^2 + n + 1)
+steps.</p>
+<p>The following table shows the run time of these algorithms for different
+problem sizes:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p></p></th>
+<th class="text-align:right head"><p></p></th>
+<th class="text-align:right head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:right"><p>Input</p></td>
+<td class="text-align:right"><p>Run time of</p></td>
+<td class="text-align:right"><p>Run time of</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>size</p></td>
+<td class="text-align:right"><p>Algorithm A</p></td>
+<td class="text-align:right"><p>Algorithm B</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>10</p></td>
+<td class="text-align:right"><p>1 001</p></td>
+<td class="text-align:right"><p>111</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>100</p></td>
+<td class="text-align:right"><p>10 001</p></td>
+<td class="text-align:right"><p>10 101</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>1 000</p></td>
+<td class="text-align:right"><p>100 001</p></td>
+<td class="text-align:right"><p>1 001 001</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>10 000</p></td>
+<td class="text-align:right"><p>1 000 001</p></td>
+<td class="text-align:right"><p>100 010 001</p></td>
+</tr>
+</tbody>
+</table>
+<p>At (n=10), Algorithm A looks pretty bad; it takes almost 10 times
+longer than Algorithm B. But for (n=100) they are about the same, and
+for larger values A is much better.</p>
+<p>The fundamental reason is that for large values of (n), any function
+that contains an (n^2) term will grow faster than a function whose
+leading term is (n). The <span><strong>leading term</strong></span> is the term
+with the highest exponent.</p>
+<p>For Algorithm A, the leading term has a large coefficient, 100, which is
+why B does better than A for small (n). But regardless of the
+coefficients, there will always be some value of (n) where
+(a n^2 &gt; b n), for any values of (a) and (b).</p>
+<p>The same argument applies to the non-leading terms. Even if the run time
+of Algorithm A were (n+1000000), it would still be better than
+Algorithm B for sufficiently large (n).</p>
+<p>In general, we expect an algorithm with a smaller leading term to be a
+better algorithm for large problems, but for smaller problems, there may
+be a <span><strong>crossover point</strong></span> where another algorithm is better.
+The location of the crossover point depends on the details of the
+algorithms, the inputs, and the hardware, so it is usually ignored for
+purposes of algorithmic analysis. But that doesn’t mean you can forget
+about it.</p>
+<p>If two algorithms have the same leading order term, it is hard to say
+which is better; again, the answer depends on the details. So for
+algorithmic analysis, functions with the same leading term are
+considered equivalent, even if they have different coefficients.</p>
+<p>An <span><strong>order of growth</strong></span> is a set of functions whose growth
+behavior is considered equivalent. For example, (2n), (100n) and
+(n+1) belong to the same order of growth, which is written (O(n)) in
+<span><strong>Big-Oh notation</strong></span> and often called
+<span><strong>linear</strong></span> because every function in the set grows linearly
+with (n).</p>
+<p>All functions with the leading term (n^2) belong to (O(n^2)); they
+are called <span><strong>quadratic</strong></span>.</p>
+<p>The following table shows some of the orders of growth that appear most
+commonly in algorithmic analysis, in increasing order of badness.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p></p></th>
+<th class="text-align:right head"><p></p></th>
+<th class="text-align:right head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:right"><p>Order of</p></td>
+<td class="text-align:right"><p>Name</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>growth</p></td>
+<td class="text-align:right"><p></p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>(O(1))</p></td>
+<td class="text-align:right"><p>constant</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>(O(\log_b n))</p></td>
+<td class="text-align:right"><p>logarithmic (for any (b))</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>(O(n))</p></td>
+<td class="text-align:right"><p>linear</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>(O(n \log_b n))</p></td>
+<td class="text-align:right"><p>linearithmic</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>(O(n^2))</p></td>
+<td class="text-align:right"><p>quadratic</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>(O(n^3))</p></td>
+<td class="text-align:right"><p>cubic</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>(O(c^n))</p></td>
+<td class="text-align:right"><p>exponential (for any (c))</p></td>
+<td class="text-align:right"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>For the logarithmic terms, the base of the logarithm doesn’t matter;
+changing bases is the equivalent of multiplying by a constant, which
+doesn’t change the order of growth. Similarly, all exponential functions
+belong to the same order of growth regardless of the base of the
+exponent. Exponential functions grow very quickly, so exponential
+algorithms are only useful for small problems.</p>
+<p>Read the Wikipedia page on Big-Oh notation at
+<a class="reference external" href="http://en.wikipedia.org/wiki/Big_O_notation">http://en.wikipedia.org/wiki/Big_O_notation</a> and answer the following
+questions:</p>
+<ol class="simple">
+<li><p>What is the order of growth of (n^3 + n^2)? What about
+(1000000 n^3 + n^2)? What about (n^3 + 1000000 n^2)?</p></li>
+<li><p>What is the order of growth of ((n^2 + n) \cdot (n + 1))? Before
+you start multiplying, remember that you only need the leading term.</p></li>
+<li><p>If (f) is in (O(g)), for some unspecified function (g), what
+can we say about (af+b), where (a) and (b) are constants?</p></li>
+<li><p>If (f_1) and (f_2) are in (O(g)), what can we say about
+(f_1 + f_2)?</p></li>
+<li><p>If (f_1) is in (O(g)) and (f_2) is in (O(h)), what can we
+say about (f_1 + f_2)?</p></li>
+<li><p>If (f_1) is in (O(g)) and (f_2) is (O(h)), what can we say
+about (f_1 \cdot f_2)?</p></li>
+</ol>
+<p>Programmers who care about performance often find this kind of analysis
+hard to swallow. They have a point: sometimes the coefficients and the
+non-leading terms make a real difference. Sometimes the details of the
+hardware, the programming language, and the characteristics of the input
+make a big difference. And for small problems, order of growth is
+irrelevant.</p>
+<p>But if you keep those caveats in mind, algorithmic analysis is a useful
+tool. At least for large problems, the “better” algorithm is usually
+better, and sometimes it is <span><em>much</em></span> better. The difference
+between two algorithms with the same order of growth is usually a
+constant factor, but the difference between a good algorithm and a bad
+algorithm is unbounded!</p>
+</div>
+<div class="section" id="analysis-of-basic-python-operations">
+<h2>Analysis of basic Python operations<a class="headerlink" href="#analysis-of-basic-python-operations" title="Permalink to this headline">¶</a></h2>
+<p>In Python, most arithmetic operations are constant time; multiplication
+usually takes longer than addition and subtraction, and division takes
+even longer, but these run times don’t depend on the magnitude of the
+operands. Very large integers are an exception; in that case the run
+time increases with the number of digits.</p>
+<p>Indexing operations—reading or writing elements in a sequence or
+dictionary—are also constant time, regardless of the size of the data
+structure.</p>
+<p>A <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop that traverses a sequence or dictionary is
+usually linear, as long as all of the operations in the body of the loop
+are constant time. For example, adding up the elements of a list is
+linear:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>total = 0
+for x in t:
+    total += x
+</pre></div>
+</div>
+<p>The built-in function <span><code class="docutils literal notranslate"><span class="pre">sum</span></code></span> is also linear because it does
+the same thing, but it tends to be faster because it is a more efficient
+implementation; in the language of algorithmic analysis, it has a
+smaller leading coefficient.</p>
+<p>As a rule of thumb, if the body of a loop is in (O(n^a)) then the
+whole loop is in (O(n^{a+1})). The exception is if you can show that
+the loop exits after a constant number of iterations. If a loop runs
+(k) times regardless of (n), then the loop is in (O(n^a)), even
+for large (k).</p>
+<p>Multiplying by (k) doesn’t change the order of growth, but neither
+does dividing. So if the body of a loop is in (O(n^a)) and it runs
+(n/k) times, the loop is in (O(n^{a+1})), even for large (k).</p>
+<p>Most string and tuple operations are linear, except indexing and
+<span><code class="docutils literal notranslate"> <span class="pre">len</span></code></span>, which are constant time. The built-in functions
+<span><code class="docutils literal notranslate"><span class="pre">min</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">max</span></code></span> are linear. The run-time of a
+slice operation is proportional to the length of the output, but
+independent of the size of the input.</p>
+<p>String concatenation is linear; the run time depends on the sum of the
+lengths of the operands.</p>
+<p>All string methods are linear, but if the lengths of the strings are
+bounded by a constant—for example, operations on single characters—they
+are considered constant time. The string method <span><code class="docutils literal notranslate"><span class="pre">join</span></code></span> is
+linear; the run time depends on the total length of the strings.</p>
+<p>Most list methods are linear, but there are some exceptions:</p>
+<ul class="simple">
+<li><p>Adding an element to the end of a list is constant time on average;
+when it runs out of room it occasionally gets copied to a bigger
+location, but the total time for (n) operations is (O(n)), so
+the average time for each operation is (O(1)).</p></li>
+<li><p>Removing an element from the end of a list is constant time.</p></li>
+<li><p>Sorting is (O(n \log n)).</p></li>
+</ul>
+<p>Most dictionary operations and methods are constant time, but there are
+some exceptions:</p>
+<ul class="simple">
+<li><p>The run time of <span><code class="docutils literal notranslate"><span class="pre">update</span></code></span> is proportional to the size of
+the dictionary passed as a parameter, not the dictionary being
+updated.</p></li>
+<li><p><span><code class="docutils literal notranslate"><span class="pre">keys</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">values</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">items</span></code></span>
+are constant time because they return iterators. But if you loop
+through the iterators, the loop will be linear.</p></li>
+</ul>
+<p>The performance of dictionaries is one of the minor miracles of computer
+science. We will see how they work in Section <a class="reference external" href="#hashtable">22.4</a>.</p>
+<p>Read the Wikipedia page on sorting algorithms at
+<a class="reference external" href="http://en.wikipedia.org/wiki/Sorting_algorithm">http://en.wikipedia.org/wiki/Sorting_algorithm</a> and answer the
+following questions:</p>
+<ol class="simple">
+<li><p>What is a “comparison sort?” What is the best worst-case order of
+growth for a comparison sort? What is the best worst-case order of
+growth for any sort algorithm?</p></li>
+<li><p>What is the order of growth of bubble sort, and why does Barack
+Obama think it is “the wrong way to go?”</p></li>
+<li><p>What is the order of growth of radix sort? What preconditions do we
+need to use it?</p></li>
+<li><p>What is a stable sort and why might it matter in practice?</p></li>
+<li><p>What is the worst sorting algorithm (that has a name)?</p></li>
+<li><p>What sort algorithm does the C library use? What sort algorithm does
+Python use? Are these algorithms stable? You might have to Google
+around to find these answers.</p></li>
+<li><p>Many of the non-comparison sorts are linear, so why does does Python
+use an (O(n \log n)) comparison sort?</p></li>
+</ol>
+</div>
+<div class="section" id="analysis-of-search-algorithms">
+<h2>Analysis of search algorithms<a class="headerlink" href="#analysis-of-search-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>A <span><strong>search</strong></span> is an algorithm that takes a collection and a
+target item and determines whether the target is in the collection,
+often returning the index of the target.</p>
+<p>The simplest search algorithm is a “linear search”, which traverses the
+items of the collection in order, stopping if it finds the target. In
+the worst case it has to traverse the entire collection, so the run time
+is linear.</p>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">in</span></code></span> operator for sequences uses a linear search; so do
+string methods like <span><code class="docutils literal notranslate"><span class="pre">find</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">count</span></code></span>.</p>
+<p>If the elements of the sequence are in order, you can use a <span>
+<strong>bisection search</strong></span>, which is (O(\log n)). Bisection search is
+similar to the algorithm you might use to look a word up in a dictionary
+(a paper dictionary, not the data structure). Instead of starting at the
+beginning and checking each item in order, you start with the item in
+the middle and check whether the word you are looking for comes before
+or after. If it comes before, then you search the first half of the
+sequence. Otherwise you search the second half. Either way, you cut the
+number of remaining items in half.</p>
+<p>If the sequence has 1,000,000 items, it will take about 20 steps to find
+the word or conclude that it’s not there. So that’s about 50,000 times
+faster than a linear search.</p>
+<p>Bisection search can be much faster than linear search, but it requires
+the sequence to be in order, which might require extra work.</p>
+<p>There is another data structure, called a <span><strong>hashtable</strong></span>
+that is even faster—it can do a search in constant time—and it doesn’t
+require the items to be sorted. Python dictionaries are implemented
+using hashtables, which is why most dictionary operations, including the
+<span><code class="docutils literal notranslate"><span class="pre">in</span></code></span> operator, are constant time.</p>
+</div>
+<div class="section" id="hashtables">
+<h2>Hashtables<a class="headerlink" href="#hashtables" title="Permalink to this headline">¶</a></h2>
+<p>To explain how hashtables work and why their performance is so good, I
+start with a simple implementation of a map and gradually improve it
+until it’s a hashtable.</p>
+<p>I use Python to demonstrate these implementations, but in real life you
+wouldn’t write code like this in Python; you would just use a
+dictionary! So for the rest of this chapter, you have to imagine that
+dictionaries don’t exist and you want to implement a data structure that
+maps from keys to values. The operations you have to implement are:</p>
+<ul class="simple">
+<li><p><span><code class="docutils literal notranslate"><span class="pre">add(k,</span> <span class="pre">v)</span></code></span>:<br />
+Add a new item that maps from key <span><code class="docutils literal notranslate"><span class="pre">k</span></code></span> to value
+<span><code class="docutils literal notranslate"><span class="pre">v</span></code></span>. With a Python dictionary, <span><code class="docutils literal notranslate"><span class="pre">d</span></code></span>, this
+operation is written <span><code class="docutils literal notranslate"><span class="pre">d[k]</span> <span class="pre">=</span> <span class="pre">v</span></code></span>.</p></li>
+<li><p><span><code class="docutils literal notranslate"><span class="pre">get(k)</span></code></span>:<br />
+Look up and return the value that corresponds to key
+<span><code class="docutils literal notranslate"><span class="pre">k</span></code></span>. With a Python dictionary, <span><code class="docutils literal notranslate"><span class="pre">d</span></code></span>, this
+operation is written <span><code class="docutils literal notranslate"><span class="pre">d[k]</span></code></span> or <span><code class="docutils literal notranslate"><span class="pre">d.get(k)</span></code></span>.</p></li>
+</ul>
+<p>For now, I assume that each key only appears once. The simplest
+implementation of this interface uses a list of tuples, where each tuple
+is a key-value pair.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class LinearMap:
+
+    def __init__(self):
+        self.items = []
+
+    def add(self, k, v):
+        self.items.append((k, v))
+
+    def get(self, k):
+        for key, val in self.items:
+            if key == k:
+                return val
+        raise KeyError
+</pre></div>
+</div>
+<p><span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> appends a key-value tuple to the list of items, which
+takes constant time.</p>
+<p><span><code class="docutils literal notranslate"><span class="pre">get</span></code></span> uses a <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop to search the list: if
+it finds the target key it returns the corresponding value; otherwise it
+raises a <span><code class="docutils literal notranslate"><span class="pre">KeyError</span></code></span>. So <span><code class="docutils literal notranslate"><span class="pre">get</span></code></span> is linear.</p>
+<p>An alternative is to keep the list sorted by key. Then
+<span><code class="docutils literal notranslate"><span class="pre">get</span></code></span> could use a bisection search, which is (O(\log n)).
+But inserting a new item in the middle of a list is linear, so this
+might not be the best option. There are other data structures that can
+implement <span><code class="docutils literal notranslate"> <span class="pre">add</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">get</span></code></span> in log time, but
+that’s still not as good as constant time, so let’s move on.</p>
+<p>One way to improve <span><code class="docutils literal notranslate"><span class="pre">LinearMap</span></code></span> is to break the list of
+key-value pairs into smaller lists. Here’s an implementation called
+<span><code class="docutils literal notranslate"><span class="pre">BetterMap</span></code></span>, which is a list of 100 LinearMaps. As we’ll
+see in a second, the order of growth for <span><code class="docutils literal notranslate"><span class="pre">get</span></code></span> is still
+linear, but <span><code class="docutils literal notranslate"><span class="pre">BetterMap</span></code></span> is a step on the path toward
+hashtables:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class BetterMap:
+
+    def __init__(self, n=100):
+        self.maps = []
+        for i in range(n):
+            self.maps.append(LinearMap())
+
+    def find_map(self, k):
+        index = hash(k) % len(self.maps)
+        return self.maps[index]
+
+    def add(self, k, v):
+        m = self.find_map(k)
+        m.add(k, v)
+
+    def get(self, k):
+        m = self.find_map(k)
+        return m.get(k)
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__init__</span></code> makes a list of <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> <span><code class="docutils literal notranslate"><span class="pre">LinearMap</span></code></span>s.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_map</span></code> is used by <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">get</span></code></span> to
+figure out which map to put the new item in, or which map to search.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_map</span></code> uses the built-in function <span><code class="docutils literal notranslate"><span class="pre">hash</span></code></span>, which takes
+almost any Python object and returns an integer. A limitation of this
+implementation is that it only works with hashable keys. Mutable types
+like lists and dictionaries are unhashable.</p>
+<p>Hashable objects that are considered equivalent return the same hash
+value, but the converse is not necessarily true: two objects with
+different values can return the same hash value.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_map</span></code> uses the modulus operator to wrap the hash values into the
+range from 0 to <span><code class="docutils literal notranslate"><span class="pre">len(self.maps)</span></code></span>, so the result is a legal
+index into the list. Of course, this means that many different hash
+values will wrap onto the same index. But if the hash function spreads
+things out pretty evenly (which is what hash functions are designed to
+do), then we expect (n/100) items per LinearMap.</p>
+<p>Since the run time of <span><code class="docutils literal notranslate"><span class="pre">LinearMap.get</span></code></span> is proportional to
+the number of items, we expect BetterMap to be about 100 times faster
+than LinearMap. The order of growth is still linear, but the leading
+coefficient is smaller. That’s nice, but still not as good as a
+hashtable.</p>
+<p>Here (finally) is the crucial idea that makes hashtables fast: if you
+can keep the maximum length of the LinearMaps bounded, <span><code class="docutils literal notranslate"> <span class="pre">LinearMap.get</span></code></span> is constant time. All you have to do is keep
+track of the number of items and when the number of items per LinearMap
+exceeds a threshold, resize the hashtable by adding more LinearMaps.</p>
+<p>Here is an implementation of a hashtable:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class HashMap:
+
+    def __init__(self):
+        self.maps = BetterMap(2)
+        self.num = 0
+
+    def get(self, k):
+        return self.maps.get(k)
+
+    def add(self, k, v):
+        if self.num == len(self.maps.maps):
+            self.resize()
+
+        self.maps.add(k, v)
+        self.num += 1
+
+    def resize(self):
+        new_maps = BetterMap(self.num * 2)
+
+        for m in self.maps.maps:
+            for k, v in m.items:
+                new_maps.add(k, v)
+
+        self.maps = new_maps
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__init__</span></code> creates a <span><code class="docutils literal notranslate"><span class="pre">BetterMap</span></code></span> and initializes
+<span><code class="docutils literal notranslate"><span class="pre">num</span></code></span>, which keeps track of the number of items.</p>
+<p><span><code class="docutils literal notranslate"><span class="pre">get</span></code></span> just dispatches to <span><code class="docutils literal notranslate"><span class="pre">BetterMap</span></code></span>. The real
+work happens in <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span>, which checks the number of items and
+the size of the <span><code class="docutils literal notranslate"><span class="pre">BetterMap</span></code></span>: if they are equal, the average
+number of items per LinearMap is 1, so it calls <span><code class="docutils literal notranslate"><span class="pre">resize</span></code></span>.</p>
+<p><span><code class="docutils literal notranslate"><span class="pre">resize</span></code></span> make a new <span><code class="docutils literal notranslate"><span class="pre">BetterMap</span></code></span>, twice as big
+as the previous one, and then “rehashes” the items from the old map to
+the new.</p>
+<p>Rehashing is necessary because changing the number of LinearMaps changes
+the denominator of the modulus operator in <code class="docutils literal notranslate"><span class="pre">find_map</span></code>. That means that
+some objects that used to hash into the same LinearMap will get split up
+(which is what we wanted, right?).</p>
+<p>Rehashing is linear, so <span><code class="docutils literal notranslate"><span class="pre">resize</span></code></span> is linear, which might
+seem bad, since I promised that <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> would be constant
+time. But remember that we don’t have to resize every time, so
+<span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> is usually constant time and only occasionally
+linear. The total amount of work to run <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> (n) times
+is proportional to (n), so the average time of each <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span>
+is constant time!</p>
+<p>To see how this works, think about starting with an empty HashTable and
+adding a sequence of items. We start with 2 LinearMaps, so the first 2
+adds are fast (no resizing required). Let’s say that they take one unit
+of work each. The next add requires a resize, so we have to rehash the
+first two items (let’s call that 2 more units of work) and then add the
+third item (one more unit). Adding the next item costs 1 unit, so the
+total so far is 6 units of work for 4 items.</p>
+<p>The next <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> costs 5 units, but the next three are only
+one unit each, so the total is 14 units for the first 8 adds.</p>
+<p>The next <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> costs 9 units, but then we can add 7 more
+before the next resize, so the total is 30 units for the first 16 adds.</p>
+<p>After 32 adds, the total cost is 62 units, and I hope you are starting
+to see a pattern. After (n) adds, where (n) is a power of two, the
+total cost is (2n-2) units, so the average work per add is a little
+less than 2 units. When (n) is a power of two, that’s the best case;
+for other values of (n) the average work is a little higher, but
+that’s not important. The important thing is that it is (O(1)).</p>
+<p>Figure <a class="reference external" href="#fig.hash">22.1</a> shows how this works graphically. Each block
+represents a unit of work. The columns show the total work for each add
+in order from left to right: the first two <span><code class="docutils literal notranslate"><span class="pre">adds</span></code></span> cost 1
+unit each, the third costs 3 units, etc.</p>
+<p><img alt="The cost of a hashtableadd.[fig.hash]" src="_images/towers.pdf" /></p>
+<p>The extra work of rehashing appears as a sequence of increasingly tall
+towers with increasing space between them. Now if you knock over the
+towers, spreading the cost of resizing over all adds, you can see
+graphically that the total cost after (n) adds is (2n - 2).</p>
+<p>An important feature of this algorithm is that when we resize the
+HashTable it grows geometrically; that is, we multiply the size by a
+constant. If you increase the size arithmetically—adding a fixed number
+each time—the average time per <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> is linear.</p>
+<p>You can download my implementation of HashMap from
+<a class="reference external" href="http://thinkpython2.com/code/Map.py">http://thinkpython2.com/code/Map.py</a>, but remember that there is no
+reason to use it; if you want a map, just use a Python dictionary.</p>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>analysis of algorithms:<br />
+A way to compare algorithms in terms of their run time and/or space
+requirements.</p></li>
+<li><p>machine model:<br />
+A simplified representation of a computer used to describe
+algorithms.</p></li>
+<li><p>worst case:<br />
+The input that makes a given algorithm run slowest (or require the
+most space).</p></li>
+<li><p>leading term:<br />
+In a polynomial, the term with the highest exponent.</p></li>
+<li><p>crossover point:<br />
+The problem size where two algorithms require the same run time or
+space.</p></li>
+<li><p>order of growth:<br />
+A set of functions that all grow in a way considered equivalent for
+purposes of analysis of algorithms. For example, all functions that
+grow linearly belong to the same order of growth.</p></li>
+<li><p>Big-Oh notation:<br />
+Notation for representing an order of growth; for example, (O(n))
+represents the set of functions that grow linearly.</p></li>
+<li><p>linear:<br />
+An algorithm whose run time is proportional to problem size, at
+least for large problem sizes.</p></li>
+<li><p>quadratic:<br />
+An algorithm whose run time is proportional to (n^2), where (n)
+is a measure of problem size.</p></li>
+<li><p>search:<br />
+The problem of locating an element of a collection (like a list or
+dictionary) or determining that it is not present.</p></li>
+<li><p>hashtable:<br />
+A data structure that represents a collection of key-value pairs and
+performs search in constant time.</p></li>
+</ul>
+<!-- end list -->
+<ol class="simple">
+<li><p><span><code class="docutils literal notranslate"><span class="pre">popen</span></code></span> is deprecated now, which means we are supposed
+to stop using it and start using the <span><code class="docutils literal notranslate"><span class="pre">subprocess</span></code></span>
+module. But for simple cases, I find <span><code class="docutils literal notranslate"><span class="pre">subprocess</span></code></span> more
+complicated than necessary. So I am going to keep using
+<span><code class="docutils literal notranslate"><span class="pre">popen</span></code></span> until they take it away.</p></li>
+<li><p>But if you get a question like this in an interview, I think a
+better answer is, “The fastest way to sort a million integers is to
+use whatever sort function is provided by the language I’m using.
+Its performance is good enough for the vast majority of
+applications, but if it turned out that my application was too slow,
+I would use a profiler to see where the time was being spent. If it
+looked like a faster sort algorithm would have a significant effect
+on performance, then I would look around for a good implementation
+of radix sort.”</p></li>
+</ol>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="debugging.html" title="previous page">Debugging</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allan Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

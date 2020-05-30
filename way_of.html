@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>The way of the program &#8212; How to think like a computer scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Variables, expressions and statements" href="variables.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">How to think like a computer scientist</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="preface.html">Preface</a>
+  </li>
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="active">
+    <a href="">The way of the program</a>
+  </li>
+  <li class="">
+    <a href="variables.html">Variables, expressions and statements</a>
+  </li>
+  <li class="">
+    <a href="functions.html">Functions</a>
+  </li>
+  <li class="">
+    <a href="case_study_interface.html">Case study: interface design</a>
+  </li>
+  <li class="">
+    <a href="conditionals.html">Conditionals and recursion</a>
+  </li>
+  <li class="">
+    <a href="fruitful_functions.html">Fruitful functions</a>
+  </li>
+  <li class="">
+    <a href="iteration.html">Iteration</a>
+  </li>
+  <li class="">
+    <a href="strings.html">Strings</a>
+  </li>
+  <li class="">
+    <a href="case_study_wordplay.html">Case study: word play</a>
+  </li>
+  <li class="">
+    <a href="lists.html">Lists</a>
+  </li>
+  <li class="">
+    <a href="dictionaries.html">Dictionaries</a>
+  </li>
+  <li class="">
+    <a href="tuples.html">Tuples</a>
+  </li>
+  <li class="">
+    <a href="case_study_data_structures.html">Case study: data structure selection</a>
+  </li>
+  <li class="">
+    <a href="files.html">Files</a>
+  </li>
+  <li class="">
+    <a href="classes_I.html">Classes and objects</a>
+  </li>
+  <li class="">
+    <a href="classes_II.html">Classes and functions</a>
+  </li>
+  <li class="">
+    <a href="classes_III.html">Classes and methods</a>
+  </li>
+  <li class="">
+    <a href="classes_IV.html">Inheritance</a>
+  </li>
+  <li class="">
+    <a href="advanced.html">The Goodies</a>
+  </li>
+  <li class="">
+    <a href="debugging.html">Debugging</a>
+  </li>
+  <li class="">
+    <a href="algorithms.html">Analysis of Algorithms</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/way_of.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#what-is-a-program" class="nav-link">What is a program?</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#running-python" class="nav-link">Running Python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#the-first-program" class="nav-link">The first program</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#arithmetic-operators" class="nav-link">Arithmetic operators</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#values-and-types" class="nav-link">Values and types</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#formal-and-natural-languages" class="nav-link">Formal and natural languages</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#debugging" class="nav-link">Debugging</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#glossary" class="nav-link">Glossary</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#exercises" class="nav-link">Exercises</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-way-of-the-program">
+<h1>The way of the program<a class="headerlink" href="#the-way-of-the-program" title="Permalink to this headline">¶</a></h1>
+<p>The goal of this book is to teach you to think like a computer
+scientist. This way of thinking combines some of the best features of
+mathematics, engineering, and natural science. Like mathematicians,
+computer scientists use formal languages to denote ideas (specifically
+computations). Like engineers, they design things, assembling components
+into systems and evaluating tradeoffs among alternatives. Like
+scientists, they observe the behavior of complex systems, form
+hypotheses, and test predictions.</p>
+<p>The single most important skill for a computer scientist is <span>
+<strong>problem solving</strong></span>. Problem solving means the ability to
+formulate problems, think creatively about solutions, and express a
+solution clearly and accurately. As it turns out, the process of
+learning to program is an excellent opportunity to practice
+problem-solving skills. That’s why this chapter is called, “The way of
+the program”.</p>
+<p>On one level, you will be learning to program, a useful skill by itself.
+On another level, you will use programming as a means to an end. As we
+go along, that end will become clearer.</p>
+<div class="section" id="what-is-a-program">
+<h2>What is a program?<a class="headerlink" href="#what-is-a-program" title="Permalink to this headline">¶</a></h2>
+<p>A <span><strong>program</strong></span> is a sequence of instructions that specifies
+how to perform a computation. The computation might be something
+mathematical, such as solving a system of equations or finding the roots
+of a polynomial, but it can also be a symbolic computation, such as
+searching and replacing text in a document or something graphical, like
+processing an image or playing a video.</p>
+<p>The details look different in different languages, but a few basic
+instructions appear in just about every language:</p>
+<ul class="simple">
+<li><p>input:<br />
+Get data from the keyboard, a file, the network, or some other
+device.</p></li>
+<li><p>output:<br />
+Display data on the screen, save it in a file, send it over the
+network, etc.</p></li>
+<li><p>math:<br />
+Perform basic mathematical operations like addition and
+multiplication.</p></li>
+<li><p>conditional execution:<br />
+Check for certain conditions and run the appropriate code.</p></li>
+<li><p>repetition:<br />
+Perform some action repeatedly, usually with some variation.</p></li>
+</ul>
+<p>Believe it or not, that’s pretty much all there is to it. Every program
+you’ve ever used, no matter how complicated, is made up of instructions
+that look pretty much like these. So you can think of programming as the
+process of breaking a large, complex task into smaller and smaller
+subtasks until the subtasks are simple enough to be performed with one
+of these basic instructions.</p>
+</div>
+<div class="section" id="running-python">
+<h2>Running Python<a class="headerlink" href="#running-python" title="Permalink to this headline">¶</a></h2>
+<p>One of the challenges of getting started with Python is that you might
+have to install Python and related software on your computer. If you are
+familiar with your operating system, and especially if you are
+comfortable with the command-line interface, you will have no trouble
+installing Python. But for beginners, it can be painful to learn about
+system administration and programming at the same time.</p>
+<p>To avoid that problem, I recommend that you start out running Python in
+a browser. Later, when you are comfortable with Python, I’ll make
+suggestions for installing Python on your computer.</p>
+<p>There are a number of web pages you can use to run Python. If you
+already have a favorite, go ahead and use it. Otherwise I recommend
+PythonAnywhere. I provide detailed instructions for getting started at
+<a class="reference external" href="http://tinyurl.com/thinkpython2e">http://tinyurl.com/thinkpython2e</a>.</p>
+<p>There are two versions of Python, called Python 2 and Python 3. They are
+very similar, so if you learn one, it is easy to switch to the other. In
+fact, there are only a few differences you will encounter as a beginner.
+This book is written for Python 3, but I include some notes about Python
+2.</p>
+<p>The Python <span><strong>interpreter</strong></span> is a program that reads and
+executes Python code. Depending on your environment, you might start the
+interpreter by clicking on an icon, or by typing <span><code class="docutils literal notranslate"><span class="pre">python</span></code></span>
+on a command line. When it starts, you should see output like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python 3.4.0 (default, Jun 19 2015, 14:20:21) 
+[GCC 4.8.2] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; 
+</pre></div>
+</div>
+<p>The first three lines contain information about the interpreter and the
+operating system it’s running on, so it might be different for you. But
+you should check that the version number, which is <span><code class="docutils literal notranslate"><span class="pre">3.4.0</span></code></span>
+in this example, begins with 3, which indicates that you are running
+Python 3. If it begins with 2, you are running (you guessed it) Python
+2.</p>
+<p>The last line is a <span><strong>prompt</strong></span> that indicates that the
+interpreter is ready for you to enter code. If you type a line of code
+and hit Enter, the interpreter displays the result:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 1 + 1
+2
+</pre></div>
+</div>
+<p>Now you’re ready to get started. From here on, I assume that you know
+how to start the Python interpreter and run code.</p>
+</div>
+<div class="section" id="the-first-program">
+<h2>The first program<a class="headerlink" href="#the-first-program" title="Permalink to this headline">¶</a></h2>
+<p>Traditionally, the first program you write in a new language is called
+“Hello, World!” because all it does is display the words “Hello,
+World!”. In Python, it looks like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; print(&#39;Hello, World!&#39;)
+</pre></div>
+</div>
+<p>This is an example of a <span><strong>print statement</strong></span>, although it
+doesn’t actually print anything on paper. It displays a result on the
+screen. In this case, the result is the words</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Hello, World!
+</pre></div>
+</div>
+<p>The quotation marks in the program mark the beginning and end of the
+text to be displayed; they don’t appear in the result.</p>
+<p>The parentheses indicate that <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> is a function. We’ll
+get to functions in Chapter <a class="reference external" href="#funcchap">4</a>.</p>
+<p>In Python 2, the print statement is slightly different; it is not a
+function, so it doesn’t use parentheses.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; print &#39;Hello, World!&#39;
+</pre></div>
+</div>
+<p>This distinction will make more sense soon, but that’s enough to get
+started.</p>
+</div>
+<div class="section" id="arithmetic-operators">
+<h2>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h2>
+<p>After “Hello, World”, the next step is arithmetic. Python provides
+<span><strong>operators</strong></span>, which are special symbols that represent
+computations like addition and multiplication.</p>
+<p>The operators <span><code class="docutils literal notranslate"><span class="pre">+</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">-</span></code></span>, and <span><code class="docutils literal notranslate">&#160; </code></span>
+perform addition, subtraction, and multiplication, as in the following
+examples:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 40 + 2
+42
+&gt;&gt;&gt; 43 - 1
+42
+&gt;&gt;&gt; 6 * 7
+42
+</pre></div>
+</div>
+<p>The operator <span><code class="docutils literal notranslate"><span class="pre">/</span></code></span> performs division:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 84 / 2
+42.0
+</pre></div>
+</div>
+<p>You might wonder why the result is <span><code class="docutils literal notranslate"><span class="pre">42.0</span></code></span> instead of
+<span><code class="docutils literal notranslate"><span class="pre">42</span></code></span>. I’ll explain in the next section.</p>
+<p>Finally, the operator <span><code class="docutils literal notranslate"><span class="pre">*</span></code></span> performs exponentiation; that is,
+it raises a number to a power:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 6**2 + 6
+42
+</pre></div>
+</div>
+<p>In some other languages, <code class="docutils literal notranslate"><span class="pre">^</span></code> is used for exponentiation, but in Python
+it is a bitwise operator called XOR. If you are not familiar with
+bitwise operators, the result will surprise you:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 6 ^ 2
+4
+</pre></div>
+</div>
+<p>I won’t cover bitwise operators in this book, but you can read about
+them at <a class="reference external" href="http://wiki.python.org/moin/BitwiseOperators">http://wiki.python.org/moin/BitwiseOperators</a>.</p>
+</div>
+<div class="section" id="values-and-types">
+<h2>Values and types<a class="headerlink" href="#values-and-types" title="Permalink to this headline">¶</a></h2>
+<p>A <span><strong>value</strong></span> is one of the basic things a program works
+with, like a letter or a number. Some values we have seen so far are
+<span><code class="docutils literal notranslate"><span class="pre">2</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">42.0</span></code></span>, and <code class="docutils literal notranslate"><span class="pre">'Hello,</span> <span class="pre">World!'</span></code>.</p>
+<p>These values belong to different <span><strong>types</strong></span>:
+<span><code class="docutils literal notranslate"><span class="pre">2</span></code></span> is an <span><strong>integer</strong></span>, <span><code class="docutils literal notranslate"><span class="pre">42.0</span></code></span> is
+a <span><strong>floating-point number</strong></span>, and <code class="docutils literal notranslate"><span class="pre">'Hello,</span> <span class="pre">World!'</span></code> is a
+<span><strong>string</strong></span>, so-called because the letters it contains are
+strung together.</p>
+<p>If you are not sure what type a value has, the interpreter can tell you:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; type(2)
+&lt;class &#39;int&#39;&gt;
+&gt;&gt;&gt; type(42.0)
+&lt;class &#39;float&#39;&gt;
+&gt;&gt;&gt; type(&#39;Hello, World!&#39;)
+&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+<p>In these results, the word “class” is used in the sense of a category; a
+type is a category of values.</p>
+<p>Not surprisingly, integers belong to the type <span><code class="docutils literal notranslate"><span class="pre">int</span></code></span>,
+strings belong to <span><code class="docutils literal notranslate"><span class="pre">str</span></code></span> and floating-point numbers belong
+to <span><code class="docutils literal notranslate"><span class="pre">float</span></code></span>.</p>
+<p>What about values like <code class="docutils literal notranslate"><span class="pre">'2'</span></code> and <code class="docutils literal notranslate"><span class="pre">'42.0'</span></code>? They look like numbers, but
+they are in quotation marks like strings.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; type(&#39;2&#39;)
+&lt;class &#39;str&#39;&gt;
+&gt;&gt;&gt; type(&#39;42.0&#39;)
+&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+<p>They’re strings.</p>
+<p>When you type a large integer, you might be tempted to use commas
+between groups of digits, as in <span><code class="docutils literal notranslate"><span class="pre">1,000,000</span></code></span>. This is not a
+legal <span><em>integer</em></span> in Python, but it is legal:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 1,000,000
+(1, 0, 0)
+</pre></div>
+</div>
+<p>That’s not what we expected at all! Python interprets
+<span><code class="docutils literal notranslate"> <span class="pre">1,000,000</span></code></span> as a comma-separated sequence of integers.
+We’ll learn more about this kind of sequence later.</p>
+</div>
+<div class="section" id="formal-and-natural-languages">
+<h2>Formal and natural languages<a class="headerlink" href="#formal-and-natural-languages" title="Permalink to this headline">¶</a></h2>
+<p><span><strong>Natural languages</strong></span> are the languages people speak, such
+as English, Spanish, and French. They were not designed by people
+(although people try to impose some order on them); they evolved
+naturally.</p>
+<p><span><strong>Formal languages</strong></span> are languages that are designed by
+people for specific applications. For example, the notation that
+mathematicians use is a formal language that is particularly good at
+denoting relationships among numbers and symbols. Chemists use a formal
+language to represent the chemical structure of molecules. And most
+importantly:</p>
+<blockquote>
+<div><p><span><strong>Programming languages are formal languages that have been
+designed to express computations.</strong></span></p>
+</div></blockquote>
+<p>Formal languages tend to have strict <span><strong>syntax</strong></span> rules that
+govern the structure of statements. For example, in mathematics the
+statement (3 + 3 = 6) has correct syntax, but (3 + = 3 $ 6) does
+not. In chemistry (H_2O) is a syntactically correct formula, but
+(_2Zz) is not.</p>
+<p>Syntax rules come in two flavors, pertaining to <span><strong>tokens</strong></span>
+and structure. Tokens are the basic elements of the language, such as
+words, numbers, and chemical elements. One of the problems with
+(3 += 3 $ 6) is that ($) is not a legal token in mathematics (at
+least as far as I know). Similarly, (_2Zz) is not legal because there
+is no element with the abbreviation (Zz).</p>
+<p>The second type of syntax rule pertains to the way tokens are combined.
+The equation (3 +/ 3) is illegal because even though (+) and (/)
+are legal tokens, you can’t have one right after the other. Similarly,
+in a chemical formula the subscript comes after the element name, not
+before.</p>
+<p>This is &#64; well-structured Engli$h sentence with invalid t*kens in it.
+This sentence all valid tokens has, but invalid structure with.</p>
+<p>When you read a sentence in English or a statement in a formal language,
+you have to figure out the structure (although in a natural language you
+do this subconsciously). This process is called
+<span><strong>parsing</strong></span>.</p>
+<p>Although formal and natural languages have many features in
+common—tokens, structure, and syntax—there are some differences:</p>
+<ul class="simple">
+<li><p>ambiguity:<br />
+Natural languages are full of ambiguity, which people deal with by
+using contextual clues and other information. Formal languages are
+designed to be nearly or completely unambiguous, which means that
+any statement has exactly one meaning, regardless of context.</p></li>
+<li><p>redundancy:<br />
+In order to make up for ambiguity and reduce misunderstandings,
+natural languages employ lots of redundancy. As a result, they are
+often verbose. Formal languages are less redundant and more concise.</p></li>
+<li><p>literalness:<br />
+Natural languages are full of idiom and metaphor. If I say, “The
+penny dropped”, there is probably no penny and nothing dropping
+(this idiom means that someone understood something after a period
+of confusion). Formal languages mean exactly what they say.</p></li>
+</ul>
+<p>Because we all grow up speaking natural languages, it is sometimes hard
+to adjust to formal languages. The difference between formal and natural
+language is like the difference between poetry and prose, but more so:</p>
+<ul class="simple">
+<li><p>Poetry:<br />
+Words are used for their sounds as well as for their meaning, and
+the whole poem together creates an effect or emotional response.
+Ambiguity is not only common but often deliberate.</p></li>
+<li><p>Prose:<br />
+The literal meaning of words is more important, and the structure
+contributes more meaning. Prose is more amenable to analysis than
+poetry but still often ambiguous.</p></li>
+<li><p>Programs:<br />
+The meaning of a computer program is unambiguous and literal, and
+can be understood entirely by analysis of the tokens and structure.</p></li>
+</ul>
+<p>Formal languages are more dense than natural languages, so it takes
+longer to read them. Also, the structure is important, so it is not
+always best to read from top to bottom, left to right. Instead, learn to
+parse the program in your head, identifying the tokens and interpreting
+the structure. Finally, the details matter. Small errors in spelling and
+punctuation, which you can get away with in natural languages, can make
+a big difference in a formal language.</p>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>Programmers make mistakes. For whimsical reasons, programming errors are
+called <span><strong>bugs</strong></span> and the process of tracking them down is
+called <span><strong>debugging</strong></span>.</p>
+<p>Programming, and especially debugging, sometimes brings out strong
+emotions. If you are struggling with a difficult bug, you might feel
+angry, despondent, or embarrassed.</p>
+<p>There is evidence that people naturally respond to computers as if they
+were people. When they work well, we think of them as teammates, and
+when they are obstinate or rude, we respond to them the same way we
+respond to rude, obstinate people (Reeves and Nass, <span><em>The Media
+Equation: How People Treat Computers, Television, and New Media Like
+Real People and Places</em></span>).</p>
+<p>Preparing for these reactions might help you deal with them. One
+approach is to think of the computer as an employee with certain
+strengths, like speed and precision, and particular weaknesses, like
+lack of empathy and inability to grasp the big picture.</p>
+<p>Your job is to be a good manager: find ways to take advantage of the
+strengths and mitigate the weaknesses. And find ways to use your
+emotions to engage with the problem, without letting your reactions
+interfere with your ability to work effectively.</p>
+<p>Learning to debug can be frustrating, but it is a valuable skill that is
+useful for many activities beyond programming. At the end of each
+chapter there is a section, like this one, with my suggestions for
+debugging. I hope they help!</p>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>problem solving:<br />
+The process of formulating a problem, finding a solution, and
+expressing it.</p></li>
+<li><p>high-level language:<br />
+A programming language like Python that is designed to be easy for
+humans to read and write.</p></li>
+<li><p>low-level language:<br />
+A programming language that is designed to be easy for a computer to
+run; also called “machine language” or “assembly language”.</p></li>
+<li><p>portability:<br />
+A property of a program that can run on more than one kind of
+computer.</p></li>
+<li><p>interpreter:<br />
+A program that reads another program and executes it</p></li>
+<li><p>prompt:<br />
+Characters displayed by the interpreter to indicate that it is ready
+to take input from the user.</p></li>
+<li><p>program:<br />
+A set of instructions that specifies a computation.</p></li>
+<li><p>print statement:<br />
+An instruction that causes the Python interpreter to display a value
+on the screen.</p></li>
+<li><p>operator:<br />
+A special symbol that represents a simple computation like addition,
+multiplication, or string concatenation.</p></li>
+<li><p>value:<br />
+One of the basic units of data, like a number or string, that a
+program manipulates.</p></li>
+<li><p>type:<br />
+A category of values. The types we have seen so far are integers
+(type <span><code class="docutils literal notranslate"><span class="pre">int</span></code></span>), floating-point numbers (type <span><code class="docutils literal notranslate"> <span class="pre">float</span></code></span>), and strings (type <span><code class="docutils literal notranslate"><span class="pre">str</span></code></span>).</p></li>
+<li><p>integer:<br />
+A type that represents whole numbers.</p></li>
+<li><p>floating-point:<br />
+A type that represents numbers with fractional parts.</p></li>
+<li><p>string:<br />
+A type that represents sequences of characters.</p></li>
+<li><p>natural language:<br />
+Any one of the languages that people speak that evolved naturally.</p></li>
+<li><p>formal language:<br />
+Any one of the languages that people have designed for specific
+purposes, such as representing mathematical ideas or computer
+programs; all programming languages are formal languages.</p></li>
+<li><p>token:<br />
+One of the basic elements of the syntactic structure of a program,
+analogous to a word in a natural language.</p></li>
+<li><p>syntax:<br />
+The rules that govern the structure of a program.</p></li>
+<li><p>parse:<br />
+To examine a program and analyze the syntactic structure.</p></li>
+<li><p>bug:<br />
+An error in a program.</p></li>
+<li><p>debugging:<br />
+The process of finding and correcting bugs.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>It is a good idea to read this book in front of a computer so you can
+try out the examples as you go.</p>
+<p>Whenever you are experimenting with a new feature, you should try to
+make mistakes. For example, in the “Hello, world!” program, what
+happens if you leave out one of the quotation marks? What if you leave
+out both? What if you spell <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> wrong?</p>
+<p>This kind of experiment helps you remember what you read; it also helps
+when you are programming, because you get to know what the error
+messages mean. It is better to make mistakes now and on purpose than
+later and accidentally.</p>
+<ol class="simple">
+<li><p>In a print statement, what happens if you leave out one of the
+parentheses, or both?</p></li>
+<li><p>If you are trying to print a string, what happens if you leave out
+one of the quotation marks, or both?</p></li>
+<li><p>You can use a minus sign to make a negative number like
+<span><code class="docutils literal notranslate"><span class="pre">-2</span></code></span>. What happens if you put a plus sign before a
+number? What about <span><code class="docutils literal notranslate"><span class="pre">2++2</span></code></span>?</p></li>
+<li><p>In math notation, leading zeros are ok, as in <span><code class="docutils literal notranslate"><span class="pre">09</span></code></span>.
+What happens if you try this in Python? What about
+<span><code class="docutils literal notranslate"><span class="pre">011</span></code></span>?</p></li>
+<li><p>What happens if you have two values with no operator between them?</p></li>
+</ol>
+<p>Start the Python interpreter and use it as a calculator.</p>
+<ol class="simple">
+<li><p>How many seconds are there in 42 minutes 42 seconds?</p></li>
+<li><p>How many miles are there in 10 kilometers? Hint: there are 1.61
+kilometers in a mile.</p></li>
+<li><p>If you run a 10 kilometer race in 42 minutes 42 seconds, what is
+your average pace (time per mile in minutes and seconds)? What is
+your average speed in miles per hour?</p></li>
+</ol>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction</a>
+    <a class='right-next' id="next-link" href="variables.html" title="next page">Variables, expressions and statements</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allan Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

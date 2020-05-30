@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Conditionals and recursion &#8212; How to think like a computer scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fruitful functions" href="fruitful_functions.html" />
+    <link rel="prev" title="Case study: interface design" href="case_study_interface.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">How to think like a computer scientist</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="preface.html">Preface</a>
+  </li>
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="way_of.html">The way of the program</a>
+  </li>
+  <li class="">
+    <a href="variables.html">Variables, expressions and statements</a>
+  </li>
+  <li class="">
+    <a href="functions.html">Functions</a>
+  </li>
+  <li class="">
+    <a href="case_study_interface.html">Case study: interface design</a>
+  </li>
+  <li class="active">
+    <a href="">Conditionals and recursion</a>
+  </li>
+  <li class="">
+    <a href="fruitful_functions.html">Fruitful functions</a>
+  </li>
+  <li class="">
+    <a href="iteration.html">Iteration</a>
+  </li>
+  <li class="">
+    <a href="strings.html">Strings</a>
+  </li>
+  <li class="">
+    <a href="case_study_wordplay.html">Case study: word play</a>
+  </li>
+  <li class="">
+    <a href="lists.html">Lists</a>
+  </li>
+  <li class="">
+    <a href="dictionaries.html">Dictionaries</a>
+  </li>
+  <li class="">
+    <a href="tuples.html">Tuples</a>
+  </li>
+  <li class="">
+    <a href="case_study_data_structures.html">Case study: data structure selection</a>
+  </li>
+  <li class="">
+    <a href="files.html">Files</a>
+  </li>
+  <li class="">
+    <a href="classes_I.html">Classes and objects</a>
+  </li>
+  <li class="">
+    <a href="classes_II.html">Classes and functions</a>
+  </li>
+  <li class="">
+    <a href="classes_III.html">Classes and methods</a>
+  </li>
+  <li class="">
+    <a href="classes_IV.html">Inheritance</a>
+  </li>
+  <li class="">
+    <a href="advanced.html">The Goodies</a>
+  </li>
+  <li class="">
+    <a href="debugging.html">Debugging</a>
+  </li>
+  <li class="">
+    <a href="algorithms.html">Analysis of Algorithms</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/conditionals.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#floor-division-and-modulus" class="nav-link">Floor division and modulus</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#boolean-expressions" class="nav-link">Boolean expressions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#logical-operators" class="nav-link">Logical operators</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#conditional-execution" class="nav-link">Conditional execution</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#alternative-execution" class="nav-link">Alternative execution</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#chained-conditionals" class="nav-link">Chained conditionals</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#nested-conditionals" class="nav-link">Nested conditionals</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#recursion" class="nav-link">Recursion</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#stack-diagrams-for-recursive-functions" class="nav-link">Stack diagrams for recursive functions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#infinite-recursion" class="nav-link">Infinite recursion</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#keyboard-input" class="nav-link">Keyboard input</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#debugging" class="nav-link">Debugging</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#glossary" class="nav-link">Glossary</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#exercises" class="nav-link">Exercises</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="conditionals-and-recursion">
+<h1>Conditionals and recursion<a class="headerlink" href="#conditionals-and-recursion" title="Permalink to this headline">¶</a></h1>
+<p>The main topic of this chapter is the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, which
+executes different code depending on the state of the program. But first
+I want to introduce two new operators: floor division and modulus.</p>
+<div class="section" id="floor-division-and-modulus">
+<h2>Floor division and modulus<a class="headerlink" href="#floor-division-and-modulus" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>floor division</strong> operator, <code class="docutils literal notranslate"><span class="pre">//</span></code>, divides two numbers
+and rounds down to an integer. For example, suppose the run time of a
+movie is 105 minutes. You might want to know how long that is in hours.
+Conventional division returns a floating-point number:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; minutes = 105
+&gt;&gt;&gt; minutes / 60
+1.75
+</pre></div>
+</div>
+<p>But we don’t normally write hours with decimal points. Floor division
+returns the integer number of hours, rounding down:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; minutes = 105
+&gt;&gt;&gt; hours = minutes // 60
+&gt;&gt;&gt; hours
+1
+</pre></div>
+</div>
+<p>To get the remainder, you could subtract off one hour in minutes:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; remainder = minutes - hours * 60
+&gt;&gt;&gt; remainder
+45
+</pre></div>
+</div>
+<p>An alternative is to use the <strong>modulus operator</strong>, <code class="docutils literal notranslate"><span class="pre">%</span></code>,
+which divides two numbers and returns the remainder.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; remainder = minutes % 60
+&gt;&gt;&gt; remainder
+45
+</pre></div>
+</div>
+<p>The modulus operator is more useful than it seems. For example, you can
+check whether one number is divisible by another—if <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">y</span></code>
+is zero, then <code class="docutils literal notranslate"><span class="pre">x</span></code> is divisible by <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>Also, you can extract the right-most digit or digits from a number. For
+example, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">10</span></code> yields the right-most digit of
+<code class="docutils literal notranslate"><span class="pre">x</span></code> (in base 10). Similarly <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">100</span></code> yields
+the last two digits.</p>
+<p>If you are using Python 2, division works differently. The division
+operator, <code class="docutils literal notranslate"><span class="pre">/</span></code>, performs floor division if both operands are integers,
+and floating-point division if either operand is a <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</div>
+<div class="section" id="boolean-expressions">
+<h2>Boolean expressions<a class="headerlink" href="#boolean-expressions" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>boolean expression</strong> is an expression that is either
+true or false. The following examples use the operator
+<code class="docutils literal notranslate"><span class="pre">==</span></code>, which compares two operands and produces
+<code class="docutils literal notranslate"><span class="pre">True</span></code> if they are equal and <code class="docutils literal notranslate"><span class="pre">False</span></code>
+otherwise:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 5 == 5
+True
+&gt;&gt;&gt; 5 == 6
+False
+</pre></div>
+</div>
+<p><span><code class="docutils literal notranslate"><span class="pre">True</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">False</span></code></span> are special values that
+belong to the type <span><code class="docutils literal notranslate"><span class="pre">bool</span></code></span>; they are not strings:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; type(True)
+&lt;class &#39;bool&#39;&gt;
+&gt;&gt;&gt; type(False)
+&lt;class &#39;bool&#39;&gt;
+</pre></div>
+</div>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">==</span></code></span> operator is one of the <span><strong>relational
+operators</strong></span>; the others are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  x != y               # x is not equal to y
+  x &gt; y                # x is greater than y
+  x &lt; y                # x is less than y
+  x &gt;= y               # x is greater than or equal to y
+  x &lt;= y               # x is less than or equal to y
+</pre></div>
+</div>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">==</span></code></span> operator is one of the <span><strong>relational
+operators</strong></span>; the others are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  x != y               # x is not equal to y
+  x &gt; y                # x is greater than y
+  x &lt; y                # x is less than y
+  x &gt;= y               # x is greater than or equal to y
+  x &lt;= y               # x is less than or equal to y
+</pre></div>
+</div>
+<p>Although these operations are probably familiar to you, the Python
+symbols are different from the mathematical symbols. A common error is
+to use a single equal sign (<span><code class="docutils literal notranslate"><span class="pre">=</span></code></span>) instead of a double equal
+sign (<span><code class="docutils literal notranslate"><span class="pre">==</span></code></span>). Remember that <span><code class="docutils literal notranslate"><span class="pre">=</span></code></span> is an
+assignment operator and <span><code class="docutils literal notranslate"><span class="pre">==</span></code></span> is a relational operator.
+There is no such thing as <span><code class="docutils literal notranslate"><span class="pre">=&lt;</span></code></span> or <span><code class="docutils literal notranslate"><span class="pre">=&gt;</span></code></span>.</p>
+</div>
+<div class="section" id="logical-operators">
+<h2>Logical operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">¶</a></h2>
+<p>There are three <span><strong>logical operators</strong></span>: <span><code class="docutils literal notranslate"><span class="pre">and</span></code></span>,
+<span><code class="docutils literal notranslate"> <span class="pre">or</span></code></span>, and <span><code class="docutils literal notranslate"><span class="pre">not</span></code></span>. The semantics (meaning) of
+these operators is similar to their meaning in English. For example,
+<span><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">and</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">10</span></code></span> is true only if <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> is
+greater than 0 <span><em>and</em></span> less than 10.</p>
+<p><span><code class="docutils literal notranslate"><span class="pre">n%2</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">or</span> <span class="pre">n%3</span> <span class="pre">==</span> <span class="pre">0</span></code></span> is true if <span><em>either or
+both</em></span> of the conditions is true, that is, if the number is
+divisible by 2 <span><em>or</em></span> 3.</p>
+<p>Finally, the <span><code class="docutils literal notranslate"><span class="pre">not</span></code></span> operator negates a boolean expression,
+so <span><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">y)</span></code></span> is true if <span><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code></span> is false,
+that is, if <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> is less than or equal to <span><code class="docutils literal notranslate"><span class="pre">y</span></code></span>.</p>
+<p>Strictly speaking, the operands of the logical operators should be
+boolean expressions, but Python is not very strict. Any nonzero number
+is interpreted as <span><code class="docutils literal notranslate"><span class="pre">True</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 42 and True
+True
+</pre></div>
+</div>
+<p>This flexibility can be useful, but there are some subtleties to it that
+might be confusing. You might want to avoid it (unless you know what you
+are doing).</p>
+</div>
+<div class="section" id="conditional-execution">
+<h2>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">¶</a></h2>
+<p>In order to write useful programs, we almost always need the ability to
+check conditions and change the behavior of the program accordingly.
+<span><strong>Conditional statements</strong></span> give us this ability. The
+simplest form is the <span><code class="docutils literal notranslate"><span class="pre">if</span></code></span> statement:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if x &gt; 0:
+    print(&#39;x is positive&#39;)
+</pre></div>
+</div>
+<p>The boolean expression after <span><code class="docutils literal notranslate"><span class="pre">if</span></code></span> is called the
+<span><strong>condition</strong></span>. If it is true, the indented statement runs.
+If not, nothing happens.</p>
+<p><span><code class="docutils literal notranslate"><span class="pre">if</span></code></span> statements have the same structure as function
+definitions: a header followed by an indented body. Statements like this
+are called <span><strong>compound statements</strong></span>.</p>
+<p>There is no limit on the number of statements that can appear in the
+body, but there has to be at least one. Occasionally, it is useful to
+have a body with no statements (usually as a place keeper for code you
+haven’t written yet). In that case, you can use the <span><code class="docutils literal notranslate"><span class="pre">pass</span></code></span>
+statement, which does nothing.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if x &lt; 0:
+    pass          # TODO: need to handle negative values!
+</pre></div>
+</div>
+</div>
+<div class="section" id="alternative-execution">
+<h2>Alternative execution<a class="headerlink" href="#alternative-execution" title="Permalink to this headline">¶</a></h2>
+<p>A second form of the <span><code class="docutils literal notranslate"><span class="pre">if</span></code></span> statement is “alternative
+execution”, in which there are two possibilities and the condition
+determines which one runs. The syntax looks like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if x % 2 == 0:
+    print(&#39;x is even&#39;)
+else:
+    print(&#39;x is odd&#39;)
+</pre></div>
+</div>
+<p>If the remainder when <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> is divided by 2 is 0, then we
+know that <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> is even, and the program displays an
+appropriate message. If the condition is false, the second set of
+statements runs. Since the condition must be true or false, exactly one
+of the alternatives will run. The alternatives are called <span>
+<strong>branches</strong></span>, because they are branches in the flow of execution.</p>
+</div>
+<div class="section" id="chained-conditionals">
+<h2>Chained conditionals<a class="headerlink" href="#chained-conditionals" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes there are more than two possibilities and we need more than
+two branches. One way to express a computation like that is a <span>
+<strong>chained conditional</strong></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if x &lt; y:
+    print(&#39;x is less than y&#39;)
+elif x &gt; y:
+    print(&#39;x is greater than y&#39;)
+else:
+    print(&#39;x and y are equal&#39;)
+</pre></div>
+</div>
+<p><span><code class="docutils literal notranslate"><span class="pre">elif</span></code></span> is an abbreviation of “else if”. Again, exactly one
+branch will run. There is no limit on the number of <span><code class="docutils literal notranslate"> <span class="pre">elif</span></code></span> statements. If there is an <span><code class="docutils literal notranslate"><span class="pre">else</span></code></span> clause, it
+has to be at the end, but there doesn’t have to be one.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if choice == &#39;a&#39;:
+    draw_a()
+elif choice == &#39;b&#39;:
+    draw_b()
+elif choice == &#39;c&#39;:
+    draw_c()
+</pre></div>
+</div>
+<p>Each condition is checked in order. If the first is false, the next is
+checked, and so on. If one of them is true, the corresponding branch
+runs and the statement ends. Even if more than one condition is true,
+only the first true branch runs.</p>
+</div>
+<div class="section" id="nested-conditionals">
+<h2>Nested conditionals<a class="headerlink" href="#nested-conditionals" title="Permalink to this headline">¶</a></h2>
+<p>One conditional can also be nested within another. We could have written
+the example in the previous section like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if x == y:
+    print(&#39;x and y are equal&#39;)
+else:
+    if x &lt; y:
+        print(&#39;x is less than y&#39;)
+    else:
+        print(&#39;x is greater than y&#39;)
+</pre></div>
+</div>
+<p>The outer conditional contains two branches. The first branch contains a
+simple statement. The second branch contains another <span><code class="docutils literal notranslate"><span class="pre">if</span></code></span>
+statement, which has two branches of its own. Those two branches are
+both simple statements, although they could have been conditional
+statements as well.</p>
+<p>Although the indentation of the statements makes the structure apparent,
+<span><strong>nested conditionals</strong></span> become difficult to read very
+quickly. It is a good idea to avoid them when you can.</p>
+<p>Logical operators often provide a way to simplify nested conditional
+statements. For example, we can rewrite the following code using a
+single conditional:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if 0 &lt; x:
+    if x &lt; 10:
+        print(&#39;x is a positive single-digit number.&#39;)
+</pre></div>
+</div>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statement runs only if we make it past both
+conditionals, so we can get the same effect with the <span><code class="docutils literal notranslate"><span class="pre">and</span></code></span>
+operator:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if 0 &lt; x and x &lt; 10:
+    print(&#39;x is a positive single-digit number.&#39;)
+</pre></div>
+</div>
+<p>For this kind of condition, Python provides a more concise option:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if 0 &lt; x &lt; 10:
+    print(&#39;x is a positive single-digit number.&#39;)
+</pre></div>
+</div>
+</div>
+<div class="section" id="recursion">
+<h2>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h2>
+<p>It is legal for one function to call another; it is also legal for a
+function to call itself. It may not be obvious why that is a good thing,
+but it turns out to be one of the most magical things a program can do.
+For example, look at the following function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def countdown(n):
+    if n &lt;= 0:
+        print(&#39;Blastoff!&#39;)
+    else:
+        print(n)
+        countdown(n-1)
+</pre></div>
+</div>
+<p>If <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is 0 or negative, it outputs the word, “Blastoff!”
+Otherwise, it outputs <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> and then calls a function named
+<span><code class="docutils literal notranslate"> <span class="pre">countdown</span></code></span>—itself—passing <span><code class="docutils literal notranslate"><span class="pre">n-1</span></code></span> as an
+argument.</p>
+<p>What happens if we call this function like this?</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; countdown(3)
+</pre></div>
+</div>
+<p>The execution of <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> begins with
+<span><code class="docutils literal notranslate"><span class="pre">n=3</span></code></span>, and since <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is greater than 0, it
+outputs the value 3, and then calls itself…</p>
+<blockquote>
+<div><p>The execution of <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> begins with
+<span><code class="docutils literal notranslate"><span class="pre">n=2</span></code></span>, and since <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is greater than 0, it
+outputs the value 2, and then calls itself…</p>
+<blockquote>
+<div><p>The execution of <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> begins with
+<span><code class="docutils literal notranslate"><span class="pre">n=1</span></code></span>, and since <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is greater than 0, it
+outputs the value 1, and then calls itself…</p>
+<blockquote>
+<div><p>The execution of <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> begins with
+<span><code class="docutils literal notranslate"><span class="pre">n=0</span></code></span>, and since <span><code class="docutils literal notranslate"> <span class="pre">n</span></code></span> is not greater
+than 0, it outputs the word, “Blastoff!” and then returns.</p>
+</div></blockquote>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> that got <span><code class="docutils literal notranslate"><span class="pre">n=1</span></code></span> returns.</p>
+</div></blockquote>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> that got <span><code class="docutils literal notranslate"><span class="pre">n=2</span></code></span> returns.</p>
+</div></blockquote>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> that got <span><code class="docutils literal notranslate"><span class="pre">n=3</span></code></span> returns.</p>
+<p>And then you’re back in <code class="docutils literal notranslate"><span class="pre">__main__</span></code>. So, the total output looks like
+this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>3
+2
+1
+Blastoff!
+</pre></div>
+</div>
+<p>A function that calls itself is <span><strong>recursive</strong></span>; the process
+of executing it is called <span><strong>recursion</strong></span>.</p>
+<p>As another example, we can write a function that prints a string
+<span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> times.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def print_n(s, n):
+    if n &lt;= 0:
+        return
+    print(s)
+    print_n(s, n-1)
+</pre></div>
+</div>
+<p>If <span><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code></span> the <span><strong>return statement</strong></span> exits the
+function. The flow of execution immediately returns to the caller, and
+the remaining lines of the function don’t run.</p>
+<p>The rest of the function is similar to <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span>: it
+displays <span><code class="docutils literal notranslate"><span class="pre">s</span></code></span> and then calls itself to display
+<span><code class="docutils literal notranslate"><span class="pre">s</span></code></span> (n-1) additional times. So the number of lines of
+output is <span><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">(n</span> <span class="pre">-</span> <span class="pre">1)</span></code></span>, which adds up to <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>.</p>
+<p>For simple examples like this, it is probably easier to use a <span><code class="docutils literal notranslate"> <span class="pre">for</span></code></span> loop. But we will see examples later that are hard to write
+with a <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop and easy to write with recursion, so it
+is good to start early.</p>
+</div>
+<div class="section" id="stack-diagrams-for-recursive-functions">
+<h2>Stack diagrams for recursive functions<a class="headerlink" href="#stack-diagrams-for-recursive-functions" title="Permalink to this headline">¶</a></h2>
+<p>In Section <a class="reference external" href="#stackdiagram">4.9</a>, we used a stack diagram to represent
+the state of a program during a function call. The same kind of diagram
+can help interpret a recursive function.</p>
+<p>Every time a function gets called, Python creates a frame to contain the
+function’s local variables and parameters. For a recursive function,
+there might be more than one frame on the stack at the same time.</p>
+<p>Figure <a class="reference external" href="#fig.stack2">6.1</a> shows a stack diagram for
+<span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> called with <span><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span></code></span>.</p>
+<p>As usual, the top of the stack is the frame for <code class="docutils literal notranslate"><span class="pre">__main__</span></code>. It is empty
+because we did not create any variables in <code class="docutils literal notranslate"><span class="pre">__main__</span></code> or pass any
+arguments to it.</p>
+<p>The four <span><code class="docutils literal notranslate"><span class="pre">countdown</span></code></span> frames have different values for the
+parameter <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>. The bottom of the stack, where
+<span><code class="docutils literal notranslate"><span class="pre">n=0</span></code></span>, is called the <span><strong>base case</strong></span>. It does
+not make a recursive call, so there are no more frames.</p>
+<p>As an exercise, draw a stack diagram for <code class="docutils literal notranslate"><span class="pre">print_n</span></code> called with <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">'Hello'</span></code> and <span><code class="docutils literal notranslate"><span class="pre">n=2</span></code></span>. Then write a function called <code class="docutils literal notranslate"><span class="pre">do_n</span></code>
+that takes a function object and a number, <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>, as
+arguments, and that calls the given function <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> times.</p>
+</div>
+<div class="section" id="infinite-recursion">
+<h2>Infinite recursion<a class="headerlink" href="#infinite-recursion" title="Permalink to this headline">¶</a></h2>
+<p>If a recursion never reaches a base case, it goes on making recursive
+calls forever, and the program never terminates. This is known as
+<span><strong>infinite recursion</strong></span>, and it is generally not a good
+idea. Here is a minimal program with an infinite recursion:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def recurse():
+    recurse()
+</pre></div>
+</div>
+<p>In most programming environments, a program with infinite recursion does
+not really run forever. Python reports an error message when the maximum
+recursion depth is reached:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>File &quot;&lt;stdin&gt;&quot;, line 2, in recurse
+File &quot;&lt;stdin&gt;&quot;, line 2, in recurse
+File &quot;&lt;stdin&gt;&quot;, line 2, in recurse
+.   
+.
+.
+File &quot;&lt;stdin&gt;&quot;, line 2, in recurse
+RuntimeError: Maximum recursion depth exceeded
+</pre></div>
+</div>
+<p>This traceback is a little bigger than the one we saw in the previous
+chapter. When the error occurs, there are 1000 <span><code class="docutils literal notranslate"><span class="pre">recurse</span></code></span>
+frames on the stack!</p>
+<p>If you encounter an infinite recursion by accident, review your function
+to confirm that there is a base case that does not make a recursive
+call. And if there is a base case, check whether you are guaranteed to
+reach it.</p>
+</div>
+<div class="section" id="keyboard-input">
+<h2>Keyboard input<a class="headerlink" href="#keyboard-input" title="Permalink to this headline">¶</a></h2>
+<p>The programs we have written so far accept no input from the user. They
+just do the same thing every time.</p>
+<p>Python provides a built-in function called <span><code class="docutils literal notranslate"><span class="pre">input</span></code></span> that
+stops the program and waits for the user to type something. When the
+user presses <span> Return</span> or <span>Enter</span>, the program
+resumes and <code class="docutils literal notranslate"><span class="pre">input</span></code> returns what the user typed as a string. In Python
+2, the same function is called <code class="docutils literal notranslate"><span class="pre">raw_input</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; text = input()
+What are you waiting for?
+&gt;&gt;&gt; text
+&#39;What are you waiting for?&#39;
+</pre></div>
+</div>
+<p>Before getting input from the user, it is a good idea to print a prompt
+telling the user what to type. <code class="docutils literal notranslate"><span class="pre">input</span></code> can take a prompt as an argument:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; name = input(&#39;What...is your name?\n&#39;)
+What...is your name?
+Arthur, King of the Britons!
+&gt;&gt;&gt; name
+&#39;Arthur, King of the Britons!&#39;
+</pre></div>
+</div>
+<p>The sequence <code class="docutils literal notranslate"><span class="pre">\n</span></code> at the end of the prompt represents a <span>
+<strong>newline</strong></span>, which is a special character that causes a line
+break. That’s why the user’s input appears below the prompt.</p>
+<p>If you expect the user to type an integer, you can try to convert the
+return value to <span><code class="docutils literal notranslate"><span class="pre">int</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; prompt = &#39;What...is the airspeed velocity of an unladen swallow?\n&#39;
+&gt;&gt;&gt; speed = input(prompt)
+What...is the airspeed velocity of an unladen swallow?
+42
+&gt;&gt;&gt; int(speed)
+42
+</pre></div>
+</div>
+<p>But if the user types something other than a string of digits, you get
+an error:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; speed = input(prompt)
+What...is the airspeed velocity of an unladen swallow?
+What do you mean, an African or a European swallow?
+&gt;&gt;&gt; int(speed)
+ValueError: invalid literal for int() with base 10
+</pre></div>
+</div>
+<p>We will see how to handle this kind of error later.</p>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>When a syntax or runtime error occurs, the error message contains a lot
+of information, but it can be overwhelming. The most useful parts are
+usually:</p>
+<ul class="simple">
+<li><p>What kind of error it was, and</p></li>
+<li><p>Where it occurred.</p></li>
+</ul>
+<p>Syntax errors are usually easy to find, but there are a few gotchas.
+Whitespace errors can be tricky because spaces and tabs are invisible
+and we are used to ignoring them.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; x = 5
+&gt;&gt;&gt;  y = 6
+  File &quot;&lt;stdin&gt;&quot;, line 1
+    y = 6
+    ^
+IndentationError: unexpected indent
+</pre></div>
+</div>
+<p>In this example, the problem is that the second line is indented by one
+space. But the error message points to <span><code class="docutils literal notranslate"><span class="pre">y</span></code></span>, which is
+misleading. In general, error messages indicate where the problem was
+discovered, but the actual error might be earlier in the code, sometimes
+on a previous line.</p>
+<p>The same is true of runtime errors. Suppose you are trying to compute a
+signal-to-noise ratio in decibels. The formula is
+(SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})). In Python, you
+might write something like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import math
+signal_power = 9
+noise_power = 10
+ratio = signal_power // noise_power
+decibels = 10 * math.log10(ratio)
+print(decibels)
+</pre></div>
+</div>
+<p>When you run this program, you get an exception:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;snr.py&quot;, line 5, in ?
+    decibels = 10 * math.log10(ratio)
+ValueError: math domain error
+</pre></div>
+</div>
+<p>The error message indicates line 5, but there is nothing wrong with that
+line. To find the real error, it might be useful to print the value of
+<span><code class="docutils literal notranslate"><span class="pre">ratio</span></code></span>, which turns out to be 0. The problem is in line 4,
+which uses floor division instead of floating-point division.</p>
+<p>You should take the time to read error messages carefully, but don’t
+assume that everything they say is correct.</p>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>floor division:<br />
+An operator, denoted <span><code class="docutils literal notranslate"><span class="pre">//</span></code></span>, that divides two numbers and
+rounds down (toward negative infinity) to an integer.</p></li>
+<li><p>modulus operator:<br />
+An operator, denoted with a percent sign (<span><code class="docutils literal notranslate"><span class="pre">%</span></code></span>), that
+works on integers and returns the remainder when one number is
+divided by another.</p></li>
+<li><p>boolean expression:<br />
+An expression whose value is either <span><code class="docutils literal notranslate"><span class="pre">True</span></code></span> or
+<span><code class="docutils literal notranslate"><span class="pre">False</span></code></span>.</p></li>
+<li><p>relational operator:<br />
+One of the operators that compares its operands: <span><code class="docutils literal notranslate"><span class="pre">==</span></code></span>,
+<span><code class="docutils literal notranslate"><span class="pre">!=</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></span>,
+<span><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></span>, and <span><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></span>.</p></li>
+<li><p>logical operator:<br />
+One of the operators that combines boolean expressions:
+<span><code class="docutils literal notranslate"><span class="pre">and</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">or</span></code></span>, and <span><code class="docutils literal notranslate"><span class="pre">not</span></code></span>.</p></li>
+<li><p>conditional statement:<br />
+A statement that controls the flow of execution depending on some
+condition.</p></li>
+<li><p>condition:<br />
+The boolean expression in a conditional statement that determines
+which branch runs.</p></li>
+<li><p>compound statement:<br />
+A statement that consists of a header and a body. The header ends
+with a colon (:). The body is indented relative to the header.</p></li>
+<li><p>branch:<br />
+One of the alternative sequences of statements in a conditional
+statement.</p></li>
+<li><p>chained conditional:<br />
+A conditional statement with a series of alternative branches.</p></li>
+<li><p>nested conditional:<br />
+A conditional statement that appears in one of the branches of
+another conditional statement.</p></li>
+<li><p>return statement:<br />
+A statement that causes a function to end immediately and return to
+the caller.</p></li>
+<li><p>recursion:<br />
+The process of calling the function that is currently executing.</p></li>
+<li><p>base case:<br />
+A conditional branch in a recursive function that does not make a
+recursive call.</p></li>
+<li><p>infinite recursion:<br />
+A recursion that doesn’t have a base case, or never reaches it.
+Eventually, an infinite recursion causes a runtime error.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">time</span></code></span> module provides a function, also named
+<span><code class="docutils literal notranslate"><span class="pre">time</span></code></span>, that returns the current Greenwich Mean Time in
+“the epoch”, which is an arbitrary time used as a reference point. On
+UNIX systems, the epoch is 1 January 1970.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; import time
+&gt;&gt;&gt; time.time()
+1437746094.5735958
+</pre></div>
+</div>
+<p>Write a script that reads the current time and converts it to a time of
+day in hours, minutes, and seconds, plus the number of days since the
+epoch.</p>
+<p>Fermat’s Last Theorem says that there are no positive integers (a),
+(b), and (c) such that</p>
+<p>[a^n + b^n = c^n] for any values of (n) greater than 2.</p>
+<ol>
+<li><p>Write a function named <code class="docutils literal notranslate"><span class="pre">check_fermat</span></code> that takes four
+parameters—<span><code class="docutils literal notranslate"><span class="pre">a</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">b</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">c</span></code></span>
+and <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>—and checks to see if Fermat’s theorem holds. If
+(n) is greater than 2 and</p>
+<p>[a^n + b^n = c^n] the program should print, “Holy smokes, Fermat
+was wrong!” Otherwise the program should print, “No, that doesn’t
+work.”</p>
+</li>
+<li><p>Write a function that prompts the user to input values for
+<span><code class="docutils literal notranslate"><span class="pre">a</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">b</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">c</span></code></span> and
+<span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>, converts them to integers, and uses <code class="docutils literal notranslate"><span class="pre">check_fermat</span></code>
+to check whether they violate Fermat’s theorem.</p></li>
+</ol>
+<p>If you are given three sticks, you may or may not be able to arrange
+them in a triangle. For example, if one of the sticks is 12 inches long
+and the other two are one inch long, you will not be able to get the
+short sticks to meet in the middle. For any three lengths, there is a
+simple test to see if it is possible to form a triangle:</p>
+<blockquote>
+<div><p>If any of the three lengths is greater than the sum of the other two,
+then you cannot form a triangle. Otherwise, you can. (If the sum of
+two lengths equals the third, they form what is called a “degenerate”
+triangle.)</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>Write a function named <code class="docutils literal notranslate"><span class="pre">is_triangle</span></code> that takes three integers as
+arguments, and that prints either “Yes” or “No”, depending on
+whether you can or cannot form a triangle from sticks with the given
+lengths.</p></li>
+<li><p>Write a function that prompts the user to input three stick lengths,
+converts them to integers, and uses <code class="docutils literal notranslate"><span class="pre">is_triangle</span></code> to check whether
+sticks with the given lengths can form a triangle.</p></li>
+</ol>
+<p>What is the output of the following program? Draw a stack diagram that
+shows the state of the program when it prints the result.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def recurse(n, s):
+    if n == 0:
+        print(s)
+    else:
+        recurse(n-1, n+s)
+
+recurse(3, 0)
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>What would happen if you called this function like this: <span><code class="docutils literal notranslate"> <span class="pre">recurse(-1,</span> <span class="pre">0)</span></code></span>?</p></li>
+<li><p>Write a docstring that explains everything someone would need to
+know in order to use this function (and nothing else).</p></li>
+</ol>
+<p>The following exercises use the <span><code class="docutils literal notranslate"><span class="pre">turtle</span></code></span> module, described
+in Chapter <a class="reference external" href="#turtlechap">5</a>:</p>
+<p>Read the following function and see if you can figure out what it does
+(see the examples in Chapter <a class="reference external" href="#turtlechap">5</a>). Then run it and see if
+you got it right.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def draw(t, length, n):
+    if n == 0:
+        return
+    angle = 50
+    t.fd(length*n)
+    t.lt(angle)
+    draw(t, length, n-1)
+    t.rt(2*angle)
+    draw(t, length, n-1)
+    t.lt(angle)
+    t.bk(length*n)
+</pre></div>
+</div>
+<p><img alt="A Koch curve." src="_images/koch.pdf.svg" /></p>
+<p>The Koch curve is a fractal that looks something like
+Figure <a class="reference external" href="#fig.koch">6.2</a>. To draw a Koch curve with length (x), all
+you have to do is</p>
+<ol class="simple">
+<li><p>Draw a Koch curve with length (x/3).</p></li>
+<li><p>Turn left 60 degrees.</p></li>
+<li><p>Draw a Koch curve with length (x/3).</p></li>
+<li><p>Turn right 120 degrees.</p></li>
+<li><p>Draw a Koch curve with length (x/3).</p></li>
+<li><p>Turn left 60 degrees.</p></li>
+<li><p>Draw a Koch curve with length (x/3).</p></li>
+</ol>
+<p>The exception is if (x) is less than 3: in that case, you can just
+draw a straight line with length (x).</p>
+<ol>
+<li><p>Write a function called <span><code class="docutils literal notranslate"><span class="pre">koch</span></code></span> that takes a turtle and
+a length as parameters, and that uses the turtle to draw a Koch
+curve with the given length.</p></li>
+<li><p>Write a function called <span><code class="docutils literal notranslate"><span class="pre">snowflake</span></code></span> that draws three
+Koch curves to make the outline of a snowflake.</p>
+<p>Solution: <a class="reference external" href="http://thinkpython2.com/code/koch.py">http://thinkpython2.com/code/koch.py</a>.</p>
+</li>
+<li><p>The Koch curve can be generalized in several ways. See
+<a class="reference external" href="http://en.wikipedia.org/wiki/Koch_snowflake">http://en.wikipedia.org/wiki/Koch_snowflake</a> for examples and
+implement your favorite.</p></li>
+</ol>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="case_study_interface.html" title="previous page">Case study: interface design</a>
+    <a class='right-next' id="next-link" href="fruitful_functions.html" title="next page">Fruitful functions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allan Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

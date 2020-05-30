@@ -1,0 +1,797 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Case study: interface design &#8212; How to think like a computer scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conditionals and recursion" href="conditionals.html" />
+    <link rel="prev" title="Functions" href="functions.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">How to think like a computer scientist</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="preface.html">Preface</a>
+  </li>
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="way_of.html">The way of the program</a>
+  </li>
+  <li class="">
+    <a href="variables.html">Variables, expressions and statements</a>
+  </li>
+  <li class="">
+    <a href="functions.html">Functions</a>
+  </li>
+  <li class="active">
+    <a href="">Case study: interface design</a>
+  </li>
+  <li class="">
+    <a href="conditionals.html">Conditionals and recursion</a>
+  </li>
+  <li class="">
+    <a href="fruitful_functions.html">Fruitful functions</a>
+  </li>
+  <li class="">
+    <a href="iteration.html">Iteration</a>
+  </li>
+  <li class="">
+    <a href="strings.html">Strings</a>
+  </li>
+  <li class="">
+    <a href="case_study_wordplay.html">Case study: word play</a>
+  </li>
+  <li class="">
+    <a href="lists.html">Lists</a>
+  </li>
+  <li class="">
+    <a href="dictionaries.html">Dictionaries</a>
+  </li>
+  <li class="">
+    <a href="tuples.html">Tuples</a>
+  </li>
+  <li class="">
+    <a href="case_study_data_structures.html">Case study: data structure selection</a>
+  </li>
+  <li class="">
+    <a href="files.html">Files</a>
+  </li>
+  <li class="">
+    <a href="classes_I.html">Classes and objects</a>
+  </li>
+  <li class="">
+    <a href="classes_II.html">Classes and functions</a>
+  </li>
+  <li class="">
+    <a href="classes_III.html">Classes and methods</a>
+  </li>
+  <li class="">
+    <a href="classes_IV.html">Inheritance</a>
+  </li>
+  <li class="">
+    <a href="advanced.html">The Goodies</a>
+  </li>
+  <li class="">
+    <a href="debugging.html">Debugging</a>
+  </li>
+  <li class="">
+    <a href="algorithms.html">Analysis of Algorithms</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/case_study_interface.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#the-turtle-module" class="nav-link">The turtle module</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#simple-repetition" class="nav-link">Simple repetition</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#exercises" class="nav-link">Exercises</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#encapsulation" class="nav-link">Encapsulation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#generalization" class="nav-link">Generalization</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#interface-design" class="nav-link">Interface design</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#refactoring" class="nav-link">Refactoring</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#a-development-plan" class="nav-link">A development plan</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#docstring" class="nav-link">docstring</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#debugging" class="nav-link">Debugging</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#glossary" class="nav-link">Glossary</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#id1" class="nav-link">Exercises</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="case-study-interface-design">
+<h1>Case study: interface design<a class="headerlink" href="#case-study-interface-design" title="Permalink to this headline">¶</a></h1>
+<p>This chapter presents a case study that demonstrates a process for
+designing functions that work together.</p>
+<p>It introduces the <span><code class="docutils literal notranslate"><span class="pre">turtle</span></code></span> module, which allows you to
+create images using turtle graphics. The <span><code class="docutils literal notranslate"><span class="pre">turtle</span></code></span> module is
+included in most Python installations, but if you are running Python
+using PythonAnywhere, you won’t be able to run the turtle examples (at
+least you couldn’t when I wrote this).</p>
+<p>If you have already installed Python on your computer, you should be
+able to run the examples. Otherwise, now is a good time to install. I
+have posted instructions at <a class="reference external" href="http://tinyurl.com/thinkpython2e">http://tinyurl.com/thinkpython2e</a>.</p>
+<p>Code examples from this chapter are available from
+<a class="reference external" href="http://thinkpython2.com/code/polygon.py">http://thinkpython2.com/code/polygon.py</a>.</p>
+<div class="section" id="the-turtle-module">
+<h2>The turtle module<a class="headerlink" href="#the-turtle-module" title="Permalink to this headline">¶</a></h2>
+<p>To check whether you have the <span><code class="docutils literal notranslate"><span class="pre">turtle</span></code></span> module, open the
+Python interpreter and type</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; import turtle
+&gt;&gt;&gt; bob = turtle.Turtle()
+</pre></div>
+</div>
+<p>When you run this code, it should create a new window with small arrow
+that represents the turtle. Close the window.</p>
+<p>Create a file named <span><code class="docutils literal notranslate"><span class="pre">mypolygon.py</span></code></span> and type in the
+following code:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import turtle
+bob = turtle.Turtle()
+print(bob)
+turtle.mainloop()
+</pre></div>
+</div>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">turtle</span></code></span> module (with a lowercase ’t’) provides a
+function called <span><code class="docutils literal notranslate"><span class="pre">Turtle</span></code></span> (with an uppercase ’T’) that
+creates a Turtle object, which we assign to a variable named
+<span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span>. Printing <span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span> displays something like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;turtle.Turtle object at 0xb7bfbf4c&gt;
+</pre></div>
+</div>
+<p>This means that <span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span> refers to an object with type
+<span><code class="docutils literal notranslate"><span class="pre">Turtle</span></code></span> as defined in module <span><code class="docutils literal notranslate"><span class="pre">turtle</span></code></span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mainloop</span></code> tells the window to wait for the user to do something,
+although in this case there’s not much for the user to do except close
+the window.</p>
+<p>Once you create a Turtle, you can call a <span><strong>method</strong></span> to move
+it around the window. A method is similar to a function, but it uses
+slightly different syntax. For example, to move the turtle forward:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bob.fd(100)
+</pre></div>
+</div>
+<p>The method, <span><code class="docutils literal notranslate"><span class="pre">fd</span></code></span>, is associated with the turtle object
+we’re calling <span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span>. Calling a method is like making a
+request: you are asking <span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span> to move forward.</p>
+<p>The argument of <span><code class="docutils literal notranslate"><span class="pre">fd</span></code></span> is a distance in pixels, so the actual
+size depends on your display.</p>
+<p>Other methods you can call on a Turtle are <span><code class="docutils literal notranslate"><span class="pre">bk</span></code></span> to move
+backward, <span><code class="docutils literal notranslate"><span class="pre">lt</span></code></span> for left turn, and <span><code class="docutils literal notranslate"><span class="pre">rt</span></code></span> right
+turn. The argument for <span><code class="docutils literal notranslate"><span class="pre">lt</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">rt</span></code></span> is an
+angle in degrees.</p>
+<p>Also, each Turtle is holding a pen, which is either down or up; if the
+pen is down, the Turtle leaves a trail when it moves. The methods
+<span><code class="docutils literal notranslate"><span class="pre">pu</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">pd</span></code></span> stand for “pen up” and “pen
+down”.</p>
+<p>To draw a right angle, add these lines to the program (after creating
+<span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span> and before calling <code class="docutils literal notranslate"><span class="pre">mainloop</span></code>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bob.fd(100)
+bob.lt(90)
+bob.fd(100)
+</pre></div>
+</div>
+<p>When you run this program, you should see <span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span> move east
+and then north, leaving two line segments behind.</p>
+<p>Now modify the program to draw a square. Don’t go on until you’ve got it
+working!</p>
+</div>
+<div class="section" id="simple-repetition">
+<h2>Simple repetition<a class="headerlink" href="#simple-repetition" title="Permalink to this headline">¶</a></h2>
+<p>Chances are you wrote something like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bob.fd(100)
+bob.lt(90)
+
+bob.fd(100)
+bob.lt(90)
+
+bob.fd(100)
+bob.lt(90)
+
+bob.fd(100)
+</pre></div>
+</div>
+<p>We can do the same thing more concisely with a <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span>
+statement. Add this example to <span><code class="docutils literal notranslate"><span class="pre">mypolygon.py</span></code></span> and run it
+again:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i in range(4):
+    print(&#39;Hello!&#39;)
+</pre></div>
+</div>
+<p>You should see something like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Hello!
+Hello!
+Hello!
+Hello!
+</pre></div>
+</div>
+<p>This is the simplest use of the <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> statement; we will
+see more later. But that should be enough to let you rewrite your
+square-drawing program. Don’t go on until you do.</p>
+<p>Here is a <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> statement that draws a square:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i in range(4):
+    bob.fd(100)
+    bob.lt(90)
+</pre></div>
+</div>
+<p>The syntax of a <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> statement is similar to a function
+definition. It has a header that ends with a colon and an indented body.
+The body can contain any number of statements.</p>
+<p>A <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> statement is also called a <span><strong>loop</strong></span>
+because the flow of execution runs through the body and then loops back
+to the top. In this case, it runs the body four times.</p>
+<p>This version is actually a little different from the previous
+square-drawing code because it makes another turn after drawing the last
+side of the square. The extra turn takes more time, but it simplifies
+the code if we do the same thing every time through the loop. This
+version also has the effect of leaving the turtle back in the starting
+position, facing in the starting direction.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>The following is a series of exercises using the <span><code class="docutils literal notranslate"><span class="pre">turtle</span></code></span>
+module. They are meant to be fun, but they have a point, too. While you
+are working on them, think about what the point is.</p>
+<p>The following sections have solutions to the exercises, so don’t look
+until you have finished (or at least tried).</p>
+<ol>
+<li><p>Write a function called <span><code class="docutils literal notranslate"><span class="pre">square</span></code></span> that takes a parameter
+named <span><code class="docutils literal notranslate"><span class="pre">t</span></code></span>, which is a turtle. It should use the turtle
+to draw a square.</p>
+<p>Write a function call that passes <span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span> as an argument
+to <span><code class="docutils literal notranslate"><span class="pre">square</span></code></span>, and then run the program again.</p>
+</li>
+<li><p>Add another parameter, named <span><code class="docutils literal notranslate"><span class="pre">length</span></code></span>, to
+<span><code class="docutils literal notranslate"><span class="pre">square</span></code></span>. Modify the body so length of the sides is
+<span><code class="docutils literal notranslate"><span class="pre">length</span></code></span>, and then modify the function call to provide
+a second argument. Run the program again. Test your program with a
+range of values for <span><code class="docutils literal notranslate"> <span class="pre">length</span></code></span>.</p></li>
+<li><p>Make a copy of <span><code class="docutils literal notranslate"><span class="pre">square</span></code></span> and change the name to <span><code class="docutils literal notranslate"> <span class="pre">polygon</span></code></span>. Add another parameter named <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> and
+modify the body so it draws an n-sided regular polygon. Hint: The
+exterior angles of an n-sided regular polygon are (360/n) degrees.</p></li>
+<li><p>Write a function called <span><code class="docutils literal notranslate"><span class="pre">circle</span></code></span> that takes a turtle,
+<span><code class="docutils literal notranslate"><span class="pre">t</span></code></span>, and radius, <span><code class="docutils literal notranslate"><span class="pre">r</span></code></span>, as parameters and
+that draws an approximate circle by calling <span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span>
+with an appropriate length and number of sides. Test your function
+with a range of values of <span><code class="docutils literal notranslate"><span class="pre">r</span></code></span>.</p>
+<p>Hint: figure out the circumference of the circle and make sure that
+<span><code class="docutils literal notranslate"><span class="pre">length</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">circumference</span></code></span>.</p>
+</li>
+<li><p>Make a more general version of <span><code class="docutils literal notranslate"><span class="pre">circle</span></code></span> called
+<span><code class="docutils literal notranslate"><span class="pre">arc</span></code></span> that takes an additional parameter
+<span><code class="docutils literal notranslate"><span class="pre">angle</span></code></span>, which determines what fraction of a circle to
+draw. <span><code class="docutils literal notranslate"><span class="pre">angle</span></code></span> is in units of degrees, so when
+<span><code class="docutils literal notranslate"><span class="pre">angle=360</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">arc</span></code></span> should draw a complete
+circle.</p></li>
+</ol>
+</div>
+<div class="section" id="encapsulation">
+<h2>Encapsulation<a class="headerlink" href="#encapsulation" title="Permalink to this headline">¶</a></h2>
+<p>The first exercise asks you to put your square-drawing code into a
+function definition and then call the function, passing the turtle as a
+parameter. Here is a solution:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def square(t):
+    for i in range(4):
+        t.fd(100)
+        t.lt(90)
+
+square(bob)
+</pre></div>
+</div>
+<p>The innermost statements, <span><code class="docutils literal notranslate"><span class="pre">fd</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">lt</span></code></span> are
+indented twice to show that they are inside the <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop,
+which is inside the function definition. The next line,
+<span><code class="docutils literal notranslate"><span class="pre">square(bob)</span></code></span>, is flush with the left margin, which
+indicates the end of both the <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop and the function
+definition.</p>
+<p>Inside the function, <span><code class="docutils literal notranslate"><span class="pre">t</span></code></span> refers to the same turtle
+<span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span>, so <span><code class="docutils literal notranslate"><span class="pre">t.lt(90)</span></code></span> has the same effect as
+<span><code class="docutils literal notranslate"><span class="pre">bob.lt(90)</span></code></span>. In that case, why not call the parameter
+<span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span>? The idea is that <span><code class="docutils literal notranslate"><span class="pre">t</span></code></span> can be any turtle,
+not just <span><code class="docutils literal notranslate"><span class="pre">bob</span></code></span>, so you could create a second turtle and
+pass it as an argument to <span><code class="docutils literal notranslate"><span class="pre">square</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>alice = turtle.Turtle()
+square(alice)
+</pre></div>
+</div>
+<p>Wrapping a piece of code up in a function is called <span>
+<strong>encapsulation</strong></span>. One of the benefits of encapsulation is that
+it attaches a name to the code, which serves as a kind of documentation.
+Another advantage is that if you re-use the code, it is more concise to
+call a function twice than to copy and paste the body!</p>
+</div>
+<div class="section" id="generalization">
+<h2>Generalization<a class="headerlink" href="#generalization" title="Permalink to this headline">¶</a></h2>
+<p>The next step is to add a <span><code class="docutils literal notranslate"><span class="pre">length</span></code></span> parameter to
+<span><code class="docutils literal notranslate"><span class="pre">square</span></code></span>. Here is a solution:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def square(t, length):
+    for i in range(4):
+        t.fd(length)
+        t.lt(90)
+
+square(bob, 100)
+</pre></div>
+</div>
+<p>Adding a parameter to a function is called
+<span><strong>generalization</strong></span> because it makes the function more
+general: in the previous version, the square is always the same size; in
+this version it can be any size.</p>
+<p>The next step is also a generalization. Instead of drawing squares,
+<span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> draws regular polygons with any number of sides.
+Here is a solution:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def polygon(t, n, length):
+    angle = 360 / n
+    for i in range(n):
+        t.fd(length)
+        t.lt(angle)
+
+polygon(bob, 7, 70)
+</pre></div>
+</div>
+<p>This example draws a 7-sided polygon with side length 70.</p>
+<p>If you are using Python 2, the value of <span><code class="docutils literal notranslate"><span class="pre">angle</span></code></span> might be
+off because of integer division. A simple solution is to compute
+<span><code class="docutils literal notranslate"><span class="pre">angle</span> <span class="pre">=</span> <span class="pre">360.0</span> <span class="pre">/</span> <span class="pre">n</span></code></span>. Because the numerator is a
+floating-point number, the result is floating point.</p>
+<p>When a function has more than a few numeric arguments, it is easy to
+forget what they are, or what order they should be in. In that case it
+is often a good idea to include the names of the parameters in the
+argument list:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>polygon(bob, n=7, length=70)
+</pre></div>
+</div>
+<p>These are called <span><strong>keyword arguments</strong></span> because they include
+the parameter names as “keywords” (not to be confused with Python
+keywords like <span><code class="docutils literal notranslate"><span class="pre">while</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">def</span></code></span>).</p>
+<p>This syntax makes the program more readable. It is also a reminder about
+how arguments and parameters work: when you call a function, the
+arguments are assigned to the parameters.</p>
+</div>
+<div class="section" id="interface-design">
+<h2>Interface design<a class="headerlink" href="#interface-design" title="Permalink to this headline">¶</a></h2>
+<p>The next step is to write <span><code class="docutils literal notranslate"><span class="pre">circle</span></code></span>, which takes a radius,
+<span><code class="docutils literal notranslate"><span class="pre">r</span></code></span>, as a parameter. Here is a simple solution that uses
+<span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> to draw a 50-sided polygon:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import math
+
+def circle(t, r):
+    circumference = 2 * math.pi * r
+    n = 50
+    length = circumference / n
+    polygon(t, n, length)
+</pre></div>
+</div>
+<p>The first line computes the circumference of a circle with radius
+<span><code class="docutils literal notranslate"><span class="pre">r</span></code></span> using the formula (2 \pi r). Since we use
+<span><code class="docutils literal notranslate"><span class="pre">math.pi</span></code></span>, we have to import <span><code class="docutils literal notranslate"><span class="pre">math</span></code></span>. By
+convention, <span><code class="docutils literal notranslate"><span class="pre">import</span></code></span> statements are usually at the
+beginning of the script.</p>
+<p><span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is the number of line segments in our approximation of
+a circle, so <span><code class="docutils literal notranslate"><span class="pre">length</span></code></span> is the length of each segment. Thus,
+<span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> draws a 50-sided polygon that approximates a
+circle with radius <span><code class="docutils literal notranslate"><span class="pre">r</span></code></span>.</p>
+<p>One limitation of this solution is that <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is a constant,
+which means that for very big circles, the line segments are too long,
+and for small circles, we waste time drawing very small segments. One
+solution would be to generalize the function by taking <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span>
+as a parameter. This would give the user (whoever calls
+<span><code class="docutils literal notranslate"><span class="pre">circle</span></code></span>) more control, but the interface would be less
+clean.</p>
+<p>The <span><strong>interface</strong></span> of a function is a summary of how it is
+used: what are the parameters? What does the function do? And what is
+the return value? An interface is “clean” if it allows the caller to do
+what they want without dealing with unnecessary details.</p>
+<p>In this example, <span><code class="docutils literal notranslate"><span class="pre">r</span></code></span> belongs in the interface because it
+specifies the circle to be drawn. <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> is less appropriate
+because it pertains to the details of <span><em>how</em></span> the circle
+should be rendered.</p>
+<p>Rather than clutter up the interface, it is better to choose an
+appropriate value of <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> depending on
+<span><code class="docutils literal notranslate"><span class="pre">circumference</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def circle(t, r):
+    circumference = 2 * math.pi * r
+    n = int(circumference / 3) + 3
+    length = circumference / n
+    polygon(t, n, length)
+</pre></div>
+</div>
+<p>Now the number of segments is an integer near
+<span><code class="docutils literal notranslate"><span class="pre">circumference/3</span></code></span>, so the length of each segment is
+approximately 3, which is small enough that the circles look good, but
+big enough to be efficient, and acceptable for any size circle.</p>
+<p>Adding 3 to <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> guarantees that the polygon has at least 3
+sides.</p>
+</div>
+<div class="section" id="refactoring">
+<h2>Refactoring<a class="headerlink" href="#refactoring" title="Permalink to this headline">¶</a></h2>
+<p>When I wrote <span><code class="docutils literal notranslate"><span class="pre">circle</span></code></span>, I was able to re-use
+<span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> because a many-sided polygon is a good
+approximation of a circle. But <span><code class="docutils literal notranslate"><span class="pre">arc</span></code></span> is not as cooperative;
+we can’t use <span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> or <span><code class="docutils literal notranslate"><span class="pre">circle</span></code></span> to draw an
+arc.</p>
+<p>One alternative is to start with a copy of <span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> and
+transform it into <span><code class="docutils literal notranslate"><span class="pre">arc</span></code></span>. The result might look like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def arc(t, r, angle):
+    arc_length = 2 * math.pi * r * angle / 360
+    n = int(arc_length / 3) + 1
+    step_length = arc_length / n
+    step_angle = angle / n
+    
+    for i in range(n):
+        t.fd(step_length)
+        t.lt(step_angle)
+</pre></div>
+</div>
+<p>The second half of this function looks like <span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span>, but
+we can’t re-use <span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> without changing the interface.
+We could generalize <span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> to take an angle as a third
+argument, but then <span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> would no longer be an
+appropriate name! Instead, let’s call the more general function
+<span><code class="docutils literal notranslate"><span class="pre">polyline</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def polyline(t, n, length, angle):
+    for i in range(n):
+        t.fd(length)
+        t.lt(angle)
+</pre></div>
+</div>
+<p>Now we can rewrite <span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">arc</span></code></span> to use
+<span><code class="docutils literal notranslate"><span class="pre">polyline</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def polygon(t, n, length):
+    angle = 360.0 / n
+    polyline(t, n, length, angle)
+
+def arc(t, r, angle):
+    arc_length = 2 * math.pi * r * angle / 360
+    n = int(arc_length / 3) + 1
+    step_length = arc_length / n
+    step_angle = float(angle) / n
+    polyline(t, n, step_length, step_angle)
+</pre></div>
+</div>
+<p>Finally, we can rewrite <span><code class="docutils literal notranslate"><span class="pre">circle</span></code></span> to use <span><code class="docutils literal notranslate"><span class="pre">arc</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def circle(t, r):
+    arc(t, r, 360)
+</pre></div>
+</div>
+<p>This process—rearranging a program to improve interfaces and facilitate
+code re-use—is called <span><strong>refactoring</strong></span>. In this case, we
+noticed that there was similar code in <span><code class="docutils literal notranslate"><span class="pre">arc</span></code></span> and
+<span><code class="docutils literal notranslate"><span class="pre">polygon</span></code></span>, so we “factored it out” into
+<span><code class="docutils literal notranslate"><span class="pre">polyline</span></code></span>.</p>
+<p>If we had planned ahead, we might have written <span><code class="docutils literal notranslate"><span class="pre">polyline</span></code></span>
+first and avoided refactoring, but often you don’t know enough at the
+beginning of a project to design all the interfaces. Once you start
+coding, you understand the problem better. Sometimes refactoring is a
+sign that you have learned something.</p>
+</div>
+<div class="section" id="a-development-plan">
+<h2>A development plan<a class="headerlink" href="#a-development-plan" title="Permalink to this headline">¶</a></h2>
+<p>A <span><strong>development plan</strong></span> is a process for writing programs.
+The process we used in this case study is “encapsulation and
+generalization”. The steps of this process are:</p>
+<ol class="simple">
+<li><p>Start by writing a small program with no function definitions.</p></li>
+<li><p>Once you get the program working, identify a coherent piece of it,
+encapsulate the piece in a function and give it a name.</p></li>
+<li><p>Generalize the function by adding appropriate parameters.</p></li>
+<li><p>Repeat steps 1–3 until you have a set of working functions. Copy and
+paste working code to avoid retyping (and re-debugging).</p></li>
+<li><p>Look for opportunities to improve the program by refactoring. For
+example, if you have similar code in several places, consider
+factoring it into an appropriately general function.</p></li>
+</ol>
+<p>This process has some drawbacks—we will see alternatives later—but it
+can be useful if you don’t know ahead of time how to divide the program
+into functions. This approach lets you design as you go along.</p>
+</div>
+<div class="section" id="docstring">
+<h2>docstring<a class="headerlink" href="#docstring" title="Permalink to this headline">¶</a></h2>
+<p>A <span><strong>docstring</strong></span> is a string at the beginning of a function
+that explains the interface (“doc” is short for “documentation”). Here
+is an example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def polyline(t, n, length, angle):
+    &quot;&quot;&quot;Draws n line segments with the given length and
+    angle (in degrees) between them.  t is a turtle.
+    &quot;&quot;&quot;    
+    for i in range(n):
+        t.fd(length)
+        t.lt(angle)
+</pre></div>
+</div>
+<p>By convention, all docstrings are triple-quoted strings, also known as
+multiline strings because the triple quotes allow the string to span
+more than one line.</p>
+<p>It is terse, but it contains the essential information someone would
+need to use this function. It explains concisely what the function does
+(without getting into the details of how it does it). It explains what
+effect each parameter has on the behavior of the function and what type
+each parameter should be (if it is not obvious).</p>
+<p>Writing this kind of documentation is an important part of interface
+design. A well-designed interface should be simple to explain; if you
+have a hard time explaining one of your functions, maybe the interface
+could be improved.</p>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>An interface is like a contract between a function and a caller. The
+caller agrees to provide certain parameters and the function agrees to
+do certain work.</p>
+<p>For example, <span><code class="docutils literal notranslate"><span class="pre">polyline</span></code></span> requires four arguments:
+<span><code class="docutils literal notranslate"><span class="pre">t</span></code></span> has to be a Turtle; <span><code class="docutils literal notranslate"><span class="pre">n</span></code></span> has to be an
+integer; <span><code class="docutils literal notranslate"><span class="pre">length</span></code></span> should be a positive number; and <span><code class="docutils literal notranslate"> <span class="pre">angle</span></code></span> has to be a number, which is understood to be in degrees.</p>
+<p>These requirements are called <span><strong>preconditions</strong></span> because
+they are supposed to be true before the function starts executing.
+Conversely, conditions at the end of the function are
+<span><strong>postconditions</strong></span>. Postconditions include the intended
+effect of the function (like drawing line segments) and any side effects
+(like moving the Turtle or making other changes).</p>
+<p>Preconditions are the responsibility of the caller. If the caller
+violates a (properly documented!) precondition and the function doesn’t
+work correctly, the bug is in the caller, not the function.</p>
+<p>If the preconditions are satisfied and the postconditions are not, the
+bug is in the function. If your pre- and postconditions are clear, they
+can help with debugging.</p>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>method:<br />
+A function that is associated with an object and called using dot
+notation.</p></li>
+<li><p>loop:<br />
+A part of a program that can run repeatedly.</p></li>
+<li><p>encapsulation:<br />
+The process of transforming a sequence of statements into a function
+definition.</p></li>
+<li><p>generalization:<br />
+The process of replacing something unnecessarily specific (like a
+number) with something appropriately general (like a variable or
+parameter).</p></li>
+<li><p>keyword argument:<br />
+An argument that includes the name of the parameter as a “keyword”.</p></li>
+<li><p>interface:<br />
+A description of how to use a function, including the name and
+descriptions of the arguments and return value.</p></li>
+<li><p>refactoring:<br />
+The process of modifying a working program to improve function
+interfaces and other qualities of the code.</p></li>
+<li><p>development plan:<br />
+A process for writing programs.</p></li>
+<li><p>docstring:<br />
+A string that appears at the top of a function definition to
+document the function’s interface.</p></li>
+<li><p>precondition:<br />
+A requirement that should be satisfied by the caller before a
+function starts.</p></li>
+<li><p>postcondition:<br />
+A requirement that should be satisfied by the function before it
+ends.</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Download the code in this chapter from
+<a class="reference external" href="http://thinkpython2.com/code/polygon.py">http://thinkpython2.com/code/polygon.py</a>.</p>
+<ol class="simple">
+<li><p>Draw a stack diagram that shows the state of the program while
+executing <span><code class="docutils literal notranslate"><span class="pre">circle(bob,</span> <span class="pre">radius)</span></code></span>. You can do the
+arithmetic by hand or add <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statements to the
+code.</p></li>
+<li><p>The version of <span><code class="docutils literal notranslate"><span class="pre">arc</span></code></span> in Section <a class="reference external" href="#refactoring">5.7</a> is
+not very accurate because the linear approximation of the circle is
+always outside the true circle. As a result, the Turtle ends up a
+few pixels away from the correct destination. My solution shows a
+way to reduce the effect of this error. Read the code and see if it
+makes sense to you. If you draw a diagram, you might see how it
+works.</p></li>
+</ol>
+<p><img alt="Turtle flowers." src="_images/flowers.pdf" /></p>
+<p>Write an appropriately general set of functions that can draw flowers as
+in Figure <a class="reference external" href="#fig.flowers">5.1</a>.</p>
+<p>Solution: <a class="reference external" href="http://thinkpython2.com/code/flower.py">http://thinkpython2.com/code/flower.py</a>, also requires
+<a class="reference external" href="http://thinkpython2.com/code/polygon.py">http://thinkpython2.com/code/polygon.py</a>.</p>
+<p><img alt="Turtle pies." src="_images/pies.pdf" /></p>
+<p>Write an appropriately general set of functions that can draw shapes as
+in Figure <a class="reference external" href="#fig.pies">5.2</a>.</p>
+<p>Solution: <a class="reference external" href="http://thinkpython2.com/code/pie.py">http://thinkpython2.com/code/pie.py</a>.</p>
+<p>The letters of the alphabet can be constructed from a moderate number of
+basic elements, like vertical and horizontal lines and a few curves.
+Design an alphabet that can be drawn with a minimal number of basic
+elements and then write functions that draw the letters.</p>
+<p>You should write one function for each letter, with names <code class="docutils literal notranslate"><span class="pre">draw_a</span></code>,
+<code class="docutils literal notranslate"><span class="pre">draw_b</span></code>, etc., and put your functions in a file named
+<span><code class="docutils literal notranslate"><span class="pre">letters.py</span></code></span>. You can download a “turtle typewriter” from
+<a class="reference external" href="http://thinkpython2.com/code/typewriter.py">http://thinkpython2.com/code/typewriter.py</a> to help you test your code.</p>
+<p>You can get a solution from <a class="reference external" href="http://thinkpython2.com/code/letters.py">http://thinkpython2.com/code/letters.py</a>;
+it also requires <a class="reference external" href="http://thinkpython2.com/code/polygon.py">http://thinkpython2.com/code/polygon.py</a>.</p>
+<p>Read about spirals at <a class="reference external" href="http://en.wikipedia.org/wiki/Spiral">http://en.wikipedia.org/wiki/Spiral</a>; then write
+a program that draws an Archimedian spiral (or one of the other kinds).
+Solution: <a class="reference external" href="http://thinkpython2.com/code/spiral.py">http://thinkpython2.com/code/spiral.py</a>.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="functions.html" title="previous page">Functions</a>
+    <a class='right-next' id="next-link" href="conditionals.html" title="next page">Conditionals and recursion</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allan Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

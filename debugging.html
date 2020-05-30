@@ -1,0 +1,744 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Debugging &#8212; How to think like a computer scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Analysis of Algorithms" href="algorithms.html" />
+    <link rel="prev" title="The Goodies" href="advanced.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">How to think like a computer scientist</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="preface.html">Preface</a>
+  </li>
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="way_of.html">The way of the program</a>
+  </li>
+  <li class="">
+    <a href="variables.html">Variables, expressions and statements</a>
+  </li>
+  <li class="">
+    <a href="functions.html">Functions</a>
+  </li>
+  <li class="">
+    <a href="case_study_interface.html">Case study: interface design</a>
+  </li>
+  <li class="">
+    <a href="conditionals.html">Conditionals and recursion</a>
+  </li>
+  <li class="">
+    <a href="fruitful_functions.html">Fruitful functions</a>
+  </li>
+  <li class="">
+    <a href="iteration.html">Iteration</a>
+  </li>
+  <li class="">
+    <a href="strings.html">Strings</a>
+  </li>
+  <li class="">
+    <a href="case_study_wordplay.html">Case study: word play</a>
+  </li>
+  <li class="">
+    <a href="lists.html">Lists</a>
+  </li>
+  <li class="">
+    <a href="dictionaries.html">Dictionaries</a>
+  </li>
+  <li class="">
+    <a href="tuples.html">Tuples</a>
+  </li>
+  <li class="">
+    <a href="case_study_data_structures.html">Case study: data structure selection</a>
+  </li>
+  <li class="">
+    <a href="files.html">Files</a>
+  </li>
+  <li class="">
+    <a href="classes_I.html">Classes and objects</a>
+  </li>
+  <li class="">
+    <a href="classes_II.html">Classes and functions</a>
+  </li>
+  <li class="">
+    <a href="classes_III.html">Classes and methods</a>
+  </li>
+  <li class="">
+    <a href="classes_IV.html">Inheritance</a>
+  </li>
+  <li class="">
+    <a href="advanced.html">The Goodies</a>
+  </li>
+  <li class="active">
+    <a href="">Debugging</a>
+  </li>
+  <li class="">
+    <a href="algorithms.html">Analysis of Algorithms</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/debugging.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#syntax-errors" class="nav-link">Syntax errors</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#i-keep-making-changes-and-it-makes-no-difference" class="nav-link">I keep making changes and it makes no difference.</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#runtime-errors" class="nav-link">Runtime errors</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#my-program-does-absolutely-nothing" class="nav-link">My program does absolutely nothing.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#my-program-hangs" class="nav-link">My program hangs.</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#infinite-loop" class="nav-link">Infinite Loop</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#infinite-recursion" class="nav-link">Infinite Recursion</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#flow-of-execution" class="nav-link">Flow of Execution</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#when-i-run-the-program-i-get-an-exception" class="nav-link">When I run the program I get an exception.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#i-added-so-many-span-print-span-statements-i-get-inundated-with-output" class="nav-link">I added so many <span>print</span> statements I get inundated with output.</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#semantic-errors" class="nav-link">Semantic errors</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#my-program-doesnt-work" class="nav-link">My program doesn’t work.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#ive-got-a-big-hairy-expression-and-it-doesnt-do-what-i-expect" class="nav-link">I’ve got a big hairy expression and it doesn’t do what I expect.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#ive-got-a-function-that-doesnt-return-what-i-expect" class="nav-link">I’ve got a function that doesn’t return what I expect.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#im-really-really-stuck-and-i-need-help" class="nav-link">I’m really, really stuck and I need help.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#no-i-really-need-help" class="nav-link">No, I really need help.</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="debugging">
+<h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h1>
+<p>When you are debugging, you should distinguish among different kinds of
+errors in order to track them down more quickly:</p>
+<ul class="simple">
+<li><p>Syntax errors are discovered by the interpreter when it is
+translating the source code into byte code. They indicate that there
+is something wrong with the structure of the program. Example:
+Omitting the colon at the end of a <span><code class="docutils literal notranslate"><span class="pre">def</span></code></span> statement
+generates the somewhat redundant message <span><code class="docutils literal notranslate"><span class="pre">SyntaxError:</span> <span class="pre">invalid</span> <span class="pre">syntax</span></code></span>.</p></li>
+<li><p>Runtime errors are produced by the interpreter if something goes
+wrong while the program is running. Most runtime error messages
+include information about where the error occurred and what
+functions were executing. Example: An infinite recursion eventually
+causes the runtime error “maximum recursion depth exceeded”.</p></li>
+<li><p>Semantic errors are problems with a program that runs without
+producing error messages but doesn’t do the right thing. Example: An
+expression may not be evaluated in the order you expect, yielding an
+incorrect result.</p></li>
+</ul>
+<p>The first step in debugging is to figure out which kind of error you are
+dealing with. Although the following sections are organized by error
+type, some techniques are applicable in more than one situation.</p>
+<div class="section" id="syntax-errors">
+<h2>Syntax errors<a class="headerlink" href="#syntax-errors" title="Permalink to this headline">¶</a></h2>
+<p>Syntax errors are usually easy to fix once you figure out what they are.
+Unfortunately, the error messages are often not helpful. The most common
+messages are <span><code class="docutils literal notranslate"><span class="pre">SyntaxError:</span> <span class="pre">invalid</span> <span class="pre">syntax</span></code></span> and
+<span><code class="docutils literal notranslate"><span class="pre">SyntaxError:</span> <span class="pre">invalid</span> <span class="pre">token</span></code></span>, neither of which is very
+informative.</p>
+<p>On the other hand, the message does tell you where in the program the
+problem occurred. Actually, it tells you where Python noticed a problem,
+which is not necessarily where the error is. Sometimes the error is
+prior to the location of the error message, often on the preceding line.</p>
+<p>If you are building the program incrementally, you should have a good
+idea about where the error is. It will be in the last line you added.</p>
+<p>If you are copying code from a book, start by comparing your code to the
+book’s code very carefully. Check every character. At the same time,
+remember that the book might be wrong, so if you see something that
+looks like a syntax error, it might be.</p>
+<p>Here are some ways to avoid the most common syntax errors:</p>
+<ol class="simple">
+<li><p>Make sure you are not using a Python keyword for a variable name.</p></li>
+<li><p>Check that you have a colon at the end of the header of every
+compound statement, including <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span>,
+<span><code class="docutils literal notranslate"><span class="pre">while</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">if</span></code></span>, and <span><code class="docutils literal notranslate"><span class="pre">def</span></code></span>
+statements.</p></li>
+<li><p>Make sure that any strings in the code have matching quotation
+marks. Make sure that all quotation marks are “straight quotes”, not
+“curly quotes”.</p></li>
+<li><p>If you have multiline strings with triple quotes (single or double),
+make sure you have terminated the string properly. An unterminated
+string may cause an <span><code class="docutils literal notranslate"><span class="pre">invalid</span> <span class="pre">token</span></code></span> error at the end of
+your program, or it may treat the following part of the program as a
+string until it comes to the next string. In the second case, it
+might not produce an error message at all!</p></li>
+<li><p>An unclosed opening operator—<code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">{</span></code>, or <code class="docutils literal notranslate"><span class="pre">[</span></code>—makes Python continue
+with the next line as part of the current statement. Generally, an
+error occurs almost immediately in the next line.</p></li>
+<li><p>Check for the classic <span><code class="docutils literal notranslate"><span class="pre">=</span></code></span> instead of <span><code class="docutils literal notranslate"><span class="pre">==</span></code></span>
+inside a conditional.</p></li>
+<li><p>Check the indentation to make sure it lines up the way it is
+supposed to. Python can handle space and tabs, but if you mix them
+it can cause problems. The best way to avoid this problem is to use
+a text editor that knows about Python and generates consistent
+indentation.</p></li>
+<li><p>If you have non-ASCII characters in the code (including strings and
+comments), that might cause a problem, although Python 3 usually
+handles non-ASCII characters. Be careful if you paste in text from a
+web page or other source.</p></li>
+</ol>
+<p>If nothing works, move on to the next section…</p>
+<div class="section" id="i-keep-making-changes-and-it-makes-no-difference">
+<h3>I keep making changes and it makes no difference.<a class="headerlink" href="#i-keep-making-changes-and-it-makes-no-difference" title="Permalink to this headline">¶</a></h3>
+<p>If the interpreter says there is an error and you don’t see it, that
+might be because you and the interpreter are not looking at the same
+code. Check your programming environment to make sure that the program
+you are editing is the one Python is trying to run.</p>
+<p>If you are not sure, try putting an obvious and deliberate syntax error
+at the beginning of the program. Now run it again. If the interpreter
+doesn’t find the new error, you are not running the new code.</p>
+<p>There are a few likely culprits:</p>
+<ul class="simple">
+<li><p>You edited the file and forgot to save the changes before running it
+again. Some programming environments do this for you, but some
+don’t.</p></li>
+<li><p>You changed the name of the file, but you are still running the old
+name.</p></li>
+<li><p>Something in your development environment is configured incorrectly.</p></li>
+<li><p>If you are writing a module and using <span><code class="docutils literal notranslate"><span class="pre">import</span></code></span>, make
+sure you don’t give your module the same name as one of the standard
+Python modules.</p></li>
+<li><p>If you are using <span><code class="docutils literal notranslate"><span class="pre">import</span></code></span> to read a module, remember
+that you have to restart the interpreter or use
+<span><code class="docutils literal notranslate"><span class="pre">reload</span></code></span> to read a modified file. If you import the
+module again, it doesn’t do anything.</p></li>
+</ul>
+<p>If you get stuck and you can’t figure out what is going on, one approach
+is to start again with a new program like “Hello, World!”, and make
+sure you can get a known program to run. Then gradually add the pieces
+of the original program to the new one.</p>
+</div>
+</div>
+<div class="section" id="runtime-errors">
+<h2>Runtime errors<a class="headerlink" href="#runtime-errors" title="Permalink to this headline">¶</a></h2>
+<p>Once your program is syntactically correct, Python can read it and at
+least start running it. What could possibly go wrong?</p>
+<div class="section" id="my-program-does-absolutely-nothing">
+<h3>My program does absolutely nothing.<a class="headerlink" href="#my-program-does-absolutely-nothing" title="Permalink to this headline">¶</a></h3>
+<p>This problem is most common when your file consists of functions and
+classes but does not actually invoke a function to start execution. This
+may be intentional if you only plan to import this module to supply
+classes and functions.</p>
+<p>If it is not intentional, make sure there is a function call in the
+program, and make sure the flow of execution reaches it (see “Flow of
+Execution” below).</p>
+</div>
+<div class="section" id="my-program-hangs">
+<h3>My program hangs.<a class="headerlink" href="#my-program-hangs" title="Permalink to this headline">¶</a></h3>
+<p>If a program stops and seems to be doing nothing, it is “hanging”. Often
+that means that it is caught in an infinite loop or infinite recursion.</p>
+<ul>
+<li><p>If there is a particular loop that you suspect is the problem, add a
+<span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statement immediately before the loop that says
+“entering the loop” and another immediately after that says “exiting
+the loop”.</p>
+<p>Run the program. If you get the first message and not the second,
+you’ve got an infinite loop. Go to the “Infinite Loop” section
+below.</p>
+</li>
+<li><p>Most of the time, an infinite recursion will cause the program to
+run for a while and then produce a “RuntimeError: Maximum recursion
+depth exceeded” error. If that happens, go to the “Infinite
+Recursion” section below.</p>
+<p>If you are not getting this error but you suspect there is a problem
+with a recursive method or function, you can still use the
+techniques in the “Infinite Recursion” section.</p>
+</li>
+<li><p>If neither of those steps works, start testing other loops and other
+recursive functions and methods.</p></li>
+<li><p>If that doesn’t work, then it is possible that you don’t understand
+the flow of execution in your program. Go to the “Flow of Execution”
+section below.</p></li>
+</ul>
+<div class="section" id="infinite-loop">
+<h4>Infinite Loop<a class="headerlink" href="#infinite-loop" title="Permalink to this headline">¶</a></h4>
+<p>If you think you have an infinite loop and you think you know what loop
+is causing the problem, add a <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statement at the end
+of the loop that prints the values of the variables in the condition and
+the value of the condition.</p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>while x &gt; 0 and y &lt; 0 :
+    # do something to x
+    # do something to y
+
+    print(&#39;x: &#39;, x)
+    print(&#39;y: &#39;, y)
+    print(&quot;condition: &quot;, (x &gt; 0 and y &lt; 0))
+</pre></div>
+</div>
+<p>Now when you run the program, you will see three lines of output for
+each time through the loop. The last time through the loop, the
+condition should be <span><code class="docutils literal notranslate"><span class="pre">False</span></code></span>. If the loop keeps going, you
+will be able to see the values of <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">y</span></code></span>,
+and you might figure out why they are not being updated correctly.</p>
+</div>
+<div class="section" id="infinite-recursion">
+<h4>Infinite Recursion<a class="headerlink" href="#infinite-recursion" title="Permalink to this headline">¶</a></h4>
+<p>Most of the time, infinite recursion causes the program to run for a
+while and then produce a <span><code class="docutils literal notranslate"><span class="pre">Maximum</span> <span class="pre">recursion</span> <span class="pre">depth</span> <span class="pre">exceeded</span></code></span>
+error.</p>
+<p>If you suspect that a function is causing an infinite recursion, make
+sure that there is a base case. There should be some condition that
+causes the function to return without making a recursive invocation. If
+not, you need to rethink the algorithm and identify a base case.</p>
+<p>If there is a base case but the program doesn’t seem to be reaching it,
+add a <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statement at the beginning of the function
+that prints the parameters. Now when you run the program, you will see a
+few lines of output every time the function is invoked, and you will see
+the parameter values. If the parameters are not moving toward the base
+case, you will get some ideas about why not.</p>
+</div>
+<div class="section" id="flow-of-execution">
+<h4>Flow of Execution<a class="headerlink" href="#flow-of-execution" title="Permalink to this headline">¶</a></h4>
+<p>If you are not sure how the flow of execution is moving through your
+program, add <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statements to the beginning of each
+function with a message like “entering function <span><code class="docutils literal notranslate"><span class="pre">foo</span></code></span>”,
+where <span><code class="docutils literal notranslate"><span class="pre">foo</span></code></span> is the name of the function.</p>
+<p>Now when you run the program, it will print a trace of each function as
+it is invoked.</p>
+</div>
+</div>
+<div class="section" id="when-i-run-the-program-i-get-an-exception">
+<h3>When I run the program I get an exception.<a class="headerlink" href="#when-i-run-the-program-i-get-an-exception" title="Permalink to this headline">¶</a></h3>
+<p>If something goes wrong during runtime, Python prints a message that
+includes the name of the exception, the line of the program where the
+problem occurred, and a traceback.</p>
+<p>The traceback identifies the function that is currently running, and
+then the function that called it, and then the function that called
+<span><em>that</em></span>, and so on. In other words, it traces the sequence
+of function calls that got you to where you are, including the line
+number in your file where each call occurred.</p>
+<p>The first step is to examine the place in the program where the error
+occurred and see if you can figure out what happened. These are some of
+the most common runtime errors:</p>
+<ul>
+<li><p>NameError:<br />
+You are trying to use a variable that doesn’t exist in the current
+environment. Check if the name is spelled right, or at least
+consistently. And remember that local variables are local; you
+cannot refer to them from outside the function where they are
+defined.</p></li>
+<li><p>TypeError:<br />
+There are several possible causes:</p>
+<ul class="simple">
+<li><p>You are trying to use a value improperly. Example: indexing a
+string, list, or tuple with something other than an integer.</p></li>
+<li><p>There is a mismatch between the items in a format string and the
+items passed for conversion. This can happen if either the
+number of items does not match or an invalid conversion is
+called for.</p></li>
+<li><p>You are passing the wrong number of arguments to a function. For
+methods, look at the method definition and check that the first
+parameter is <span><code class="docutils literal notranslate"><span class="pre">self</span></code></span>. Then look at the method
+invocation; make sure you are invoking the method on an object
+with the right type and providing the other arguments correctly.</p></li>
+</ul>
+</li>
+<li><p>KeyError:<br />
+You are trying to access an element of a dictionary using a key that
+the dictionary does not contain. If the keys are strings, remember
+that capitalization matters.</p></li>
+<li><p>AttributeError:<br />
+You are trying to access an attribute or method that does not exist.
+Check the spelling! You can use the built-in function
+<span><code class="docutils literal notranslate"><span class="pre">vars</span></code></span> to list the attributes that do exist.</p>
+<p>If an AttributeError indicates that an object has
+<span><code class="docutils literal notranslate"><span class="pre">NoneType</span></code></span>, that means that it is <span><code class="docutils literal notranslate"><span class="pre">None</span></code></span>.
+So the problem is not the attribute name, but the object.</p>
+<p>The reason the object is none might be that you forgot to return a
+value from a function; if you get to the end of a function without
+hitting a <span><code class="docutils literal notranslate"><span class="pre">return</span></code></span> statement, it returns
+<span><code class="docutils literal notranslate"><span class="pre">None</span></code></span>. Another common cause is using the result from a
+list method, like <span><code class="docutils literal notranslate"><span class="pre">sort</span></code></span>, that returns
+<span><code class="docutils literal notranslate"><span class="pre">None</span></code></span>.</p>
+</li>
+<li><p>IndexError:<br />
+The index you are using to access a list, string, or tuple is
+greater than its length minus one. Immediately before the site of
+the error, add a <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statement to display the value
+of the index and the length of the array. Is the array the right
+size? Is the index the right value?</p></li>
+</ul>
+<p>The Python debugger (<span><code class="docutils literal notranslate"><span class="pre">pdb</span></code></span>) is useful for tracking down
+exceptions because it allows you to examine the state of the program
+immediately before the error. You can read about <span><code class="docutils literal notranslate"><span class="pre">pdb</span></code></span> at
+<a class="reference external" href="https://docs.python.org/3/library/pdb.html">https://docs.python.org/3/library/pdb.html</a>.</p>
+</div>
+<div class="section" id="i-added-so-many-span-print-span-statements-i-get-inundated-with-output">
+<h3>I added so many <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statements I get inundated with output.<a class="headerlink" href="#i-added-so-many-span-print-span-statements-i-get-inundated-with-output" title="Permalink to this headline">¶</a></h3>
+<p>One of the problems with using <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statements for
+debugging is that you can end up buried in output. There are two ways to
+proceed: simplify the output or simplify the program.</p>
+<p>To simplify the output, you can remove or comment out
+<span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statements that aren’t helping, or combine them, or
+format the output so it is easier to understand.</p>
+<p>To simplify the program, there are several things you can do. First,
+scale down the problem the program is working on. For example, if you
+are searching a list, search a <span><em>small</em></span> list. If the program
+takes input from the user, give it the simplest input that causes the
+problem.</p>
+<p>Second, clean up the program. Remove dead code and reorganize the
+program to make it as easy to read as possible. For example, if you
+suspect that the problem is in a deeply nested part of the program, try
+rewriting that part with simpler structure. If you suspect a large
+function, try splitting it into smaller functions and testing them
+separately.</p>
+<p>Often the process of finding the minimal test case leads you to the bug.
+If you find that a program works in one situation but not in another,
+that gives you a clue about what is going on.</p>
+<p>Similarly, rewriting a piece of code can help you find subtle bugs. If
+you make a change that you think shouldn’t affect the program, and it
+does, that can tip you off.</p>
+</div>
+</div>
+<div class="section" id="semantic-errors">
+<h2>Semantic errors<a class="headerlink" href="#semantic-errors" title="Permalink to this headline">¶</a></h2>
+<p>In some ways, semantic errors are the hardest to debug, because the
+interpreter provides no information about what is wrong. Only you know
+what the program is supposed to do.</p>
+<p>The first step is to make a connection between the program text and the
+behavior you are seeing. You need a hypothesis about what the program is
+actually doing. One of the things that makes that hard is that computers
+run so fast.</p>
+<p>You will often wish that you could slow the program down to human speed,
+and with some debuggers you can. But the time it takes to insert a few
+well-placed <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statements is often short compared to
+setting up the debugger, inserting and removing breakpoints, and
+“stepping” the program to where the error is occurring.</p>
+<div class="section" id="my-program-doesnt-work">
+<h3>My program doesn’t work.<a class="headerlink" href="#my-program-doesnt-work" title="Permalink to this headline">¶</a></h3>
+<p>You should ask yourself these questions:</p>
+<ul class="simple">
+<li><p>Is there something the program was supposed to do but which doesn’t
+seem to be happening? Find the section of the code that performs
+that function and make sure it is executing when you think it
+should.</p></li>
+<li><p>Is something happening that shouldn’t? Find code in your program
+that performs that function and see if it is executing when it
+shouldn’t.</p></li>
+<li><p>Is a section of code producing an effect that is not what you
+expected? Make sure that you understand the code in question,
+especially if it involves functions or methods in other Python
+modules. Read the documentation for the functions you call. Try them
+out by writing simple test cases and checking the results.</p></li>
+</ul>
+<p>In order to program, you need a mental model of how programs work. If
+you write a program that doesn’t do what you expect, often the problem
+is not in the program; it’s in your mental model.</p>
+<p>The best way to correct your mental model is to break the program into
+its components (usually the functions and methods) and test each
+component independently. Once you find the discrepancy between your
+model and reality, you can solve the problem.</p>
+<p>Of course, you should be building and testing components as you develop
+the program. If you encounter a problem, there should be only a small
+amount of new code that is not known to be correct.</p>
+</div>
+<div class="section" id="ive-got-a-big-hairy-expression-and-it-doesnt-do-what-i-expect">
+<h3>I’ve got a big hairy expression and it doesn’t do what I expect.<a class="headerlink" href="#ive-got-a-big-hairy-expression-and-it-doesnt-do-what-i-expect" title="Permalink to this headline">¶</a></h3>
+<p>Writing complex expressions is fine as long as they are readable, but
+they can be hard to debug. It is often a good idea to break a complex
+expression into a series of assignments to temporary variables.</p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>self.hands[i].addCard(self.hands[self.findNeighbor(i)].popCard())
+</pre></div>
+</div>
+<p>This can be rewritten as:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>neighbor = self.findNeighbor(i)
+pickedCard = self.hands[neighbor].popCard()
+self.hands[i].addCard(pickedCard)
+</pre></div>
+</div>
+<p>The explicit version is easier to read because the variable names
+provide additional documentation, and it is easier to debug because you
+can check the types of the intermediate variables and display their
+values.</p>
+<p>Another problem that can occur with big expressions is that the order of
+evaluation may not be what you expect. For example, if you are
+translating the expression (\frac{x}{2 \pi}) into Python, you might
+write:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = x / 2 * math.pi
+</pre></div>
+</div>
+<p>That is not correct because multiplication and division have the same
+precedence and are evaluated from left to right. So this expression
+computes (x \pi / 2).</p>
+<p>A good way to debug expressions is to add parentheses to make the order
+of evaluation explicit:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = x / (2 * math.pi)
+</pre></div>
+</div>
+<p>Whenever you are not sure of the order of evaluation, use parentheses.
+Not only will the program be correct (in the sense of doing what you
+intended), it will also be more readable for other people who haven’t
+memorized the order of operations.</p>
+</div>
+<div class="section" id="ive-got-a-function-that-doesnt-return-what-i-expect">
+<h3>I’ve got a function that doesn’t return what I expect.<a class="headerlink" href="#ive-got-a-function-that-doesnt-return-what-i-expect" title="Permalink to this headline">¶</a></h3>
+<p>If you have a <span><code class="docutils literal notranslate"><span class="pre">return</span></code></span> statement with a complex expression,
+you don’t have a chance to print the result before returning. Again, you
+can use a temporary variable. For example, instead of:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>return self.hands[i].removeMatches()
+</pre></div>
+</div>
+<p>you could write:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>count = self.hands[i].removeMatches()
+return count
+</pre></div>
+</div>
+<p>Now you have the opportunity to display the value of
+<span><code class="docutils literal notranslate"><span class="pre">count</span></code></span> before returning.</p>
+</div>
+<div class="section" id="im-really-really-stuck-and-i-need-help">
+<h3>I’m really, really stuck and I need help.<a class="headerlink" href="#im-really-really-stuck-and-i-need-help" title="Permalink to this headline">¶</a></h3>
+<p>First, try getting away from the computer for a few minutes. Computers
+emit waves that affect the brain, causing these symptoms:</p>
+<ul class="simple">
+<li><p>Frustration and rage.</p></li>
+<li><p>Superstitious beliefs (“the computer hates me”) and magical thinking
+(“the program only works when I wear my hat backward”).</p></li>
+<li><p>Random walk programming (the attempt to program by writing every
+possible program and choosing the one that does the right thing).</p></li>
+</ul>
+<p>If you find yourself suffering from any of these symptoms, get up and go
+for a walk. When you are calm, think about the program. What is it
+doing? What are some possible causes of that behavior? When was the last
+time you had a working program, and what did you do next?</p>
+<p>Sometimes it just takes time to find a bug. I often find bugs when I am
+away from the computer and let my mind wander. Some of the best places
+to find bugs are trains, showers, and in bed, just before you fall
+asleep.</p>
+</div>
+<div class="section" id="no-i-really-need-help">
+<h3>No, I really need help.<a class="headerlink" href="#no-i-really-need-help" title="Permalink to this headline">¶</a></h3>
+<p>It happens. Even the best programmers occasionally get stuck. Sometimes
+you work on a program so long that you can’t see the error. You need a
+fresh pair of eyes.</p>
+<p>Before you bring someone else in, make sure you are prepared. Your
+program should be as simple as possible, and you should be working on
+the smallest input that causes the error. You should have
+<span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> statements in the appropriate places (and the
+output they produce should be comprehensible). You should understand the
+problem well enough to describe it concisely.</p>
+<p>When you bring someone in to help, be sure to give them the information
+they need:</p>
+<ul class="simple">
+<li><p>If there is an error message, what is it and what part of the
+program does it indicate?</p></li>
+<li><p>What was the last thing you did before this error occurred? What
+were the last lines of code that you wrote, or what is the new test
+case that fails?</p></li>
+<li><p>What have you tried so far, and what have you learned?</p></li>
+</ul>
+<p>When you find the bug, take a second to think about what you could have
+done to find it faster. Next time you see something similar, you will be
+able to find the bug more quickly.</p>
+<p>Remember, the goal is not just to make the program work. The goal is to
+learn how to make the program work.</p>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="advanced.html" title="previous page">The Goodies</a>
+    <a class='right-next' id="next-link" href="algorithms.html" title="next page">Analysis of Algorithms</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allan Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

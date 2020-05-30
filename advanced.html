@@ -1,0 +1,850 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Goodies &#8212; How to think like a computer scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Debugging" href="debugging.html" />
+    <link rel="prev" title="Inheritance" href="classes_IV.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">How to think like a computer scientist</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="preface.html">Preface</a>
+  </li>
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="way_of.html">The way of the program</a>
+  </li>
+  <li class="">
+    <a href="variables.html">Variables, expressions and statements</a>
+  </li>
+  <li class="">
+    <a href="functions.html">Functions</a>
+  </li>
+  <li class="">
+    <a href="case_study_interface.html">Case study: interface design</a>
+  </li>
+  <li class="">
+    <a href="conditionals.html">Conditionals and recursion</a>
+  </li>
+  <li class="">
+    <a href="fruitful_functions.html">Fruitful functions</a>
+  </li>
+  <li class="">
+    <a href="iteration.html">Iteration</a>
+  </li>
+  <li class="">
+    <a href="strings.html">Strings</a>
+  </li>
+  <li class="">
+    <a href="case_study_wordplay.html">Case study: word play</a>
+  </li>
+  <li class="">
+    <a href="lists.html">Lists</a>
+  </li>
+  <li class="">
+    <a href="dictionaries.html">Dictionaries</a>
+  </li>
+  <li class="">
+    <a href="tuples.html">Tuples</a>
+  </li>
+  <li class="">
+    <a href="case_study_data_structures.html">Case study: data structure selection</a>
+  </li>
+  <li class="">
+    <a href="files.html">Files</a>
+  </li>
+  <li class="">
+    <a href="classes_I.html">Classes and objects</a>
+  </li>
+  <li class="">
+    <a href="classes_II.html">Classes and functions</a>
+  </li>
+  <li class="">
+    <a href="classes_III.html">Classes and methods</a>
+  </li>
+  <li class="">
+    <a href="classes_IV.html">Inheritance</a>
+  </li>
+  <li class="active">
+    <a href="">The Goodies</a>
+  </li>
+  <li class="">
+    <a href="debugging.html">Debugging</a>
+  </li>
+  <li class="">
+    <a href="algorithms.html">Analysis of Algorithms</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/advanced.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#conditional-expressions" class="nav-link">Conditional expressions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#list-comprehensions" class="nav-link">List comprehensions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#generator-expressions" class="nav-link">Generator expressions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#span-any-span-and-span-all-span" class="nav-link"><span>any</span> and <span>all</span></a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sets" class="nav-link">Sets</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#counters" class="nav-link">Counters</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#defaultdict" class="nav-link">defaultdict</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#named-tuples" class="nav-link">Named tuples</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#gathering-keyword-args" class="nav-link">Gathering keyword args</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#glossary" class="nav-link">Glossary</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#exercises" class="nav-link">Exercises</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-goodies">
+<h1>The Goodies<a class="headerlink" href="#the-goodies" title="Permalink to this headline">¶</a></h1>
+<p>One of my goals for this book has been to teach you as little Python as
+possible. When there were two ways to do something, I picked one and
+avoided mentioning the other. Or sometimes I put the second one into an
+exercise.</p>
+<p>Now I want to go back for some of the good bits that got left behind.
+Python provides a number of features that are not really necessary—you
+can write good code without them—but with them you can sometimes write
+code that’s more concise, readable or efficient, and sometimes all
+three.</p>
+<div class="section" id="conditional-expressions">
+<h2>Conditional expressions<a class="headerlink" href="#conditional-expressions" title="Permalink to this headline">¶</a></h2>
+<p>We saw conditional statements in Section <a class="reference external" href="#conditional.execution">6.4</a>.
+Conditional statements are often used to choose one of two values; for
+example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if x &gt; 0:
+    y = math.log(x)
+else:
+    y = float(&#39;nan&#39;)
+</pre></div>
+</div>
+<p>This statement checks whether <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> is positive. If so, it
+computes <span><code class="docutils literal notranslate"><span class="pre">math.log</span></code></span>. If not, <span><code class="docutils literal notranslate"><span class="pre">math.log</span></code></span> would
+raise a ValueError. To avoid stopping the program, we generate a “NaN”,
+which is a special floating-point value that represents “Not a Number”.</p>
+<p>We can write this statement more concisely using a <span><strong>conditional
+expression</strong></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = math.log(x) if x &gt; 0 else float(&#39;nan&#39;)
+</pre></div>
+</div>
+<p>You can almost read this line like English: “<span><code class="docutils literal notranslate"><span class="pre">y</span></code></span> gets
+log-<span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> if <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> is greater than 0; otherwise it
+gets NaN”.</p>
+<p>Recursive functions can sometimes be rewritten using conditional
+expressions. For example, here is a recursive version of
+<span><code class="docutils literal notranslate"><span class="pre">factorial</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+</pre></div>
+</div>
+<p>We can rewrite it like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def factorial(n):
+    return 1 if n == 0 else n * factorial(n-1)
+</pre></div>
+</div>
+<p>Another use of conditional expressions is handling optional arguments.
+For example, here is the init method from <span><code class="docutils literal notranslate"><span class="pre">GoodKangaroo</span></code></span>
+(see Exercise <a class="reference external" href="#kangaroo">[kangaroo]</a>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def __init__(self, name, contents=None):
+    self.name = name
+    if contents == None:
+        contents = []
+    self.pouch_contents = contents
+</pre></div>
+</div>
+<p>We can rewrite this one like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def __init__(self, name, contents=None):
+    self.name = name
+    self.pouch_contents = [] if contents == None else contents 
+</pre></div>
+</div>
+<p>In general, you can replace a conditional statement with a conditional
+expression if both branches contain simple expressions that are either
+returned or assigned to the same variable.</p>
+</div>
+<div class="section" id="list-comprehensions">
+<h2>List comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h2>
+<p>In Section <a class="reference external" href="#filter">11.7</a> we saw the map and filter patterns. For
+example, this function takes a list of strings, maps the string method
+<span><code class="docutils literal notranslate"><span class="pre">capitalize</span></code></span> to the elements, and returns a new list of
+strings:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def capitalize_all(t):
+    res = []
+    for s in t:
+        res.append(s.capitalize())
+    return res
+</pre></div>
+</div>
+<p>We can write this more concisely using a <span><strong>list
+comprehension</strong></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def capitalize_all(t):
+    return [s.capitalize() for s in t]
+</pre></div>
+</div>
+<p>The bracket operators indicate that we are constructing a new list. The
+expression inside the brackets specifies the elements of the list, and
+the <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> clause indicates what sequence we are traversing.</p>
+<p>The syntax of a list comprehension is a little awkward because the loop
+variable, <span><code class="docutils literal notranslate"><span class="pre">s</span></code></span> in this example, appears in the expression
+before we get to the definition.</p>
+<p>List comprehensions can also be used for filtering. For example, this
+function selects only the elements of <span><code class="docutils literal notranslate"><span class="pre">t</span></code></span> that are upper
+case, and returns a new list:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def only_upper(t):
+    res = []
+    for s in t:
+        if s.isupper():
+            res.append(s)
+    return res
+</pre></div>
+</div>
+<p>We can rewrite it using a list comprehension</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def only_upper(t):
+    return [s for s in t if s.isupper()]
+</pre></div>
+</div>
+<p>List comprehensions are concise and easy to read, at least for simple
+expressions. And they are usually faster than the equivalent for loops,
+sometimes much faster. So if you are mad at me for not mentioning them
+earlier, I understand.</p>
+<p>But, in my defense, list comprehensions are harder to debug because you
+can’t put a print statement inside the loop. I suggest that you use them
+only if the computation is simple enough that you are likely to get it
+right the first time. And for beginners that means never.</p>
+</div>
+<div class="section" id="generator-expressions">
+<h2>Generator expressions<a class="headerlink" href="#generator-expressions" title="Permalink to this headline">¶</a></h2>
+<p><span><strong>Generator expressions</strong></span> are similar to list
+comprehensions, but with parentheses instead of square brackets:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; g = (x**2 for x in range(5))
+&gt;&gt;&gt; g
+&lt;generator object &lt;genexpr&gt; at 0x7f4c45a786c0&gt;
+</pre></div>
+</div>
+<p>The result is a generator object that knows how to iterate through a
+sequence of values. But unlike a list comprehension, it does not compute
+the values all at once; it waits to be asked. The built-in function
+<span><code class="docutils literal notranslate"><span class="pre">next</span></code></span> gets the next value from the generator:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; next(g)
+0
+&gt;&gt;&gt; next(g)
+1
+</pre></div>
+</div>
+<p>When you get to the end of the sequence, <span><code class="docutils literal notranslate"><span class="pre">next</span></code></span> raises a
+StopIteration exception. You can also use a <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop to
+iterate through the values:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; for val in g:
+...     print(val)
+4
+9
+16
+</pre></div>
+</div>
+<p>The generator object keeps track of where it is in the sequence, so the
+<span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop picks up where <span><code class="docutils literal notranslate"><span class="pre">next</span></code></span> left off.
+Once the generator is exhausted, it continues to raise
+<span><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; next(g)
+StopIteration
+</pre></div>
+</div>
+<p>Generator expressions are often used with functions like
+<span><code class="docutils literal notranslate"><span class="pre">sum</span></code></span>, <span><code class="docutils literal notranslate"><span class="pre">max</span></code></span>, and <span><code class="docutils literal notranslate"><span class="pre">min</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; sum(x**2 for x in range(5))
+30
+</pre></div>
+</div>
+</div>
+<div class="section" id="span-any-span-and-span-all-span">
+<h2><span><code class="docutils literal notranslate"><span class="pre">any</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">all</span></code></span><a class="headerlink" href="#span-any-span-and-span-all-span" title="Permalink to this headline">¶</a></h2>
+<p>Python provides a built-in function, <span><code class="docutils literal notranslate"><span class="pre">any</span></code></span>, that takes a
+sequence of boolean values and returns <span><code class="docutils literal notranslate"><span class="pre">True</span></code></span> if any of the
+values are <span><code class="docutils literal notranslate"> <span class="pre">True</span></code></span>. It works on lists:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; any([False, False, True])
+True
+</pre></div>
+</div>
+<p>But it is often used with generator expressions:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; any(letter == &#39;t&#39; for letter in &#39;monty&#39;)
+True
+</pre></div>
+</div>
+<p>That example isn’t very useful because it does the same thing as the
+<span><code class="docutils literal notranslate"><span class="pre">in</span></code></span> operator. But we could use <span><code class="docutils literal notranslate"><span class="pre">any</span></code></span> to
+rewrite some of the search functions we wrote in
+Section <a class="reference external" href="#search">10.3</a>. For example, we could write
+<span><code class="docutils literal notranslate"><span class="pre">avoids</span></code></span> like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def avoids(word, forbidden):
+    return not any(letter in forbidden for letter in word)
+</pre></div>
+</div>
+<p>The function almost reads like English, “<span><code class="docutils literal notranslate"><span class="pre">word</span></code></span> avoids
+<span><code class="docutils literal notranslate"><span class="pre">forbidden</span></code></span> if there are not any forbidden letters in
+<span><code class="docutils literal notranslate"><span class="pre">word</span></code></span>.”</p>
+<p>Using <span><code class="docutils literal notranslate"><span class="pre">any</span></code></span> with a generator expression is efficient
+because it stops immediately if it finds a <span><code class="docutils literal notranslate"><span class="pre">True</span></code></span> value, so
+it doesn’t have to evaluate the whole sequence.</p>
+<p>Python provides another built-in function, <span><code class="docutils literal notranslate"><span class="pre">all</span></code></span>, that
+returns <span><code class="docutils literal notranslate"><span class="pre">True</span></code></span> if every element of the sequence is
+<span><code class="docutils literal notranslate"><span class="pre">True</span></code></span>. As an exercise, use <span><code class="docutils literal notranslate"><span class="pre">all</span></code></span> to re-write
+<code class="docutils literal notranslate"><span class="pre">uses_all</span></code> from Section <a class="reference external" href="#search">10.3</a>.</p>
+</div>
+<div class="section" id="sets">
+<h2>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h2>
+<p>In Section <a class="reference external" href="#dictsub">14.6</a> I use dictionaries to find the words that
+appear in a document but not in a word list. The function I wrote takes
+<span><code class="docutils literal notranslate"><span class="pre">d1</span></code></span>, which contains the words from the document as keys,
+and <span><code class="docutils literal notranslate"><span class="pre">d2</span></code></span>, which contains the list of words. It returns a
+dictionary that contains the keys from <span><code class="docutils literal notranslate"><span class="pre">d1</span></code></span> that are not in
+<span><code class="docutils literal notranslate"><span class="pre">d2</span></code></span>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def subtract(d1, d2):
+    res = dict()
+    for key in d1:
+        if key not in d2:
+            res[key] = None
+    return res
+</pre></div>
+</div>
+<p>In all of these dictionaries, the values are <span><code class="docutils literal notranslate"><span class="pre">None</span></code></span> because
+we never use them. As a result, we waste some storage space.</p>
+<p>Python provides another built-in type, called a <span><code class="docutils literal notranslate"><span class="pre">set</span></code></span>, that
+behaves like a collection of dictionary keys with no values. Adding
+elements to a set is fast; so is checking membership. And sets provide
+methods and operators to compute common set operations.</p>
+<p>For example, set subtraction is available as a method called
+<span><code class="docutils literal notranslate"><span class="pre">difference</span></code></span> or as an operator, <span><code class="docutils literal notranslate"><span class="pre">-</span></code></span>. So we can
+rewrite <span><code class="docutils literal notranslate"><span class="pre">subtract</span></code></span> like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def subtract(d1, d2):
+    return set(d1) - set(d2)
+</pre></div>
+</div>
+<p>The result is a set instead of a dictionary, but for operations like
+iteration, the behavior is the same.</p>
+<p>Some of the exercises in this book can be done concisely and efficiently
+with sets. For example, here is a solution to <code class="docutils literal notranslate"><span class="pre">has_duplicates</span></code>, from
+Exercise <a class="reference external" href="#duplicate">[duplicate]</a>, that uses a dictionary:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def has_duplicates(t):
+    d = {}
+    for x in t:
+        if x in d:
+            return True
+        d[x] = True
+    return False
+</pre></div>
+</div>
+<p>When an element appears for the first time, it is added to the
+dictionary. If the same element appears again, the function returns
+<span><code class="docutils literal notranslate"><span class="pre">True</span></code></span>.</p>
+<p>Using sets, we can write the same function like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def has_duplicates(t):
+    return len(set(t)) &lt; len(t)
+</pre></div>
+</div>
+<p>An element can only appear in a set once, so if an element in
+<span><code class="docutils literal notranslate"><span class="pre">t</span></code></span> appears more than once, the set will be smaller than
+<span><code class="docutils literal notranslate"><span class="pre">t</span></code></span>. If there are no duplicates, the set will be the same
+size as <span><code class="docutils literal notranslate"><span class="pre">t</span></code></span>.</p>
+<p>We can also use sets to do some of the exercises in
+Chapter <a class="reference external" href="#wordplay">10</a>. For example, here’s a version of <code class="docutils literal notranslate"><span class="pre">uses_only</span></code>
+with a loop:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def uses_only(word, available):
+    for letter in word: 
+        if letter not in available:
+            return False
+    return True
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">uses_only</span></code> checks whether all letters in <span><code class="docutils literal notranslate"><span class="pre">word</span></code></span> are in
+<span><code class="docutils literal notranslate"><span class="pre">available</span></code></span>. We can rewrite it like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def uses_only(word, available):
+    return set(word) &lt;= set(available)
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> operator checks whether one set is a subset of another,
+including the possibility that they are equal, which is true if all the
+letters in <span><code class="docutils literal notranslate"><span class="pre">word</span></code></span> appear in <span><code class="docutils literal notranslate"><span class="pre">available</span></code></span>.</p>
+<p>As an exercise, rewrite <code class="docutils literal notranslate"><span class="pre">avoids</span></code> using sets.</p>
+</div>
+<div class="section" id="counters">
+<h2>Counters<a class="headerlink" href="#counters" title="Permalink to this headline">¶</a></h2>
+<p>A Counter is like a set, except that if an element appears more than
+once, the Counter keeps track of how many times it appears. If you are
+familiar with the mathematical idea of a <span><strong>multiset</strong></span>, a
+Counter is a natural way to represent a multiset.</p>
+<p>Counter is defined in a standard module called
+<span><code class="docutils literal notranslate"><span class="pre">collections</span></code></span>, so you have to import it. You can initialize
+a Counter with a string, list, or anything else that supports iteration:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; from collections import Counter
+&gt;&gt;&gt; count = Counter(&#39;parrot&#39;)
+&gt;&gt;&gt; count
+Counter({&#39;r&#39;: 2, &#39;t&#39;: 1, &#39;o&#39;: 1, &#39;p&#39;: 1, &#39;a&#39;: 1})
+</pre></div>
+</div>
+<p>Counters behave like dictionaries in many ways; they map from each key
+to the number of times it appears. As in dictionaries, the keys have to
+be hashable.</p>
+<p>Unlike dictionaries, Counters don’t raise an exception if you access an
+element that doesn’t appear. Instead, they return 0:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; count[&#39;d&#39;]
+0
+</pre></div>
+</div>
+<p>We can use Counters to rewrite <code class="docutils literal notranslate"><span class="pre">is_anagram</span></code> from
+Exercise <a class="reference external" href="#anagram">[anagram]</a>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def is_anagram(word1, word2):
+    return Counter(word1) == Counter(word2)
+</pre></div>
+</div>
+<p>If two words are anagrams, they contain the same letters with the same
+counts, so their Counters are equivalent.</p>
+<p>Counters provide methods and operators to perform set-like operations,
+including addition, subtraction, union and intersection. And they
+provide an often-useful method, <code class="docutils literal notranslate"><span class="pre">most_common</span></code>, which returns a list of
+value-frequency pairs, sorted from most common to least:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; count = Counter(&#39;parrot&#39;)
+&gt;&gt;&gt; for val, freq in count.most_common(3):
+...     print(val, freq)
+r 2
+p 1
+a 1
+</pre></div>
+</div>
+</div>
+<div class="section" id="defaultdict">
+<h2>defaultdict<a class="headerlink" href="#defaultdict" title="Permalink to this headline">¶</a></h2>
+<p>The <span><code class="docutils literal notranslate"><span class="pre">collections</span></code></span> module also provides
+<span><code class="docutils literal notranslate"><span class="pre">defaultdict</span></code></span>, which is like a dictionary except that if
+you access a key that doesn’t exist, it can generate a new value on the
+fly.</p>
+<p>When you create a defaultdict, you provide a function that’s used to
+create new values. A function used to create objects is sometimes called
+a <span><strong>factory</strong></span>. The built-in functions that create lists,
+sets, and other types can be used as factories:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; from collections import defaultdict
+&gt;&gt;&gt; d = defaultdict(list)
+</pre></div>
+</div>
+<p>Notice that the argument is <span><code class="docutils literal notranslate"><span class="pre">list</span></code></span>, which is a class
+object, not <span><code class="docutils literal notranslate"><span class="pre">list()</span></code></span>, which is a new list. The function you
+provide doesn’t get called unless you access a key that doesn’t exist.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; t = d[&#39;new key&#39;]
+&gt;&gt;&gt; t
+[]
+</pre></div>
+</div>
+<p>The new list, which we’re calling <span><code class="docutils literal notranslate"><span class="pre">t</span></code></span>, is also added to the
+dictionary. So if we modify <span><code class="docutils literal notranslate"><span class="pre">t</span></code></span>, the change appears in
+<span><code class="docutils literal notranslate"><span class="pre">d</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; t.append(&#39;new value&#39;)
+&gt;&gt;&gt; d
+defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;new key&#39;: [&#39;new value&#39;]})
+</pre></div>
+</div>
+<p>If you are making a dictionary of lists, you can often write simpler
+code using <span><code class="docutils literal notranslate"><span class="pre">defaultdict</span></code></span>. In my solution to
+Exercise <a class="reference external" href="#anagrams">[anagrams]</a>, which you can get from
+<a class="reference external" href="http://thinkpython2.com/code/anagram_sets.py">http://thinkpython2.com/code/anagram_sets.py</a>, I make a dictionary that
+maps from a sorted string of letters to the list of words that can be
+spelled with those letters. For example, <span><code class="docutils literal notranslate"> <span class="pre">’opst’</span></code></span> maps
+to the list <span><code class="docutils literal notranslate"><span class="pre">[’opts’,</span> <span class="pre">’post’,</span> <span class="pre">’pots’,</span> <span class="pre">’spot’,</span> <span class="pre">’stop’,</span> <span class="pre">’tops’]</span></code></span>.</p>
+<p>Here’s the original code:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def all_anagrams(filename):
+    d = {}
+    for line in open(filename):
+        word = line.strip().lower()
+        t = signature(word)
+        if t not in d:
+            d[t] = [word]
+        else:
+            d[t].append(word)
+    return d
+</pre></div>
+</div>
+<p>This can be simplified using <span><code class="docutils literal notranslate"><span class="pre">setdefault</span></code></span>, which you might
+have used in Exercise <a class="reference external" href="#setdefault">[setdefault]</a>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def all_anagrams(filename):
+    d = {}
+    for line in open(filename):
+        word = line.strip().lower()
+        t = signature(word)
+        d.setdefault(t, []).append(word)
+    return d
+</pre></div>
+</div>
+<p>This solution has the drawback that it makes a new list every time,
+regardless of whether it is needed. For lists, that’s no big deal, but
+if the factory function is complicated, it might be.</p>
+<p>We can avoid this problem and simplify the code using a
+<span><code class="docutils literal notranslate"><span class="pre">defaultdict</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def all_anagrams(filename):
+    d = defaultdict(list)
+    for line in open(filename):
+        word = line.strip().lower()
+        t = signature(word)
+        d[t].append(word)
+    return d
+</pre></div>
+</div>
+<p>My solution to Exercise <a class="reference external" href="#poker">[poker]</a>, which you can download from
+<a class="reference external" href="http://thinkpython2.com/code/PokerHandSoln.py">http://thinkpython2.com/code/PokerHandSoln.py</a>, uses
+<span><code class="docutils literal notranslate"><span class="pre">setdefault</span></code></span> in the function <code class="docutils literal notranslate"><span class="pre">has_straightflush</span></code>. This
+solution has the drawback of creating a <span><code class="docutils literal notranslate"><span class="pre">Hand</span></code></span> object every
+time through the loop, whether it is needed or not. As an exercise,
+rewrite it using a defaultdict.</p>
+</div>
+<div class="section" id="named-tuples">
+<h2>Named tuples<a class="headerlink" href="#named-tuples" title="Permalink to this headline">¶</a></h2>
+<p>Many simple objects are basically collections of related values. For
+example, the Point object defined in Chapter <a class="reference external" href="#clobjects">16</a> contains
+two numbers, <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">y</span></code></span>. When you define a
+class like this, you usually start with an init method and a str method:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Point:
+
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return &#39;(%g, %g)&#39; % (self.x, self.y)
+</pre></div>
+</div>
+<p>This is a lot of code to convey a small amount of information. Python
+provides a more concise way to say the same thing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from collections import namedtuple
+Point = namedtuple(&#39;Point&#39;, [&#39;x&#39;, &#39;y&#39;])
+</pre></div>
+</div>
+<p>The first argument is the name of the class you want to create. The
+second is a list of the attributes Point objects should have, as
+strings. The return value from <span><code class="docutils literal notranslate"><span class="pre">namedtuple</span></code></span> is a class
+object:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; Point
+&lt;class &#39;__main__.Point&#39;&gt;
+</pre></div>
+</div>
+<p><span><code class="docutils literal notranslate"><span class="pre">Point</span></code></span> automatically provides methods like <code class="docutils literal notranslate"><span class="pre">__init__</span></code> and
+<code class="docutils literal notranslate"><span class="pre">__str__</span></code> so you don’t have to write them.</p>
+<p>To create a Point object, you use the Point class as a function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; p = Point(1, 2)
+&gt;&gt;&gt; p
+Point(x=1, y=2)
+</pre></div>
+</div>
+<p>The init method assigns the arguments to attributes using the names you
+provided. The str method prints a representation of the Point object and
+its attributes.</p>
+<p>You can access the elements of the named tuple by name:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; p.x, p.y
+(1, 2)
+</pre></div>
+</div>
+<p>But you can also treat a named tuple as a tuple:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; p[0], p[1]
+(1, 2)
+
+&gt;&gt;&gt; x, y = p
+&gt;&gt;&gt; x, y
+(1, 2)
+</pre></div>
+</div>
+<p>Named tuples provide a quick way to define simple classes. The drawback
+is that simple classes don’t always stay simple. You might decide later
+that you want to add methods to a named tuple. In that case, you could
+define a new class that inherits from the named tuple:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Pointier(Point):
+    # add more methods here
+</pre></div>
+</div>
+<p>Or you could switch to a conventional class definition.</p>
+</div>
+<div class="section" id="gathering-keyword-args">
+<h2>Gathering keyword args<a class="headerlink" href="#gathering-keyword-args" title="Permalink to this headline">¶</a></h2>
+<p>In Section <a class="reference external" href="#gather">13.4</a>, we saw how to write a function that gathers
+its arguments into a tuple:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def printall(*args):
+    print(args)
+</pre></div>
+</div>
+<p>You can call this function with any number of positional arguments (that
+is, arguments that don’t have keywords):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; printall(1, 2.0, &#39;3&#39;)
+(1, 2.0, &#39;3&#39;)
+</pre></div>
+</div>
+<p>But the <span><code class="docutils literal notranslate">&#160; </code></span> operator doesn’t gather keyword arguments:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; printall(1, 2.0, third=&#39;3&#39;)
+TypeError: printall() got an unexpected keyword argument &#39;third&#39;
+</pre></div>
+</div>
+<p>To gather keyword arguments, you can use the <span><code class="docutils literal notranslate"><span class="pre">*</span></code></span> operator:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def printall(*args, **kwargs):
+    print(args, kwargs)
+</pre></div>
+</div>
+<p>You can call the keyword gathering parameter anything you want, but
+<span><code class="docutils literal notranslate"><span class="pre">kwargs</span></code></span> is a common choice. The result is a dictionary
+that maps keywords to values:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; printall(1, 2.0, third=&#39;3&#39;)
+(1, 2.0) {&#39;third&#39;: &#39;3&#39;}
+</pre></div>
+</div>
+<p>If you have a dictionary of keywords and values, you can use the scatter
+operator, <span><code class="docutils literal notranslate"><span class="pre">*</span></code></span> to call a function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; d = dict(x=1, y=2)
+&gt;&gt;&gt; Point(**d)
+Point(x=1, y=2)
+</pre></div>
+</div>
+<p>Without the scatter operator, the function would treat <span><code class="docutils literal notranslate"><span class="pre">d</span></code></span>
+as a single positional argument, so it would assign <span><code class="docutils literal notranslate"><span class="pre">d</span></code></span> to
+<span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> and complain because there’s nothing to assign to
+<span><code class="docutils literal notranslate"><span class="pre">y</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; d = dict(x=1, y=2)
+&gt;&gt;&gt; Point(d)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: __new__() missing 1 required positional argument: &#39;y&#39;
+</pre></div>
+</div>
+<p>When you are working with functions that have a large number of
+parameters, it is often useful to create and pass around dictionaries
+that specify frequently used options.</p>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>conditional expression:<br />
+An expression that has one of two values, depending on a condition.</p></li>
+<li><p>list comprehension:<br />
+An expression with a <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop in square brackets that
+yields a new list.</p></li>
+<li><p>generator expression:<br />
+An expression with a <span><code class="docutils literal notranslate"><span class="pre">for</span></code></span> loop in parentheses that
+yields a generator object.</p></li>
+<li><p>multiset:<br />
+A mathematical entity that represents a mapping between the elements
+of a set and the number of times they appear.</p></li>
+<li><p>factory:<br />
+A function, usually passed as a parameter, used to create objects.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>The following is a function computes the binomial coefficient
+recursively.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def binomial_coeff(n, k):
+    &quot;&quot;&quot;Compute the binomial coefficient &quot;n choose k&quot;.
+
+    n: number of trials
+    k: number of successes
+
+    returns: int
+    &quot;&quot;&quot;
+    if k == 0:
+        return 1
+    if n == 0:
+        return 0
+
+    res = binomial_coeff(n-1, k) + binomial_coeff(n-1, k-1)
+    return res
+</pre></div>
+</div>
+<p>Rewrite the body of the function using nested conditional expressions.</p>
+<p>One note: this function is not very efficient because it ends up
+computing the same values over and over. You could make it more
+efficient by memoizing (see Section <a class="reference external" href="#memoize">12.6</a>). But you will find
+that it’s harder to memoize if you write it using conditional
+expressions.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="classes_IV.html" title="previous page">Inheritance</a>
+    <a class='right-next' id="next-link" href="debugging.html" title="next page">Debugging</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allan Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

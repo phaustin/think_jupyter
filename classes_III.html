@@ -1,0 +1,834 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Classes and methods &#8212; How to think like a computer scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Inheritance" href="classes_IV.html" />
+    <link rel="prev" title="Classes and functions" href="classes_II.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">How to think like a computer scientist</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="preface.html">Preface</a>
+  </li>
+  <li class="">
+    <a href="intro.html">Introduction</a>
+  </li>
+  <li class="">
+    <a href="way_of.html">The way of the program</a>
+  </li>
+  <li class="">
+    <a href="variables.html">Variables, expressions and statements</a>
+  </li>
+  <li class="">
+    <a href="functions.html">Functions</a>
+  </li>
+  <li class="">
+    <a href="case_study_interface.html">Case study: interface design</a>
+  </li>
+  <li class="">
+    <a href="conditionals.html">Conditionals and recursion</a>
+  </li>
+  <li class="">
+    <a href="fruitful_functions.html">Fruitful functions</a>
+  </li>
+  <li class="">
+    <a href="iteration.html">Iteration</a>
+  </li>
+  <li class="">
+    <a href="strings.html">Strings</a>
+  </li>
+  <li class="">
+    <a href="case_study_wordplay.html">Case study: word play</a>
+  </li>
+  <li class="">
+    <a href="lists.html">Lists</a>
+  </li>
+  <li class="">
+    <a href="dictionaries.html">Dictionaries</a>
+  </li>
+  <li class="">
+    <a href="tuples.html">Tuples</a>
+  </li>
+  <li class="">
+    <a href="case_study_data_structures.html">Case study: data structure selection</a>
+  </li>
+  <li class="">
+    <a href="files.html">Files</a>
+  </li>
+  <li class="">
+    <a href="classes_I.html">Classes and objects</a>
+  </li>
+  <li class="">
+    <a href="classes_II.html">Classes and functions</a>
+  </li>
+  <li class="active">
+    <a href="">Classes and methods</a>
+  </li>
+  <li class="">
+    <a href="classes_IV.html">Inheritance</a>
+  </li>
+  <li class="">
+    <a href="advanced.html">The Goodies</a>
+  </li>
+  <li class="">
+    <a href="debugging.html">Debugging</a>
+  </li>
+  <li class="">
+    <a href="algorithms.html">Analysis of Algorithms</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/classes_III.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#object-oriented-features" class="nav-link">Object-oriented features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#printing-objects" class="nav-link">Printing objects</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#another-example" class="nav-link">Another example</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#a-more-complicated-example" class="nav-link">A more complicated example</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#the-init-method" class="nav-link">The init method</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#the-span-str-span-method" class="nav-link">The <span>__str__</span> method</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#operator-overloading" class="nav-link">Operator overloading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#type-based-dispatch" class="nav-link">Type-based dispatch</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#polymorphism" class="nav-link">Polymorphism</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#debugging" class="nav-link">Debugging</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#interface-and-implementation" class="nav-link">Interface and implementation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#glossary" class="nav-link">Glossary</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#exercises" class="nav-link">Exercises</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="classes-and-methods">
+<h1>Classes and methods<a class="headerlink" href="#classes-and-methods" title="Permalink to this headline">¶</a></h1>
+<p>Although we are using some of Python’s object-oriented features, the
+programs from the last two chapters are not really object-oriented
+because they don’t represent the relationships between
+programmer-defined types and the functions that operate on them. The
+next step is to transform those functions into methods that make the
+relationships explicit.</p>
+<p>Code examples from this chapter are available from
+<a class="reference external" href="http://thinkpython2.com/code/Time2.py">http://thinkpython2.com/code/Time2.py</a>, and solutions to the exercises
+are in <a class="reference external" href="http://thinkpython2.com/code/Point2_soln.py">http://thinkpython2.com/code/Point2_soln.py</a>.</p>
+<div class="section" id="object-oriented-features">
+<h2>Object-oriented features<a class="headerlink" href="#object-oriented-features" title="Permalink to this headline">¶</a></h2>
+<p>Python is an <span><strong>object-oriented programming language</strong></span>,
+which means that it provides features that support object-oriented
+programming, which has these defining characteristics:</p>
+<ul class="simple">
+<li><p>Programs include class and method definitions.</p></li>
+<li><p>Most of the computation is expressed in terms of operations on
+objects.</p></li>
+<li><p>Objects often represent things in the real world, and methods often
+correspond to the ways things in the real world interact.</p></li>
+</ul>
+<p>For example, the <span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> class defined in
+Chapter <a class="reference external" href="#time">17</a> corresponds to the way people record the time of
+day, and the functions we defined correspond to the kinds of things
+people do with times. Similarly, the <span><code class="docutils literal notranslate"><span class="pre">Point</span></code></span> and
+<span><code class="docutils literal notranslate"><span class="pre">Rectangle</span></code></span> classes in Chapter <a class="reference external" href="#clobjects">16</a> correspond
+to the mathematical concepts of a point and a rectangle.</p>
+<p>So far, we have not taken advantage of the features Python provides to
+support object-oriented programming. These features are not strictly
+necessary; most of them provide alternative syntax for things we have
+already done. But in many cases, the alternative is more concise and
+more accurately conveys the structure of the program.</p>
+<p>For example, in <span><code class="docutils literal notranslate"><span class="pre">Time1.py</span></code></span> there is no obvious connection
+between the class definition and the function definitions that follow.
+With some examination, it is apparent that every function takes at least
+one <span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> object as an argument.</p>
+<p>This observation is the motivation for <span><strong>methods</strong></span>; a
+method is a function that is associated with a particular class. We have
+seen methods for strings, lists, dictionaries and tuples. In this
+chapter, we will define methods for programmer-defined types.</p>
+<p>Methods are semantically the same as functions, but there are two
+syntactic differences:</p>
+<ul class="simple">
+<li><p>Methods are defined inside a class definition in order to make the
+relationship between the class and the method explicit.</p></li>
+<li><p>The syntax for invoking a method is different from the syntax for
+calling a function.</p></li>
+</ul>
+<p>In the next few sections, we will take the functions from the previous
+two chapters and transform them into methods. This transformation is
+purely mechanical; you can do it by following a sequence of steps. If
+you are comfortable converting from one form to another, you will be
+able to choose the best form for whatever you are doing.</p>
+</div>
+<div class="section" id="printing-objects">
+<h2>Printing objects<a class="headerlink" href="#printing-objects" title="Permalink to this headline">¶</a></h2>
+<p>In Chapter <a class="reference external" href="#time">17</a>, we defined a class named <span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> and
+in Section <a class="reference external" href="#isafter">17.1</a>, you wrote a function named <code class="docutils literal notranslate"><span class="pre">print_time</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Time:
+    &quot;&quot;&quot;Represents the time of day.&quot;&quot;&quot;
+
+def print_time(time):
+    print(&#39;%.2d:%.2d:%.2d&#39; % (time.hour, time.minute, time.second))
+</pre></div>
+</div>
+<p>To call this function, you have to pass a <span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> object as
+an argument:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; start = Time()
+&gt;&gt;&gt; start.hour = 9
+&gt;&gt;&gt; start.minute = 45
+&gt;&gt;&gt; start.second = 00
+&gt;&gt;&gt; print_time(start)
+09:45:00
+</pre></div>
+</div>
+<p>To make <code class="docutils literal notranslate"><span class="pre">print_time</span></code> a method, all we have to do is move the function
+definition inside the class definition. Notice the change in
+indentation.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Time:
+    def print_time(time):
+        print(&#39;%.2d:%.2d:%.2d&#39; % (time.hour, time.minute, time.second))
+</pre></div>
+</div>
+<p>Now there are two ways to call <code class="docutils literal notranslate"><span class="pre">print_time</span></code>. The first (and less common)
+way is to use function syntax:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; Time.print_time(start)
+09:45:00
+</pre></div>
+</div>
+<p>In this use of dot notation, <span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> is the name of the
+class, and <code class="docutils literal notranslate"><span class="pre">print_time</span></code> is the name of the method. <span><code class="docutils literal notranslate"><span class="pre">start</span></code></span>
+is passed as a parameter.</p>
+<p>The second (and more concise) way is to use method syntax:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; start.print_time()
+09:45:00
+</pre></div>
+</div>
+<p>In this use of dot notation, <code class="docutils literal notranslate"><span class="pre">print_time</span></code> is the name of the method
+(again), and <span><code class="docutils literal notranslate"><span class="pre">start</span></code></span> is the object the method is invoked
+on, which is called the <span><strong>subject</strong></span>. Just as the subject of
+a sentence is what the sentence is about, the subject of a method
+invocation is what the method is about.</p>
+<p>Inside the method, the subject is assigned to the first parameter, so in
+this case <span><code class="docutils literal notranslate"><span class="pre">start</span></code></span> is assigned to <span><code class="docutils literal notranslate"><span class="pre">time</span></code></span>.</p>
+<p>By convention, the first parameter of a method is called
+<span><code class="docutils literal notranslate"><span class="pre">self</span></code></span>, so it would be more common to write <code class="docutils literal notranslate"><span class="pre">print_time</span></code>
+like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Time:
+    def print_time(self):
+        print(&#39;%.2d:%.2d:%.2d&#39; % (self.hour, self.minute, self.second))
+</pre></div>
+</div>
+<p>The reason for this convention is an implicit metaphor:</p>
+<ul class="simple">
+<li><p>The syntax for a function call, <code class="docutils literal notranslate"><span class="pre">print_time(start)</span></code>, suggests that
+the function is the active agent. It says something like, “Hey
+<code class="docutils literal notranslate"><span class="pre">print_time</span></code>! Here’s an object for you to print.”</p></li>
+<li><p>In object-oriented programming, the objects are the active agents. A
+method invocation like <code class="docutils literal notranslate"><span class="pre">start.print_time()</span></code> says “Hey
+<span><code class="docutils literal notranslate"><span class="pre">start</span></code></span>! Please print yourself.”</p></li>
+</ul>
+<p>This change in perspective might be more polite, but it is not obvious
+that it is useful. In the examples we have seen so far, it may not be.
+But sometimes shifting responsibility from the functions onto the
+objects makes it possible to write more versatile functions (or
+methods), and makes it easier to maintain and reuse code.</p>
+<p>As an exercise, rewrite <code class="docutils literal notranslate"><span class="pre">time_to_int</span></code> (from Section <a class="reference external" href="#prototype">17.4</a>)
+as a method. You might be tempted to rewrite <code class="docutils literal notranslate"><span class="pre">int_to_time</span></code> as a method,
+too, but that doesn’t really make sense because there would be no object
+to invoke it on.</p>
+</div>
+<div class="section" id="another-example">
+<h2>Another example<a class="headerlink" href="#another-example" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a version of <span><code class="docutils literal notranslate"><span class="pre">increment</span></code></span> (from
+Section <a class="reference external" href="#increment">17.3</a>) rewritten as a method:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># inside class Time:
+
+    def increment(self, seconds):
+        seconds += self.time_to_int()
+        return int_to_time(seconds)
+</pre></div>
+</div>
+<p>This version assumes that <code class="docutils literal notranslate"><span class="pre">time_to_int</span></code> is written as a method. Also,
+note that it is a pure function, not a modifier.</p>
+<p>Here’s how you would invoke <span><code class="docutils literal notranslate"><span class="pre">increment</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; start.print_time()
+09:45:00
+&gt;&gt;&gt; end = start.increment(1337)
+&gt;&gt;&gt; end.print_time()
+10:07:17
+</pre></div>
+</div>
+<p>The subject, <span><code class="docutils literal notranslate"><span class="pre">start</span></code></span>, gets assigned to the first parameter,
+<span><code class="docutils literal notranslate"><span class="pre">self</span></code></span>. The argument, <span><code class="docutils literal notranslate"><span class="pre">1337</span></code></span>, gets assigned to
+the second parameter, <span><code class="docutils literal notranslate"><span class="pre">seconds</span></code></span>.</p>
+<p>This mechanism can be confusing, especially if you make an error. For
+example, if you invoke <span><code class="docutils literal notranslate"><span class="pre">increment</span></code></span> with two arguments, you
+get:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; end = start.increment(1337, 460)
+TypeError: increment() takes 2 positional arguments but 3 were given
+</pre></div>
+</div>
+<p>The error message is initially confusing, because there are only two
+arguments in parentheses. But the subject is also considered an
+argument, so all together that’s three.</p>
+<p>By the way, a <span><strong>positional argument</strong></span> is an argument that
+doesn’t have a parameter name; that is, it is not a keyword argument. In
+this function call:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sketch(parrot, cage, dead=True)
+</pre></div>
+</div>
+<p><span><code class="docutils literal notranslate"><span class="pre">parrot</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">cage</span></code></span> are positional, and
+<span><code class="docutils literal notranslate"><span class="pre">dead</span></code></span> is a keyword argument.</p>
+</div>
+<div class="section" id="a-more-complicated-example">
+<h2>A more complicated example<a class="headerlink" href="#a-more-complicated-example" title="Permalink to this headline">¶</a></h2>
+<p>Rewriting <code class="docutils literal notranslate"><span class="pre">is_after</span></code> (from Section <a class="reference external" href="#isafter">17.1</a>) is slightly more
+complicated because it takes two Time objects as parameters. In this
+case it is conventional to name the first parameter <span><code class="docutils literal notranslate"><span class="pre">self</span></code></span>
+and the second parameter <span><code class="docutils literal notranslate"><span class="pre">other</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># inside class Time:
+
+    def is_after(self, other):
+        return self.time_to_int() &gt; other.time_to_int()
+</pre></div>
+</div>
+<p>To use this method, you have to invoke it on one object and pass the
+other as an argument:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; end.is_after(start)
+True
+</pre></div>
+</div>
+<p>One nice thing about this syntax is that it almost reads like English:
+“end is after start?”</p>
+</div>
+<div class="section" id="the-init-method">
+<h2>The init method<a class="headerlink" href="#the-init-method" title="Permalink to this headline">¶</a></h2>
+<p>The init method (short for “initialization”) is a special method that
+gets invoked when an object is instantiated. Its full name is <code class="docutils literal notranslate"><span class="pre">__init__</span></code>
+(two underscore characters, followed by <span><code class="docutils literal notranslate"><span class="pre">init</span></code></span>, and then
+two more underscores). An init method for the <span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> class
+might look like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># inside class Time:
+
+    def __init__(self, hour=0, minute=0, second=0):
+        self.hour = hour
+        self.minute = minute
+        self.second = second
+</pre></div>
+</div>
+<p>It is common for the parameters of <code class="docutils literal notranslate"><span class="pre">__init__</span></code> to have the same names as
+the attributes. The statement</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    self.hour = hour
+</pre></div>
+</div>
+<p>stores the value of the parameter <span><code class="docutils literal notranslate"><span class="pre">hour</span></code></span> as an attribute of
+<span><code class="docutils literal notranslate"><span class="pre">self</span></code></span>.</p>
+<p>The parameters are optional, so if you call <span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> with no
+arguments, you get the default values.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; time = Time()
+&gt;&gt;&gt; time.print_time()
+00:00:00
+</pre></div>
+</div>
+<p>If you provide one argument, it overrides <span><code class="docutils literal notranslate"><span class="pre">hour</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; time = Time (9)
+&gt;&gt;&gt; time.print_time()
+09:00:00
+</pre></div>
+</div>
+<p>If you provide two arguments, they override <span><code class="docutils literal notranslate"><span class="pre">hour</span></code></span> and
+<span><code class="docutils literal notranslate"><span class="pre">minute</span></code></span>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; time = Time(9, 45)
+&gt;&gt;&gt; time.print_time()
+09:45:00
+</pre></div>
+</div>
+<p>And if you provide three arguments, they override all three default
+values.</p>
+<p>As an exercise, write an init method for the <span><code class="docutils literal notranslate"><span class="pre">Point</span></code></span> class
+that takes <span><code class="docutils literal notranslate"><span class="pre">x</span></code></span> and <span><code class="docutils literal notranslate"><span class="pre">y</span></code></span> as optional parameters
+and assigns them to the corresponding attributes.</p>
+</div>
+<div class="section" id="the-span-str-span-method">
+<h2>The <span><code class="docutils literal notranslate"><span class="pre">__str__</span></code></span> method<a class="headerlink" href="#the-span-str-span-method" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">__str__</span></code> is a special method, like <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, that is supposed to
+return a string representation of an object.</p>
+<p>For example, here is a <span><code class="docutils literal notranslate"><span class="pre">str</span></code></span> method for Time objects:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># inside class Time:
+
+    def __str__(self):
+        return &#39;%.2d:%.2d:%.2d&#39; % (self.hour, self.minute, self.second)
+</pre></div>
+</div>
+<p>When you <span><code class="docutils literal notranslate"><span class="pre">print</span></code></span> an object, Python invokes the
+<span><code class="docutils literal notranslate"><span class="pre">str</span></code></span> method:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; time = Time(9, 45)
+&gt;&gt;&gt; print(time)
+09:45:00
+</pre></div>
+</div>
+<p>When I write a new class, I almost always start by writing <code class="docutils literal notranslate"><span class="pre">__init__</span></code>,
+which makes it easier to instantiate objects, and <code class="docutils literal notranslate"><span class="pre">__str__</span></code>, which is
+useful for debugging.</p>
+<p>As an exercise, write a <span><code class="docutils literal notranslate"><span class="pre">str</span></code></span> method for the
+<span><code class="docutils literal notranslate"><span class="pre">Point</span></code></span> class. Create a Point object and print it.</p>
+</div>
+<div class="section" id="operator-overloading">
+<h2>Operator overloading<a class="headerlink" href="#operator-overloading" title="Permalink to this headline">¶</a></h2>
+<p>By defining other special methods, you can specify the behavior of
+operators on programmer-defined types. For example, if you define a
+method named <code class="docutils literal notranslate"><span class="pre">__add__</span></code> for the <span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> class, you can use
+the <span><code class="docutils literal notranslate"><span class="pre">+</span></code></span> operator on Time objects.</p>
+<p>Here is what the definition might look like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># inside class Time:
+
+    def __add__(self, other):
+        seconds = self.time_to_int() + other.time_to_int()
+        return int_to_time(seconds)
+</pre></div>
+</div>
+<p>And here is how you could use it:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; start = Time(9, 45)
+&gt;&gt;&gt; duration = Time(1, 35)
+&gt;&gt;&gt; print(start + duration)
+11:20:00
+</pre></div>
+</div>
+<p>When you apply the <span><code class="docutils literal notranslate"><span class="pre">+</span></code></span> operator to Time objects, Python
+invokes <code class="docutils literal notranslate"><span class="pre">__add__</span></code>. When you print the result, Python invokes <code class="docutils literal notranslate"><span class="pre">__str__</span></code>.
+So there is a lot happening behind the scenes!</p>
+<p>Changing the behavior of an operator so that it works with
+programmer-defined types is called <span><strong>operator
+overloading</strong></span>. For every operator in Python there is a
+corresponding special method, like <code class="docutils literal notranslate"><span class="pre">__add__</span></code>. For more details, see
+<a class="reference external" href="http://docs.python.org/3/reference/datamodel.html#specialnames">http://docs.python.org/3/reference/datamodel.html#specialnames</a>.</p>
+<p>As an exercise, write an <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> method for the Point class.</p>
+</div>
+<div class="section" id="type-based-dispatch">
+<h2>Type-based dispatch<a class="headerlink" href="#type-based-dispatch" title="Permalink to this headline">¶</a></h2>
+<p>In the previous section we added two Time objects, but you also might
+want to add an integer to a Time object. The following is a version of
+<code class="docutils literal notranslate"><span class="pre">__add__</span></code> that checks the type of <span><code class="docutils literal notranslate"><span class="pre">other</span></code></span> and invokes
+either <code class="docutils literal notranslate"><span class="pre">add_time</span></code> or <span><code class="docutils literal notranslate"><span class="pre">increment</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># inside class Time:
+
+    def __add__(self, other):
+        if isinstance(other, Time):
+            return self.add_time(other)
+        else:
+            return self.increment(other)
+
+    def add_time(self, other):
+        seconds = self.time_to_int() + other.time_to_int()
+        return int_to_time(seconds)
+
+    def increment(self, seconds):
+        seconds += self.time_to_int()
+        return int_to_time(seconds)
+</pre></div>
+</div>
+<p>The built-in function <span><code class="docutils literal notranslate"><span class="pre">isinstance</span></code></span> takes a value and a
+class object, and returns <span><code class="docutils literal notranslate"><span class="pre">True</span></code></span> if the value is an
+instance of the class.</p>
+<p>If <span><code class="docutils literal notranslate"><span class="pre">other</span></code></span> is a Time object, <code class="docutils literal notranslate"><span class="pre">__add__</span></code> invokes <code class="docutils literal notranslate"><span class="pre">add_time</span></code>.
+Otherwise it assumes that the parameter is a number and invokes
+<span><code class="docutils literal notranslate"><span class="pre">increment</span></code></span>. This operation is called a <span><strong>type-based
+dispatch</strong></span> because it dispatches the computation to different
+methods based on the type of the arguments.</p>
+<p>Here are examples that use the <span><code class="docutils literal notranslate"><span class="pre">+</span></code></span> operator with different
+types:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; start = Time(9, 45)
+&gt;&gt;&gt; duration = Time(1, 35)
+&gt;&gt;&gt; print(start + duration)
+11:20:00
+&gt;&gt;&gt; print(start + 1337)
+10:07:17
+</pre></div>
+</div>
+<p>Unfortunately, this implementation of addition is not commutative. If
+the integer is the first operand, you get</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; print(1337 + start)
+TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;instance&#39;
+</pre></div>
+</div>
+<p>The problem is, instead of asking the Time object to add an integer,
+Python is asking an integer to add a Time object, and it doesn’t know
+how. But there is a clever solution for this problem: the special method
+<code class="docutils literal notranslate"><span class="pre">__radd__</span></code>, which stands for “right-side add”. This method is invoked
+when a Time object appears on the right side of the <span><code class="docutils literal notranslate"><span class="pre">+</span></code></span>
+operator. Here’s the definition:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># inside class Time:
+
+    def __radd__(self, other):
+        return self.__add__(other)
+</pre></div>
+</div>
+<p>And here’s how it’s used:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; print(1337 + start)
+10:07:17
+</pre></div>
+</div>
+<p>As an exercise, write an <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> method for Points that works
+with either a Point object or a tuple:</p>
+<ul class="simple">
+<li><p>If the second operand is a Point, the method should return a new
+Point whose (x) coordinate is the sum of the (x) coordinates of
+the operands, and likewise for the (y) coordinates.</p></li>
+<li><p>If the second operand is a tuple, the method should add the first
+element of the tuple to the (x) coordinate and the second element
+to the (y) coordinate, and return a new Point with the result.</p></li>
+</ul>
+</div>
+<div class="section" id="polymorphism">
+<h2>Polymorphism<a class="headerlink" href="#polymorphism" title="Permalink to this headline">¶</a></h2>
+<p>Type-based dispatch is useful when it is necessary, but (fortunately) it
+is not always necessary. Often you can avoid it by writing functions
+that work correctly for arguments with different types.</p>
+<p>Many of the functions we wrote for strings also work for other sequence
+types. For example, in Section <a class="reference external" href="#histogram">12.2</a> we used
+<span><code class="docutils literal notranslate"><span class="pre">histogram</span></code></span> to count the number of times each letter
+appears in a word.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def histogram(s):
+    d = dict()
+    for c in s:
+        if c not in d:
+            d[c] = 1
+        else:
+            d[c] = d[c]+1
+    return d
+</pre></div>
+</div>
+<p>This function also works for lists, tuples, and even dictionaries, as
+long as the elements of <span><code class="docutils literal notranslate"><span class="pre">s</span></code></span> are hashable, so they can be
+used as keys in <span><code class="docutils literal notranslate"><span class="pre">d</span></code></span>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; t = [&#39;spam&#39;, &#39;egg&#39;, &#39;spam&#39;, &#39;spam&#39;, &#39;bacon&#39;, &#39;spam&#39;]
+&gt;&gt;&gt; histogram(t)
+{&#39;bacon&#39;: 1, &#39;egg&#39;: 1, &#39;spam&#39;: 4}
+</pre></div>
+</div>
+<p>Functions that work with several types are called
+<span><strong>polymorphic</strong></span>. Polymorphism can facilitate code reuse.
+For example, the built-in function <span><code class="docutils literal notranslate"><span class="pre">sum</span></code></span>, which adds the
+elements of a sequence, works as long as the elements of the sequence
+support addition.</p>
+<p>Since Time objects provide an <span><code class="docutils literal notranslate"><span class="pre">add</span></code></span> method, they work with
+<span><code class="docutils literal notranslate"><span class="pre">sum</span></code></span>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; t1 = Time(7, 43)
+&gt;&gt;&gt; t2 = Time(7, 41)
+&gt;&gt;&gt; t3 = Time(7, 37)
+&gt;&gt;&gt; total = sum([t1, t2, t3])
+&gt;&gt;&gt; print(total)
+23:01:00
+</pre></div>
+</div>
+<p>In general, if all of the operations inside a function work with a given
+type, the function works with that type.</p>
+<p>The best kind of polymorphism is the unintentional kind, where you
+discover that a function you already wrote can be applied to a type you
+never planned for.</p>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>It is legal to add attributes to objects at any point in the execution
+of a program, but if you have objects with the same type that don’t have
+the same attributes, it is easy to make mistakes. It is considered a
+good idea to initialize all of an object’s attributes in the init
+method.</p>
+<p>If you are not sure whether an object has a particular attribute, you
+can use the built-in function <span><code class="docutils literal notranslate"><span class="pre">hasattr</span></code></span> (see
+Section <a class="reference external" href="#hasattr">16.7</a>).</p>
+<p>Another way to access attributes is the built-in function
+<span><code class="docutils literal notranslate"><span class="pre">vars</span></code></span>, which takes an object and returns a dictionary that
+maps from attribute names (as strings) to their values:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; p = Point(3, 4)
+&gt;&gt;&gt; vars(p)
+{&#39;y&#39;: 4, &#39;x&#39;: 3}
+</pre></div>
+</div>
+<p>For purposes of debugging, you might find it useful to keep this
+function handy:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def print_attributes(obj):
+    for attr in vars(obj):
+        print(attr, getattr(obj, attr))
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">print_attributes</span></code> traverses the dictionary and prints each attribute
+name and its corresponding value.</p>
+<p>The built-in function <span><code class="docutils literal notranslate"><span class="pre">getattr</span></code></span> takes an object and an
+attribute name (as a string) and returns the attribute’s value.</p>
+</div>
+<div class="section" id="interface-and-implementation">
+<h2>Interface and implementation<a class="headerlink" href="#interface-and-implementation" title="Permalink to this headline">¶</a></h2>
+<p>One of the goals of object-oriented design is to make software more
+maintainable, which means that you can keep the program working when
+other parts of the system change, and modify the program to meet new
+requirements.</p>
+<p>A design principle that helps achieve that goal is to keep interfaces
+separate from implementations. For objects, that means that the methods
+a class provides should not depend on how the attributes are
+represented.</p>
+<p>For example, in this chapter we developed a class that represents a time
+of day. Methods provided by this class include <code class="docutils literal notranslate"><span class="pre">time_to_int</span></code>,
+<code class="docutils literal notranslate"><span class="pre">is_after</span></code>, and <code class="docutils literal notranslate"><span class="pre">add_time</span></code>.</p>
+<p>We could implement those methods in several ways. The details of the
+implementation depend on how we represent time. In this chapter, the
+attributes of a <span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> object are <span><code class="docutils literal notranslate"><span class="pre">hour</span></code></span>,
+<span><code class="docutils literal notranslate"><span class="pre">minute</span></code></span>, and <span><code class="docutils literal notranslate"><span class="pre">second</span></code></span>.</p>
+<p>As an alternative, we could replace these attributes with a single
+integer representing the number of seconds since midnight. This
+implementation would make some methods, like <code class="docutils literal notranslate"><span class="pre">is_after</span></code>, easier to
+write, but it makes other methods harder.</p>
+<p>After you deploy a new class, you might discover a better
+implementation. If other parts of the program are using your class, it
+might be time-consuming and error-prone to change the interface.</p>
+<p>But if you designed the interface carefully, you can change the
+implementation without changing the interface, which means that other
+parts of the program don’t have to change.</p>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>object-oriented language:<br />
+A language that provides features, such as programmer-defined types
+and methods, that facilitate object-oriented programming.</p></li>
+<li><p>object-oriented programming:<br />
+A style of programming in which data and the operations that
+manipulate it are organized into classes and methods.</p></li>
+<li><p>method:<br />
+A function that is defined inside a class definition and is invoked
+on instances of that class.</p></li>
+<li><p>subject:<br />
+The object a method is invoked on.</p></li>
+<li><p>positional argument:<br />
+An argument that does not include a parameter name, so it is not a
+keyword argument.</p></li>
+<li><p>operator overloading:<br />
+Changing the behavior of an operator like <span><code class="docutils literal notranslate"><span class="pre">+</span></code></span> so it
+works with a programmer-defined type.</p></li>
+<li><p>type-based dispatch:<br />
+A programming pattern that checks the type of an operand and invokes
+different functions for different types.</p></li>
+<li><p>polymorphic:<br />
+Pertaining to a function that can work with more than one type.</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>Download the code from this chapter from
+<a class="reference external" href="http://thinkpython2.com/code/Time2.py">http://thinkpython2.com/code/Time2.py</a>. Change the attributes of
+<span><code class="docutils literal notranslate"><span class="pre">Time</span></code></span> to be a single integer representing seconds since
+midnight. Then modify the methods (and the function <code class="docutils literal notranslate"><span class="pre">int_to_time</span></code>) to
+work with the new implementation. You should not have to modify the test
+code in <span><code class="docutils literal notranslate"><span class="pre">main</span></code></span>. When you are done, the output should be the
+same as before. Solution: <a class="reference external" href="http://thinkpython2.com/code/Time2_soln.py">http://thinkpython2.com/code/Time2_soln.py</a>.</p>
+<p><span id="kangaroo" label="kangaroo">[kangaroo]</span></p>
+<p>This exercise is a cautionary tale about one of the most common, and
+difficult to find, errors in Python. Write a definition for a class
+named <span><code class="docutils literal notranslate"><span class="pre">Kangaroo</span></code></span> with the following methods:</p>
+<ol class="simple">
+<li><p>An <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method that initializes an attribute named
+<code class="docutils literal notranslate"><span class="pre">pouch_contents</span></code> to an empty list.</p></li>
+<li><p>A method named <code class="docutils literal notranslate"><span class="pre">put_in_pouch</span></code> that takes an object of any type and
+adds it to <code class="docutils literal notranslate"><span class="pre">pouch_contents</span></code>.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">__str__</span></code> method that returns a string representation of the
+Kangaroo object and the contents of the pouch.</p></li>
+</ol>
+<p>Test your code by creating two <span><code class="docutils literal notranslate"><span class="pre">Kangaroo</span></code></span> objects,
+assigning them to variables named <span><code class="docutils literal notranslate"><span class="pre">kanga</span></code></span> and
+<span><code class="docutils literal notranslate"><span class="pre">roo</span></code></span>, and then adding <span><code class="docutils literal notranslate"><span class="pre">roo</span></code></span> to the contents
+of <span><code class="docutils literal notranslate"><span class="pre">kanga</span></code></span>’s pouch.</p>
+<p>Download <a class="reference external" href="http://thinkpython2.com/code/BadKangaroo.py">http://thinkpython2.com/code/BadKangaroo.py</a>. It contains a
+solution to the previous problem with one big, nasty bug. Find and fix
+the bug.</p>
+<p>If you get stuck, you can download
+<a class="reference external" href="http://thinkpython2.com/code/GoodKangaroo.py">http://thinkpython2.com/code/GoodKangaroo.py</a>, which explains the
+problem and demonstrates a solution.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="classes_II.html" title="previous page">Classes and functions</a>
+    <a class='right-next' id="next-link" href="classes_IV.html" title="next page">Inheritance</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allan Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
