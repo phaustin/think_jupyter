@@ -2,6 +2,9 @@
 
 ## by Allen Downey
 
+(this is under construction -- cross-references and figures will
+be added)
+
 This is a jupyter-book port of the original latex book: [thinkpython2-github](https://github.com/AllenDowney/ThinkPython2)
 
 The original rendered latex:  [thinkpython2-html](http://greenteapress.com/thinkpython2/html/index.html)
