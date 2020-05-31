@@ -435,21 +435,26 @@ def shell_command(args):
         from watchdog.observers.polling import PollingObserver as Observer
     else:
         from watchdog.observers import Observer
-
+    print(args.timeout)
     patterns, ignore_patterns = (['*.md'], [])
     command = "/Users/phil/a50037/envs/demo/bin/jb build thinkmd"
     patterns = ['*.md']
+    ignore_patterns = []
     ignore_directories = False
     wait_for_process = False
     drop_during_process = False
-    handler = ShellCommandTrick(shell_command=args.command,
+    timeout = 1.0
+    directories = ['thinkmd']
+    recursive = True
+    print(args.directories,args.recursive)
+    handler = ShellCommandTrick(shell_command=command,
                                 patterns=patterns,
                                 ignore_patterns=ignore_patterns,
-                                ignore_directories=args.ignore_directories,
-                                wait_for_process=args.wait_for_process,
-                                drop_during_process=args.drop_during_process)
-    observer = Observer(timeout=args.timeout)
-    observe_with(observer, handler, args.directories, args.recursive)
+                                ignore_directories=ignore_directories,
+                                wait_for_process=wait_for_process,
+                                drop_during_process=drop_during_process)
+    observer = Observer(timeout=timeout)
+    observe_with(observer, handler, directories, recursive)
 
 
 @arg('command',
