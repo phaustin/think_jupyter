@@ -419,7 +419,7 @@ Example option usage::
      default=False,
      help='[debug] forces polling')
 @expects_obj
-def shell_command(args):
+def shell_command():
     """
     Subcommand to execute shell commands in response to file system events.
 
@@ -427,15 +427,7 @@ def shell_command(args):
         Command line argument options.
     """
     from watchdog.tricks import ShellCommandTrick
-
-    if not args.command:
-        args.command = None
-
-    if args.debug_force_polling:
-        from watchdog.observers.polling import PollingObserver as Observer
-    else:
-        from watchdog.observers import Observer
-    print(args.timeout)
+    from watchdog.observers import Observer
     patterns, ignore_patterns = (['*.md'], [])
     command = "/Users/phil/a50037/envs/demo/bin/jb build thinkmd"
     patterns = ['*.md']
@@ -446,7 +438,6 @@ def shell_command(args):
     timeout = 1.0
     directories = ['thinkmd']
     recursive = True
-    print(args.directories,args.recursive)
     handler = ShellCommandTrick(shell_command=command,
                                 patterns=patterns,
                                 ignore_patterns=ignore_patterns,
@@ -587,5 +578,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    shell_command()
     
